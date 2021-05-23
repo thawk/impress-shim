@@ -3,18 +3,12 @@
   The downside of this approach is that you have to be online. So below I have simply saved
   the output of the googleapis url into a file. Then you of course also have to make sure
   the webfonts are locally installed to make offline usage work. For Ubuntu (or Debian) I
-  successfully used the script from here to do that: 
+  successfully used the script from here to do that:
   http://www.webupd8.org/2011/01/automatically-install-all-google-web.html
 */
 
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Cutive+Mono); */
-/* @import url(fonts.css); */
-
-/*
-.helper-border {
-    border: 5px solid red;
-}
-*/
+@import url(fonts.css);
 
 
 /*
@@ -24,53 +18,38 @@
 */
 
 body {
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
     min-height: 740px;
 
     background: rgb(215, 215, 215);
     color: rgb(70, 70, 70);
+
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
 }
 
-/* Inline code, no Highlight.js */
-code {
-    font-family: "Cutive mono","Courier New", monospace;
-}
-
-
-a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0 0.1em;
-    text-shadow: -2px 2px 4px rgba(100,100,100,0.9);
-    border-radius: 0.2em;
-    border-bottom: 3px solid rgba(100,100,100,0.2);
-    border-left:   3px solid rgba(100,100,100,0.2);
-    border-right:   3px solid rgba(100,100,100,0.2);
-
-    transition:         0.5s;
-}
-a:hover,
-a:focus {
-    background: rgba(200,200,200,1);
-    text-shadow: -2px 2px 3px rgba(100,100,100,0.5);
-}
-
+/* 块/段落引用 */
 blockquote {
-    /* font-family: 'PT Serif'; */
-    font-style: italic;
-    font-weight: 400;
+  position: relative;
+  color: #333;
+  font-weight: 400;
+  border-left: 1px solid #1abc9c;
+  padding-left: 1em;
+  margin: 1em 3em 1em 2em;
 }
 
+/*  */
 b, strong, h1, h2, h3, h4, h5, h6 { font-weight: bold }
-i, em { font-style: italic }
-
-em {
-    text-shadow: 0 6px 6px rgba(0, 0, 0, .3);
-}
-
-strong {
-    text-shadow: -3px 3px 6px rgba(100,100,100,0.5);
-}
+h1, h2, h3, h4, h5, h6 { color: #000000 }
+/* i, em { font-style: italic } */
+/*  */
+/* em { */
+/*     text-shadow: 0 6px 6px rgba(0, 0, 0, .3); */
+/* } */
+/*  */
+/* strong { */
+/*     text-shadow: -3px 3px 6px rgba(100,100,100,0.5); */
+/* } */
 
 q {
     /* font-family: 'PT Serif'; */
@@ -84,20 +63,116 @@ q {
     margin-top: 100px;
 }
 
-strike {
-    opacity: 0.7;
+/* strike { */
+/*     opacity: 0.7; */
+/* } */
+/*  */
+/* small { */
+/*     font-size: 0.4em; */
+/* } */
+/*  */
+/* .left-align { */
+/*   text-align: left; */
+/* } */
+/*  */
+/* .center { */
+/*   text-align: center; */
+/* } */
+/*  */
+/* .right-align { */
+/*   text-align: right; */
+/* } */
+/*  */
+/* .strike { */
+/*     text-decoration: line-through; */
+/* } */
+/*  */
+/* .inline-block { */
+/*     position: inline-block; */
+/* } */
+
+.font-normalsize {
+    font-size: 100%;
+}
+.font-larger1 {
+    font-size: 110%;
+}
+.font-larger2 {
+    font-size: 120%;
+}
+.font-larger3 {
+    font-size: 130%;
+}
+.font-larger5 {
+    font-size: 150%;
+}
+.font-larger5 {
+    font-size: 200%;
 }
 
-small {
-    font-size: 0.4em;
+
+.future .present-only,
+.past .present-only {
+    opacity: 0;
 }
 
-.accent, .accent1 {
-    color: #F95700;
+.present .present-only {
+    opacity: 1;
 }
 
-.accent2 {
-    color: #00A4CC;
+.accent, .accent1 {color: #4e91e4;}
+.accent2 {color: #ac94e8;}
+.accent3 {color: #ee675d;}
+.accent4 {color: #60d2b6;}
+
+/* color codes from siimple css.
+ * https://docs.siimple.xyz/getting-started/theming.html
+ */
+.primary {color: #4e91e4;}
+.success {color: #4acf7f;}
+.warning {color: #fbc850;}
+.error {color: #ee675d;}
+.dark {color: #546778;}
+.light {color: #dde5ee;}
+
+.navy {color: #546778;}
+.green {color: #93d260;}
+.teal {color: #60d2b6;}
+.blue {color: #4e91e4;}
+.purple {color: #ac94e8;}
+.pink {color: #e77eb8;}
+.red {color: #ee675d;}
+.orange {color: #f78055;}
+.yellow {color: #fbc850;}
+.grey {color: #dde5ee;}
+
+
+/* Inline code, no Highlight.js */
+code {
+    font-family: "Cutive mono","Courier New", monospace;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0 0.1em;
+    background: rgba(200,200,200,0.2);
+    text-shadow: -2px 2px 4px rgba(100,100,100,0.9);
+    border-radius: 0.2em;
+    border-bottom: 3px solid rgba(100,100,100,0.2);
+    border-left:   3px solid rgba(100,100,100,0.2);
+
+    transition:         0.5s;
+}
+a:hover,
+a:focus {
+    background: rgba(200,200,200,1);
+    text-shadow: -2px 2px 3px rgba(100,100,100,0.5);
+}
+
+td {
+    padding: 0.2em;
 }
 
 /*
@@ -106,19 +181,24 @@ small {
 
 .step {
     position: relative;
-    width: 1000px;
-    margin: 60px auto;
-    padding: 40px 60px;
+    width: 1800px;
+    padding: 60px;
+    margin: 60px;
 
-    box-sizing:         border-box;
+    box-sizing:       border-box;
 
+    font-size: 60px;
     line-height: 1.5;
-
     text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
-    /* font-family: 'Open Sans', Arial, sans-serif; */
-    font-size: 48px;
-    letter-spacing: -2px;
+
+    /* for layout debuggind */
+    background-color: #F0808020;
 }
+
+.step code {
+    line-height: 1;
+}
+
 /*
     Make inactive steps a little bit transparent.
 */
@@ -130,127 +210,126 @@ small {
 
 .impress-enabled .step.active { opacity: 1 }
 
+.box {
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, .3);
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+}
+
 /*
     These 'slide' step styles were heavily inspired by HTML5 Slides:
     http://html5slides.googlecode.com/svn/trunk/styles.css
-    
-    Note that we also use a background image, again just to facilitate a common
-    feature from PowerPoint and LibreOffice worlds. In this case the background
-    image is just the impress.js favicon - as if it were a company logo or something.
-    
 */
 .slide {
     display: block;
 
     width: 1850px;
     height: 1000px;
+    padding: 40px 60px;
+
+    text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
+
+    font-size: 60px;
+    letter-spacing: -2px;
 
     /* background-image: url(../images/background.png); */
-    background-color: white;
-    border: 2px solid rgba(0, 0, 0, .3);
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
-
-    color: rgb(102, 102, 102);
-    text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 }
 
+.slide.active,
+.slide.active * {
+    OFFborder: 3px solid red;
+}
 
-.step h1, 
-.step h2, 
-.step h3 {
+/* Fix for slides with data-z != 0 */
+.slide.zfix,
+.slide.zfix * {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.slide h1,
+.slide h2,
+.slide h3 {
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    text-align: center;
-}
-
-.step p {
     /* text-align: center; */
-    margin: 0.7em;
 }
 
-.step li {
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
-    margin-left: 3em;
-    margin-right: 3em;
+.slide p {
+    /* text-align: center; */
+    /* margin: 0.7em; */
+}
+
+.slide li {
+    /* margin-top: 0.2em; */
+    /* margin-bottom: 0.2em; */
+    /* margin-left: 3em; */
+    /* margin-right: 3em; */
 }
 
 /* Highlight.js used for coloring pre > code blocks. */
-.step pre > code {
-    font-size: 30px;
+.slide pre > code {
+    font-size: 35px;
     text-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
-.step input {
+.slide input {
     font-size: 1em;
 }
 
-.step td {
-    padding: 0.8em;
-}
-
-.step .right {
+.slide .right {
     float: right;
     margin-left:  60px;
     margin-right:   0px;
     margin-top:    40px;
     margin-bottom: 40px;
 }
-.step .left {
+.slide .left {
     float: left;
     margin-right: 60px;
     margin-left:    0px;
     margin-top:    40px;
     margin-bottom: 40px;
 }
-.step .top {
+.slide .top {
     position: absolute;
     top: 40px;
     margin-bottom:  40px;
-    margin-top:      0px;    
+    margin-top:      0px;
 }
-.step .bottom {
+.slide .bottom {
     position: absolute;
     bottom: 40px;
     margin-bottom:   0px;
-    margin-top:     40px;    
+    margin-top:     40px;
 }
 
-/* 
-    Specific styles for: .title slides 
+/*
+    Specific styles for: .title slides
 */
 
-#title .cpp {
-    font-size: 130px;
-    position: absolute;
-    top: -1em;
-    left: -1em;
+.step.title {
+    display: block;
 
-    transform: translateZ(20px);
-    transform: rotate(-10deg);
-    transition-delay: 1s;
+    width: 1850px;
+    height: 1000px;
+    padding: 40px 60px;
 }
 
-.title {
-    /* background-image: url(../images/background-title.png);     */
-}
-
-.title h1 {
-    font-size: 180px;
-    transform: translateZ(50px);
-}
 .title h1,
 .title h2,
 .title h3 {
-    /* position: absolute; */
-    /* left: 90px; [> slide width is 1800px, so this is like a 5% margin on both sides <] */
-    /* width: 90%; */
+    position: absolute;
+    left: 90px; /* slide width is 1800px, so this is like a 5% margin on both sides */
+    width: 90%;
     text-align: center;
 }
-/* .title h1 { top: 50px; } */
-/* .title h2 { top: 600px; } */
-/* .title h3 { top: 800px; } */
+.title h1 { top: 400px; }
+.title h2 { top: 600px; }
+.title h3 { top: 800px; }
+
+
 
 /* Styles for animating the contents of a slide, such as a img, p, li or span element. ********/
 
@@ -300,39 +379,40 @@ small {
 }
 .past  .zoom-out {
     transform:        scale(10);
-    opacity: 0.0;    
+    opacity: 0.0;
 }
- 
+
 /*
-    And as the last thing there is a workaround for quite strange bug.
-    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.
-
-    Sometimes the element positioned in 3D (especially when it's moved back
-    along Z axis) is not clickable, because it falls 'behind' the <body>
-    element.
-
-    To prevent this, I decided to make <body> non clickable by setting
-    pointer-events property to `none` value.
-    Value if this property is inherited, so to make everything else clickable
-    I bring it back on the #impress element.
-
-    If you want to know more about `pointer-events` here are some docs:
-    https://developer.mozilla.org/en/CSS/pointer-events
-
-    There is one very important thing to notice about this workaround - it makes
-    everything 'unclickable' except what's in #impress element.
-
-    So use it wisely ... or don't use at all.
+    Styles for specific slides.
 */
-.impress-enabled                          { pointer-events: none }
-.impress-enabled #impress                 { pointer-events: auto }
-.impress-enabled #impress-toolbar         { pointer-events: auto }
-.impress-enabled #impress-console-button  { pointer-events: auto }
 
-#overview { display: none }
 
-.impress-on-overview .step {
+/* Default */
+.step {
     opacity: 1;
-    cursor: pointer;
+    transition:         opacity 3s;
 }
+
+/* Slides that are visible only during their turn. Typically on top of another slide. */
+.step.subslide {
+    opacity: 0;
+    transition:         opacity 1s;
+
+    padding-top: 300px;
+}
+
+.step.subslide.active {
+    opacity: 1;
+    transition:         opacity 1s;
+}
+
+.step.subslide p {
+    text-align: left;
+}
+
+/* We need substeps to go away so they don't show up on the adjacent slide */
+/* #impress .step.past .substep.substep-visible { */
+/*     opacity: 0; */
+/*     transition: 2s; */
+/* } */
 
