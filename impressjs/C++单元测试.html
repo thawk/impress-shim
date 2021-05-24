@@ -89,6 +89,23 @@ code {
     margin-top: 0;
     margin-bottom: 0;
 }
+#overview {
+    pointer-events: none
+}
+#overview #signature {
+    position: absolute;
+    left: 0em;
+    bottom: 0em;
+    font-size: 50%;
+    color: #546778;
+}
+#overview #signature a {
+    font-size: 120%;
+    text-decoration: none;
+    border: none;
+    background: none;
+    pointer-events: auto;
+}
         </style>
     </head>
 <body class="impress-not-supported">
@@ -276,9 +293,9 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<div id="overview" class="step" data-x="200" data-y="-400" data-scale=4 data-rotate=360>
-    <div id="power-by">
-        Power by <em>impress.js<sup>*</sup></em>
+<div id="overview" class="step slide" data-x="200" data-y="-400" data-scale=4 data-rotate=360>
+    <div id="signature">
+        Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em>
     </div>
 </div>
 
