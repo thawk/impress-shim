@@ -48,10 +48,18 @@ code {
     left: 8em;
     font-size: 150%;
 }
+.impress-on-can-fail #manual-expectation h4,
+.impress-on-can-fail #alternate-logic h4,
+.impress-on-can-fail #try-fail h4 {
+    /* 在上一页面放大一点作为列表项，切换到本页时再缩小会正常大小 */
+    font-size: 300%;
+    transition: font-size 1s;
+}
 #manual-expectation h4,
 #alternate-logic h4,
 #try-fail h4 {
     font-size: 150%;
+    transition: font-size 1s;
 }
 #frameworks div {
     position: absolute;
@@ -79,7 +87,7 @@ code {
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
-<div id="impress" class="typo" data-width="1920" data-height="1080" data-autoplay="0">
+<div id="impress" class="typo debug" data-width="1920" data-height="1080" data-autoplay="0">
 
 <div id="title" class="step slide title" data-x="0" data-y="0">
     <h1><span class="cpp-logo accent2">C++</span>单元测试</h1>
@@ -94,7 +102,7 @@ code {
     </blockquote>
 </div>
 
-<div id="keypoint" class="step title" data-rel-x=-1920  data-rel-y=420 data-rotate=0>
+<div id="section-keypoint" class="step title" data-rel-x=-1920  data-rel-y=0 data-rel-to="title" data-rotate=0>
     <h2>单元测试要点</h2>
 </div>
 
@@ -118,7 +126,7 @@ prog.HandleOrder(order);
     <pre><span class="cross error substep">❌</span><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Func1(), prog.Func1());    // 自比较</code></pre>
 </div>
 
-<div id="manual-expectation" class="step slide" data-rel-x=-300 data-rel-y=-550 data-scale=0.3 data-rotate=90>
+<div id="manual-expectation" class="step slide" data-rel-x=-200 data-rel-y=-550 data-scale=0.3 data-rotate=90>
     <h4>人工确定预期</h4>
     <pre class="only-present"><code class="lang-cpp">
 BOOST_CHECK_EQUAL(prog.Start(), error_code());
@@ -169,15 +177,20 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="frameworks" class="step slide" data-rel-x=-1920 data-rel-y=0 data-rel-to="title" data-rotate=180>
+<div id="section-frameworks" class="step title" data-rel-x=0  data-rel-y=-1080 data-rel-to="title" data-rotate=180>
     <h2>单元测试框架</h2>
+</div>
+
+<div id="frameworks" class="step slide" data-rel-x=0 data-rel-y=-640 data-rotate=180>
+    <p class="line-height-4">&nbsp;</p>
+    <p class="line-height-4">&nbsp;</p>
     <div>
-        <h3 class="inline-block col-5 align-middle center">Boost.Test</h3>
-        <h3 class="inline-block col-5 align-middle center">Turtle</h3>
+        <h3 class="inline-block col-6 m0 align-middle center">Boost.Test</h3>
+        <h3 class="inline-block col-5 m0 align-middle center">Turtle</h3>
     </div>
 </div>
 
-<div id="boost-test" class="step slide" data-rel-x=480 data-rel-y=-150 data-rotate=180 data-scale=0.5>
+<div id="boost-test" class="step slide" data-rel-x=400 data-rel-y=-150 data-rotate=180 data-scale=0.5>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
     <ul class="only-present">
@@ -229,13 +242,32 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<!-- trade/share/include/sscc/trade/share/unittest/unittest_helper.h -->
-<!-- ConstructedMessage()/EqualMessage()/RetrieveMessage()/RetrieveCallback() -->
-<!--  -->
-<!-- util/include/sscc/util/unittest/unittest_helper.h -->
-<!-- InitMessage()/CountedCallback/WaitTill() -->
+<div id="section-cases" class="step title" data-rel-x=1600  data-rel-y=0 data-rel-to="title" data-rotate=270>
+    <h2>实用技巧</h2>
+</div>
 
-<div id="overview" class="step" data-x="-2000" data-y="1000" data-scale=5>
+<div id="case-wail-till" class="step slide" data-rel-x=1600 data-rel-y=420 data-rotate=180>
+    <p>接入服务 <code>util/include/sscc/util/unittest/unittest_helper.h</code></p>
+    <p>提供了可以等待状态改变或超时的方法</p>
+    <ul>
+        <li><code class="lang-cpp">InitMessage()</code></li>
+        <li><code class="lang-cpp">WaitTill()</code></li>
+        <li><code class="lang-cpp">class CountedCallback</code></li>
+    </ul>
+</div>
+
+<div id="case-message" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rotate=180>
+    <p>接入服务 <code>trade/share/include/sscc/trade/share/unittest/unittest_helper.h</code></p>
+    <p>提供了方便在Turtle中对比收发消息的方法</p>
+    <ul>
+        <li><code class="lang-cpp">ConstructedMessage()</code></li>
+        <li><code class="lang-cpp">EqualMessage()</code></li>
+        <li><code class="lang-cpp">RetrieveMessage()</code></li>
+        <li><code class="lang-cpp">RetrieveCallback()</code></li>
+    </ul>
+</div>
+
+<div id="overview" class="step" data-x="-600" data-y="0" data-scale=5>
 </div>
 
 </div> <!-- #impress -->
