@@ -111,13 +111,15 @@ q {
 }
 
 
-.future .present-only,
-.past .present-only {
+.future .only-present,
+.past .only-present {
     opacity: 0;
+    transition: opacity 1s;
 }
 
-.present .present-only {
+.present .only-present {
     opacity: 1;
+    transition: opacity 1s;
 }
 
 .accent, .accent1 {color: #4e91e4;}
@@ -190,7 +192,9 @@ td {
     font-size: 60px;
     line-height: 1.5;
     text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
+}
 
+#impress.debug .step {
     /* for layout debuggind */
     background-color: #F0808020;
 }
