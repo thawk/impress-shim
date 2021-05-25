@@ -104,7 +104,7 @@ code {
 }
 #overview #signature {
     position: absolute;
-    left: 0em;
+    right: 0em;
     bottom: 0em;
     font-size: 40%;
     color: #546778;
@@ -130,7 +130,7 @@ code {
     <h1><span class="cpp-logo">C++</span>单元测试</h1>
 </div>
 
-<div id="define" class="step fade-in" data-rel-x="0" data-rel-y="900" data-rotate=90 data-z=1000>
+<div id="define" class="step fade-in" data-rel-x="0" data-rel-y="850" data-rotate=90 data-z=1000>
     <blockquote>
     <p>在计算机编程中，<b class="accent">单元测试</b>（<b class="accent">Unit Testing</b>）又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。<br>
     程序单元是应用的<b class="accent2">最小</b>可测试部件。<br>
@@ -139,11 +139,11 @@ code {
     </blockquote>
 </div>
 
-<div id="section-keypoint" class="step title" data-rel-x=-1920  data-rel-y=0 data-rel-to="title" data-rotate=180>
+<div id="section-keypoint" class="step title" data-rel-x=-1920  data-rel-y=2160 data-rel-to="title" data-rotate=180>
     <h2>单元测试要点</h2>
 </div>
 
-<div id="has-expectation" class="step slide" data-rel-x=-420 data-rel-y=-1600 data-rotate=270>
+<div id="has-expectation" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rotate=180>
     <h3>有预期</h3>
     <p class="center">不为了覆盖率而覆盖率</p>
     <div class="substep">
@@ -157,18 +157,18 @@ prog.HandleOrder(order);
     </div>
 </div>
 
-<div id="can-fail" class="step slide" data-rel-x=1080 data-rel-y=0 data-rotate=270>
+<div id="can-fail" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rotate=180>
     <h3>可失败</h3>
     <pre><span class="cross error substep">❌</span><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Func1(), prog.Func1());    // 自比较</code></pre>
 </div>
 
-<div id="manual-expectation" class="step slide" data-rel-x=200 data-rel-y=550 data-scale=0.3 data-rotate=270>
+<div id="manual-expectation" class="step slide" data-rel-x=550 data-rel-y=-200 data-scale=0.3 data-rotate=180>
     <h4>人工确定预期</h4>
     <pre class="only-present"><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
 BOOST_CHECK(prog.IsStarted());</code></pre>
 </div>
 
-<div id="alternate-logic" class="step slide" data-rel-x=-0 data-rel-y=-600 data-scale=0.3 data-rotate=270>
+<div id="alternate-logic" class="step slide" data-rel-x=-600 data-rel-y=0 data-scale=0.3 data-rotate=180>
     <h4>与另一个算法对比</h4>
     <div class="only-present">
         <p>用与被测算法不同，但结果相同的算法</p>
@@ -179,20 +179,20 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="try-fail" class="step slide" data-rel-x=-0 data-rel-y=-600 data-scale=0.3 data-rotate=270>
+<div id="try-fail" class="step slide" data-rel-x=-600 data-rel-y=0 data-scale=0.3 data-rotate=180>
     <h4>故意失败</h4>
     <p class="only-present">编写用例后，故意使用错误的预期，验证用例会失败，证明用例的正确性</p>
 </div>
 
 <!-- 根据上一个H3（can-fail）进行定位 -->
-<div id="can-repeat" class="step slide" data-rel-x=1080 data-rel-y=0 data-rel-to="can-fail" data-rotate=270>
+<div id="can-repeat" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rel-to="can-fail" data-rotate=180>
     <h3>可重复</h3>
     <div class="substep">
         <p class="center accent2 font-larger5">独立</p>
     </div>
 </div>
 
-<div id="env-independence" class="step slide" data-rel-x=450 data-rel-y=0 data-rotate=270>
+<div id="env-independence" class="step slide" data-rel-x=0 data-rel-y=-450 data-rotate=180>
     <div class="align-top">
         <h4>环境独立</h4>
         <ul>
@@ -205,7 +205,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="time-independence" class="step slide" data-rel-x=0 data-rel-y=-1920 data-rotate=270>
+<div id="time-independence" class="step slide" data-rel-x=1920 data-rel-y=0 data-rotate=180>
     <div class="align-top">
         <h4>时间独立</h4>
         <ul>
@@ -215,11 +215,11 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="section-frameworks" class="step title" data-rel-x=1920 data-rel-y=-2000 data-rel-to="title" data-rotate=360>
+<div id="section-frameworks" class="step title" data-rel-x=1600 data-rel-y=0 data-rotate=270>
     <h2>单元测试框架</h2>
 </div>
 
-<div id="frameworks" class="step slide" data-rel-x=0 data-rel-y=640 data-rotate=360>
+<div id="frameworks" class="step slide" data-rel-x=640 data-rel-y=0 data-rotate=270>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
     <div>
@@ -228,7 +228,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="boost-test" class="step slide" data-rel-x=-400 data-rel-y=150 data-rotate=360 data-scale=0.5>
+<div id="boost-test" class="step slide" data-rel-x=150 data-rel-y=400 data-rotate=270 data-scale=0.5>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
     <ul class="only-present">
@@ -248,7 +248,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </ul>
 </div>
 
-<div id="turtle" class="step slide" data-rel-x=480 data-rel-y=150 data-rel-to="frameworks" data-rotate=360 data-scale=0.5>
+<div id="turtle" class="step slide" data-rel-x=150 data-rel-y=-480 data-rel-to="frameworks" data-rotate=270 data-scale=0.5>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
     <ul class="only-present">
@@ -280,11 +280,11 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<div id="section-cases" class="step title" data-rel-x=3500  data-rel-y=500 data-rel-to="title" data-rotate=450>
+<div id="section-cases" class="step title" data-rel-x=1920 data-rel-y=0 data-rel-to="title" data-rotate=360>
     <h2>实用技巧</h2>
 </div>
 
-<div id="case-wail-till" class="step slide" data-rel-x=-1600 data-rel-y=420 data-rotate=540>
+<div id="case-wail-till" class="step slide" data-rel-x=0 data-rel-y=1080 data-rotate=360>
     <p>接入服务 <code>util/include/sscc/util/unittest/unittest_helper.h</code></p>
     <p>提供了可以等待状态改变或超时的方法</p>
     <ul>
@@ -294,7 +294,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<div id="case-message" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rotate=540>
+<div id="case-message" class="step slide" data-rel-x=0 data-rel-y=1080 data-rotate=360>
     <p>接入服务 <code>trade/share/include/sscc/trade/share/unittest/unittest_helper.h</code></p>
     <p>提供了方便在Turtle中对比收发消息的方法</p>
     <ul>
@@ -305,7 +305,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<div id="overview" class="step slide" data-x="200" data-y="-400" data-scale=4 data-rotate=360>
+<div id="overview" class="step slide" data-x="200" data-y="200" data-scale=5 data-rotate=360>
     <div id="signature">
         <p>2021年5月</p>
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
