@@ -8,11 +8,12 @@
         <link href="css/typo.css" rel="stylesheet" />
         <link href="css/basscss.css" rel="stylesheet" />
         <link href="impress.js/css/impress-common.css" rel="stylesheet" />
-        <link href="impress.js/extras/highlight/styles/github.css" rel="stylesheet" />
+        <!-- <link href="impress.js/extras/highlight/styles/github.css" rel="stylesheet" /> -->
         <link href="css/classic-slides.css" rel="stylesheet" />
         <style type="text/css">
 #title .cpp-logo {
     font-size: 110%;
+    color: #ac94e8;
 }
 pre {
     padding: 5px 15px;
@@ -20,15 +21,6 @@ pre {
 }
 footer {
     text-align: right;
-}
-.impress-on-overview div.step {
-    border: solid #546778 5px;
-}
-.impress-on-overview div.step:hover {
-    border: solid #ee675d 10px;
-}
-.impress-on-overview div#overview {
-    border: none;
 }
 .impress-on-define #title .cpp-logo {
     opacity: 0;
@@ -89,6 +81,24 @@ code {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+#turtle pre {
+    margin-top: -2em;
+}
+
+/* overview页面 */
+.impress-on-overview div.step {
+    border: solid #546778 5px;
+}
+.impress-on-overview div.step:hover {
+    border: solid #ee675d 10px;
+}
+.impress-on-overview div#overview {
+    border: none;
+}
+.impress-on-overview div#title {
+    background: #dbeafe;
+}
 #overview {
     pointer-events: none
 }
@@ -96,7 +106,7 @@ code {
     position: absolute;
     left: 0em;
     bottom: 0em;
-    font-size: 50%;
+    font-size: 40%;
     color: #546778;
 }
 #overview #signature a {
@@ -115,11 +125,12 @@ code {
 </div>
 <div id="impress" class="typo nodebug" data-width="1920" data-height="1080" data-autoplay="0">
 
-<div id="title" class="step slide title" data-x="0" data-y="0">
-    <h1><span class="cpp-logo accent2">C++</span>单元测试</h1>
+<!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
+<div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
+    <h1><span class="cpp-logo">C++</span>单元测试</h1>
 </div>
 
-<div id="define" class="step fade-in" data-rel-x="0" data-rel-y="900" data-rotate=90>
+<div id="define" class="step fade-in" data-rel-x="0" data-rel-y="900" data-rotate=90 data-z=1000>
     <blockquote>
     <p>在计算机编程中，<b class="accent">单元测试</b>（<b class="accent">Unit Testing</b>）又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。<br>
     程序单元是应用的<b class="accent2">最小</b>可测试部件。<br>
@@ -136,8 +147,7 @@ code {
     <h3>有期望</h3>
     <p class="center">不为了覆盖率而覆盖率</p>
     <div class="substep">
-        <pre><code class="lang-cpp">
-BOOST_CHECK_EQUAL(prog.Start(), error_code());
+        <pre><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
 BOOST_CHECK(prog.IsStarted());</code></pre>
         <pre><code class="lang-cpp">MOCK_EXPECT(prog.SendMessage)
   .once()
@@ -154,8 +164,7 @@ prog.HandleOrder(order);
 
 <div id="manual-expectation" class="step slide" data-rel-x=200 data-rel-y=550 data-scale=0.3 data-rotate=270>
     <h4>人工确定预期</h4>
-    <pre class="only-present"><code class="lang-cpp">
-BOOST_CHECK_EQUAL(prog.Start(), error_code());
+    <pre class="only-present"><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
 BOOST_CHECK(prog.IsStarted());</code></pre>
 </div>
 
@@ -179,26 +188,26 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 <div id="can-repeat" class="step slide" data-rel-x=1080 data-rel-y=0 data-rel-to="can-fail" data-rotate=270>
     <h3>可重复</h3>
     <div class="substep">
-        <p class="center accent3 font-larger5">独立</p>
+        <p class="center accent2 font-larger5">独立</p>
     </div>
 </div>
 
 <div id="independence" class="step slide" data-rel-x=450 data-rel-y=0 data-rotate=270>
-    <div class="inline-block col-5 align-top">
+    <div class="inline-block col-6 align-top">
         <h4>环境独立</h4>
         <ul>
             <li>主机</li>
             <li>用户</li>
             <li>目录：<small>使用相对路径</small></li>
-            <li>网络</li>
-            <li>数据</li>
+            <li>网络：<small>避免网络操作（mock）、<code>sscc::util::NetworkUtil::GetAvailableTcpPort()</code></small></li>
+            <li>数据：<small><code>sscc::util::SetEnv()</code>、<code>sscc::util::MemoryDataAccess()</code></small></li>
         </ul>
     </div>
     <div class="substep inline-block col-5 align-top">
         <h4>时间独立</h4>
         <ul>
-            <li>系统时间</li>
-            <li>执行时序</li>
+            <li>系统时间：<small><code>SteadyClock::EnableTimeTestMode()</code></small></li>
+            <li>执行时序：<small>避免使用静态变量</small></li>
         </ul>
     </div>
 </div>
@@ -295,7 +304,8 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
 
 <div id="overview" class="step slide" data-x="200" data-y="-400" data-scale=4 data-rotate=360>
     <div id="signature">
-        Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em>
+        <p>2021年5月</p>
+        <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
 </div>
 
@@ -310,7 +320,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
 
 <script src="impress.js/js/impress.js" charset="utf-8"></script>
 <script charset="utf-8">impress().init();</script>
-<script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
 </body>
 </html>
