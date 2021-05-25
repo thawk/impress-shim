@@ -28,10 +28,10 @@ footer {
 .impress-on-title #define {
     opacity: 0;
 }
-.impress-on-can-repeat #independence {
+.impress-on-can-repeat #env-independence {
     opacity: 0;
 }
-.impress-on-independence #impress #can-repeat div {
+.impress-on-env-independence #can-repeat div {
     opacity: 1;
 }
 #can-repeat div {
@@ -144,7 +144,7 @@ code {
 </div>
 
 <div id="has-expectation" class="step slide" data-rel-x=-420 data-rel-y=-1600 data-rotate=270>
-    <h3>有期望</h3>
+    <h3>有预期</h3>
     <p class="center">不为了覆盖率而覆盖率</p>
     <div class="substep">
         <pre><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
@@ -158,7 +158,7 @@ prog.HandleOrder(order);
 </div>
 
 <div id="can-fail" class="step slide" data-rel-x=1080 data-rel-y=0 data-rotate=270>
-    <h3>会失败</h3>
+    <h3>可失败</h3>
     <pre><span class="cross error substep">❌</span><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Func1(), prog.Func1());    // 自比较</code></pre>
 </div>
 
@@ -192,21 +192,24 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     </div>
 </div>
 
-<div id="independence" class="step slide" data-rel-x=450 data-rel-y=0 data-rotate=270>
-    <div class="inline-block col-6 align-top">
+<div id="env-independence" class="step slide" data-rel-x=450 data-rel-y=0 data-rotate=270>
+    <div class="align-top">
         <h4>环境独立</h4>
         <ul>
-            <li>主机</li>
-            <li>用户</li>
-            <li>目录：<small>使用相对路径</small></li>
-            <li>网络：<small>避免网络操作（mock）、<code>sscc::util::NetworkUtil::GetAvailableTcpPort()</code></small></li>
-            <li>数据：<small><code>sscc::util::SetEnv()</code>、<code>sscc::util::MemoryDataAccess()</code></small></li>
+            <li>主机独立</li>
+            <li>用户独立</li>
+            <li>目录独立：<small>使用相对路径</small></li>
+            <li>网络独立：<small>避免网络操作（mock）</small>、<code>sscc::util::NetworkUtil::GetAvailableTcpPort()</code></li>
+            <li>数据独立：<code>sscc::util::SetEnv()</code>、<code>sscc::util::MemoryDataAccess()</code></li>
         </ul>
     </div>
-    <div class="substep inline-block col-5 align-top">
+</div>
+
+<div id="time-independence" class="step slide" data-rel-x=0 data-rel-y=-1920 data-rotate=270>
+    <div class="align-top">
         <h4>时间独立</h4>
         <ul>
-            <li>系统时间：<small><code>SteadyClock::EnableTimeTestMode()</code></small></li>
+            <li>系统时间：<code>SteadyClock::EnableTimeTestMode()</code></li>
             <li>执行时序：<small>避免使用静态变量</small></li>
         </ul>
     </div>
