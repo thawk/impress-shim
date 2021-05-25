@@ -31,7 +31,7 @@ footer {
 .impress-on-can-repeat #env-independence {
     opacity: 0;
 }
-.impress-on-env-independence #can-repeat div {
+.impress-on-env-independence #impress #can-repeat div {
     opacity: 1;
 }
 #can-repeat div {
@@ -196,9 +196,9 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     <div class="align-top">
         <h4>环境独立</h4>
         <ul>
-            <li>主机独立</li>
-            <li>用户独立</li>
-            <li>目录独立：<small>使用相对路径</small></li>
+            <li>主机独立：<small>不依赖主机特定配置</small></li>
+            <li>用户独立：<small>不依赖特定用户、不固定用户名</small></li>
+            <li>目录独立：<small>使用相对路径、避免绝对路径</small></li>
             <li>网络独立：<small>避免网络操作（mock）</small>、<code>sscc::util::NetworkUtil::GetAvailableTcpPort()</code></li>
             <li>数据独立：<code>sscc::util::SetEnv()</code>、<code>sscc::util::MemoryDataAccess()</code></li>
         </ul>
