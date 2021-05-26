@@ -329,9 +329,9 @@ td {
     width: 90%;
     text-align: center;
 }
-.title h1 { top: 400px; }
-.title h2 { top: 600px; }
-.title h3 { top: 800px; }
+.title h1 { top: 200px; }
+.title h2 { top: 400px; }
+.title h3 { top: 600px; }
 
 
 
