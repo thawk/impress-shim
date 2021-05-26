@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -139,7 +139,7 @@ code {
     </blockquote>
 </div>
 
-<div id="section-keypoint" class="step title" data-rel-x=-1920  data-rel-y=2160 data-rel-to="title" data-rotate=180>
+<div id="section-keypoint" class="step title" data-rel-x=-2500  data-rel-y=2160 data-rel-to="title" data-rotate=180>
     <h2>单元测试要点</h2>
 </div>
 
@@ -280,28 +280,36 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
     </ul>
 </div>
 
-<div id="section-cases" class="step title" data-rel-x=1920 data-rel-y=0 data-rel-to="title" data-rotate=360>
-    <h2>实用技巧</h2>
+<div id="section-cases" class="step title" data-rel-x=2500 data-rel-y=0 data-rel-to="title" data-rotate=360>
+    <h2>他山之石</h2>
 </div>
 
 <div id="case-wail-till" class="step slide" data-rel-x=0 data-rel-y=1080 data-rotate=360>
-    <p>接入服务 <code>util/include/sscc/util/unittest/unittest_helper.h</code></p>
-    <p>提供了可以等待状态改变或超时的方法</p>
     <ul>
-        <li><code class="lang-cpp">InitMessage()</code></li>
-        <li><code class="lang-cpp">WaitTill()</code></li>
-        <li><code class="lang-cpp">class CountedCallback</code></li>
+        <li>
+            <p>接入服务 <code>util/include/sscc/util/unittest/unittest_helper.h</code></p>
+            <p>提供了可以等待状态改变或超时的方法</p>
+            <ul>
+                <li><code class="lang-cpp">InitMessage()</code></li>
+                <li><code class="lang-cpp">WaitTill()</code></li>
+                <li><code class="lang-cpp">class CountedCallback</code></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <div id="case-message" class="step slide" data-rel-x=0 data-rel-y=1080 data-rotate=360>
-    <p>接入服务 <code>trade/share/include/sscc/trade/share/unittest/unittest_helper.h</code></p>
-    <p>提供了方便在Turtle中对比收发消息的方法</p>
     <ul>
-        <li><code class="lang-cpp">ConstructedMessage()</code></li>
-        <li><code class="lang-cpp">EqualMessage()</code></li>
-        <li><code class="lang-cpp">RetrieveMessage()</code></li>
-        <li><code class="lang-cpp">RetrieveCallback()</code></li>
+        <li>
+            <p>接入服务 <code>trade/share/include/sscc/trade/share/unittest/unittest_helper.h</code></p>
+            <p>提供了方便在Turtle中对比收发消息的方法</p>
+            <ul>
+                <li><code class="lang-cpp">ConstructedMessage()</code></li>
+                <li><code class="lang-cpp">EqualMessage()</code></li>
+                <li><code class="lang-cpp">RetrieveMessage()</code></li>
+                <li><code class="lang-cpp">RetrieveCallback()</code></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
@@ -319,7 +327,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
 <div class="impress-progressbar"><div></div></div>
 <div class="impress-progress"></div>
 
-<!-- <div id="impress-help"></div> -->
+<div id="impress-help"></div>
 
 <script src="impress.js/js/impress.js" charset="utf-8"></script>
 <script charset="utf-8">impress().init();</script>
