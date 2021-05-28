@@ -272,9 +272,13 @@ td {
     /* margin-right: 3em; */
 }
 
+.slide pre {
+    font-size: 27px;
+    line-height: 30px;
+}
+
 /* Highlight.js used for coloring pre > code blocks. */
 .slide pre > code {
-    font-size: 35px;
     text-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
@@ -282,14 +286,14 @@ td {
     font-size: 1em;
 }
 
-.slide .right {
+.slide .float-right {
     float: right;
     margin-left:  60px;
     margin-right:   0px;
     margin-top:    40px;
     margin-bottom: 40px;
 }
-.slide .left {
+.slide .float-left {
     float: left;
     margin-right: 60px;
     margin-left:    0px;
@@ -307,6 +311,22 @@ td {
     bottom: 40px;
     margin-bottom:   0px;
     margin-top:     40px;
+}
+.slide .right {
+    position: absolute;
+    right: 0px;
+    margin-left:  60px;
+    margin-right:   0px;
+    margin-top:    40px;
+    margin-bottom: 40px;
+}
+.slide .left {
+    position: absolute;
+    left: 0px;
+    margin-right: 60px;
+    margin-left:    0px;
+    margin-top:    40px;
+    margin-bottom: 40px;
 }
 
 /*
@@ -412,6 +432,13 @@ td {
 
 .step.subslide p {
     text-align: left;
+}
+
+#impress .substep.substep .only-substep-active {
+    opacity: 0;
+}
+#impress .substep.substep-active .only-substep-active {
+    opacity: 1;
 }
 
 /* We need substeps to go away so they don't show up on the adjacent slide */

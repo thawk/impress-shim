@@ -16,10 +16,6 @@
     font-size: 110%;
     color: #ac94e8;
 }
-pre {
-    padding: 5px 15px;
-    line-height: 1;
-}
 footer {
     text-align: right;
 }
@@ -41,9 +37,6 @@ footer {
     width: 100%;
     margin: 0;
     text-align: center;
-}
-code {
-    font-size: 60%;
 }
 #can-fail .cross {
     position: absolute;
@@ -81,10 +74,6 @@ code {
 #boost-test p, #turtle p {
     margin-top: 0;
     margin-bottom: 0;
-}
-
-#turtle pre {
-    margin-top: -2em;
 }
 
 /* overview页面 */
@@ -125,7 +114,7 @@ code {
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
-<div id="impress" class="typo nodebug" data-width="1920" data-height="1080" data-autoplay="0">
+<div id="impress" class="typo nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
 <div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
@@ -233,14 +222,31 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 <div id="boost-test" class="step slide" data-rel-x=150 data-rel-y=400 data-rotate=270 data-scale=0.5>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
-    <ul class="only-present">
+    <ul class="only-present relative">
         <li>
             <p><strong>断言</strong></p>
-            <p><code>BOOST_CHECK_EQUAL</code> / <code>BOOST_REQUIRE_EQUAL</code></p>
+            <p><code>BOOST_CHECK_EQUAL</code> / <code>BOOST_REQUIRE_EQUAL</code> ...</p>
         </li>
         <li class="substep">
             <p><strong>Fixture</strong></p>
-            <p><code>BOOST_FIXTURE_TEST_SUITE</code> / <code>BOOST_AUTO_TEST_CASE</code></p>
+            <p><code>BOOST_AUTO_TEST_SUITE</code> / <code>BOOST_FIXTURE_TEST_CASE</code></p>
+            <pre class="top right only-substep-active"><code class="lang-cpp">struct Fixture
+{
+    TestingClass obj;
+    Fixture()
+    {
+        obj.Init(); // 构造测试环境
+    }
+    ~Fixture()
+    {   // 进行必要的清理，如恢复全局变量
+    }
+};
+BOOST_AUTO_TEST_SUITE(my_test_suite);
+BOOST_FIXTURE_TEST_CASE(TestCase1, Fixture)
+{
+    ...
+}
+BOOST_AUTO_TEST_SUITE_END();</code></pre>
         </li>
         <li class="substep">
             <p><strong>数据集</strong></p>
@@ -259,7 +265,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
             <p>注意写对类型名称、顺序等信息</p>
         </li>
         <li class="substep">
-            <pre class="right"><code class="lang-cpp"><span class="accent1">MOCK_EXPECT</span>(preotocol_proc-&gt;DoSendMsg)
+            <pre class="float-right"><code class="lang-cpp"><span class="accent1">MOCK_EXPECT</span>(preotocol_proc-&gt;DoSendMsg)
     .once()
     .with(...)
     .returns(OK);
