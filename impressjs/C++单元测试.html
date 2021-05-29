@@ -12,6 +12,10 @@
         <link href="css/fonts.css" rel="stylesheet" />
         <link href="css/classic-slides.css" rel="stylesheet" />
         <style type="text/css">
+html {
+
+}
+
 #title .cpp-logo {
     font-size: 110%;
     color: #ac94e8;
@@ -89,16 +93,9 @@ footer {
 .impress-on-overview div#title {
     background: #dbeafe;
 }
-#overview {
-    pointer-events: none
-}
 #overview #signature {
-    position: absolute;
-    right: 0em;
-    bottom: 0em;
     font-size: 40%;
     color: #546778;
-    text-align: right;
 }
 #overview #signature a {
     font-size: 120%;
@@ -210,7 +207,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
     <h2>单元测试框架</h2>
 </div>
 
-<div id="frameworks" class="step slide" data-rel-x=640 data-rel-y=0 data-rotate=270>
+<div id="frameworks" class="step slide" data-rel-x=580 data-rel-y=0 data-rotate=270>
     <p class="line-height-4">&nbsp;</p>
     <p class="line-height-4">&nbsp;</p>
     <div>
@@ -322,7 +319,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
 </div>
 
 <div id="overview" class="step slide" data-x="200" data-y="200" data-scale=5 data-rotate=360>
-    <div id="signature">
+    <div id="signature" class="absolute right-0 bottom-0 center">
         <p>2021年5月</p>
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>

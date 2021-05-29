@@ -184,12 +184,12 @@ td {
 .step {
     position: relative;
     width: 1800px;
-    padding: 60px;
-    margin: 60px;
+    padding: 3rem;
+    margin: 3rem;
 
     box-sizing:       border-box;
 
-    font-size: 60px;
+    font-size: 3.75em;
     line-height: 1.5;
     text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
 }
@@ -230,11 +230,11 @@ td {
 
     width: 1850px;
     height: 1000px;
-    padding: 40px 60px;
+    padding: 2rem 3rem;
 
     text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
 
-    font-size: 60px;
+    font-size: 3.75em;
     letter-spacing: -2px;
 
     /* background-image: url(../images/background.png); */
@@ -273,8 +273,8 @@ td {
 }
 
 .slide pre {
-    font-size: 27px;
-    line-height: 30px;
+    font-size: 0.6em;
+    line-height: 0.7em;
 }
 
 /* Highlight.js used for coloring pre > code blocks. */
@@ -288,45 +288,45 @@ td {
 
 .slide .float-right {
     float: right;
-    margin-left:  60px;
-    margin-right:   0px;
-    margin-top:    40px;
-    margin-bottom: 40px;
+    margin-left:  1rem;
+    margin-right:   0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
 }
 .slide .float-left {
     float: left;
-    margin-right: 60px;
-    margin-left:    0px;
-    margin-top:    40px;
-    margin-bottom: 40px;
+    margin-right: 1rem;
+    margin-left:    0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
 }
 .slide .top {
     position: absolute;
-    top: 40px;
-    margin-bottom:  40px;
-    margin-top:      0px;
+    top: 1rem;
+    margin-bottom:  1rem;
+    margin-top:      0rem;
 }
 .slide .bottom {
     position: absolute;
-    bottom: 40px;
-    margin-bottom:   0px;
-    margin-top:     40px;
+    bottom: 1rem;
+    margin-bottom:   0rem;
+    margin-top:     1rem;
 }
 .slide .right {
     position: absolute;
-    right: 0px;
-    margin-left:  60px;
-    margin-right:   0px;
-    margin-top:    40px;
-    margin-bottom: 40px;
+    right: 0rem;
+    margin-left:  1rem;
+    margin-right:   0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
 }
 .slide .left {
     position: absolute;
-    left: 0px;
-    margin-right: 60px;
-    margin-left:    0px;
-    margin-top:    40px;
-    margin-bottom: 40px;
+    left: 0rem;
+    margin-right: 1rem;
+    margin-left:    0rem;
+    margin-top:    1rem;
+    margin-bottom: 2rem;
 }
 
 /*
@@ -338,7 +338,7 @@ td {
 
     width: 1850px;
     height: 1000px;
-    padding: 40px 60px;
+    padding: 2rem 3rem;
 }
 
 .title h1,
@@ -439,6 +439,10 @@ td {
 }
 #impress .substep.substep-active .only-substep-active {
     opacity: 1;
+}
+
+#overview {
+    pointer-events: none
 }
 
 /* We need substeps to go away so they don't show up on the adjacent slide */
