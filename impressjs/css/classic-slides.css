@@ -51,6 +51,59 @@ h1, h2, h3, h4, h5, h6 { color: #000000 }
 /*     text-shadow: -3px 3px 6px rgba(100,100,100,0.5); */
 /* } */
 
+
+table {
+  border-collapse: collapse;
+  /* width: 100%; */
+  /* max-width: 100%; */
+  margin-bottom: 1rem;
+  background-color: transparent;
+  /* border-spacing: 0; */
+  /* color: #212529; */
+  border: 1px solid #646464;
+  margin-left: auto;
+  margin-right: auto;
+}
+th {
+  text-align: inherit;
+}
+thead {
+  display: table-header-group;
+}
+th,
+td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #646464;
+}
+thead th,
+thead td {
+  border-bottom: 2px solid #646464;
+}
+thead th {
+  vertical-align: bottom;
+}
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless thead td {
+  border: none;
+}
+table tbody + tbody {
+  border-top: 2px solid #646464;
+}
+table table {
+  background-color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
 q {
     /* font-family: 'PT Serif'; */
     font-style: italic;
