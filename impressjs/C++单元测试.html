@@ -6,10 +6,10 @@
         <title>C++单元测试</title>
         <!-- <link href="css/normalize.css" rel="stylesheet" /> -->
         <link href="css/typo.css" rel="stylesheet" />
-        <link href="css/basscss.css" rel="stylesheet" />
-        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
+        <link href="css/tachyons.min.css" rel="stylesheet" />
         <!-- <link href="impress.js/extras/highlight/styles/github.css" rel="stylesheet" /> -->
         <link href="css/fonts.css" rel="stylesheet" />
+        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
         <link href="css/classic-slides.css" rel="stylesheet" />
         <style type="text/css">
 html {
@@ -133,7 +133,7 @@ footer {
 
 <div id="has-expectation" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rotate=180>
     <h3>有预期</h3>
-    <p class="center">不为了覆盖率而覆盖率</p>
+    <p class="tc">不为了覆盖率而覆盖率</p>
     <div class="substep">
         <pre><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
 BOOST_CHECK(prog.IsStarted());</code></pre>
@@ -176,12 +176,12 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 <div id="can-repeat" class="step slide" data-rel-x=0 data-rel-y=-1080 data-rel-to="can-fail" data-rotate=180>
     <h3>可重复</h3>
     <div class="substep">
-        <p class="center accent2 font-larger5">独立</p>
+        <p class="tc accent2 font-larger5">独立</p>
     </div>
 </div>
 
 <div id="env-independence" class="step slide" data-rel-x=0 data-rel-y=-450 data-rotate=180>
-    <div class="align-top">
+    <div class="v-top">
         <h4>环境独立</h4>
         <ul>
             <li>主机独立：<small>不依赖主机特定配置</small></li>
@@ -194,7 +194,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 </div>
 
 <div id="time-independence" class="step slide" data-rel-x=2000 data-rel-y=0 data-rotate=180>
-    <div class="align-top">
+    <div class="v-top">
         <h4>时间独立</h4>
         <ul>
             <li>系统时间：<code>SteadyClock::EnableTimeTestMode()</code></li>
@@ -208,17 +208,17 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 </div>
 
 <div id="frameworks" class="step slide" data-rel-x=580 data-rel-y=0 data-rotate=270>
-    <p class="line-height-4">&nbsp;</p>
-    <p class="line-height-4">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
     <div>
-        <h3 class="inline-block col-6 m0 align-middle center">Boost.Test</h3>
-        <h3 class="inline-block col-5 m0 align-middle center">Turtle</h3>
+        <h3 class="dib w-50 ma0 v-mid tc">Boost.Test</h3>
+        <h3 class="dib w-40 ma0 v-mid tc">Turtle</h3>
     </div>
 </div>
 
 <div id="boost-test" class="step slide" data-rel-x=150 data-rel-y=400 data-rotate=270 data-scale=0.5>
-    <p class="line-height-4">&nbsp;</p>
-    <p class="line-height-4">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
     <ul class="only-present relative">
         <li>
             <p><strong>断言</strong></p>
@@ -254,15 +254,15 @@ BOOST_AUTO_TEST_SUITE_END();</code></pre>
 </div>
 
 <div id="turtle" class="step slide" data-rel-x=150 data-rel-y=-480 data-rel-to="frameworks" data-rotate=270 data-scale=0.5>
-    <p class="line-height-4">&nbsp;</p>
-    <p class="line-height-4">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
+    <p class="lh-copy">&nbsp;</p>
     <ul class="only-present">
         <li>
             <p><strong>MOCK</strong></p>
             <p>注意写对类型名称、顺序等信息</p>
         </li>
         <li class="substep">
-            <pre class="float-right"><code class="lang-cpp"><span class="accent1">MOCK_EXPECT</span>(preotocol_proc-&gt;DoSendMsg)
+            <pre class="fr"><code class="lang-cpp"><span class="accent1">MOCK_EXPECT</span>(preotocol_proc-&gt;DoSendMsg)
     .once()
     .with(...)
     .returns(OK);
@@ -319,7 +319,7 @@ MOCK_EXPECT(preotocol_proc-&lt;DoSendMsg)
 </div>
 
 <div id="overview" class="step slide" data-x="200" data-y="200" data-scale=5 data-rotate=360>
-    <div id="signature" class="absolute right-0 bottom-0 center">
+    <div id="signature" class="absolute right-0 bottom-0 tc">
         <p>2021年5月</p>
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>

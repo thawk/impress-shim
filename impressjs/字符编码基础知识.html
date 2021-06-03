@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width" />
         <title>字符编码基础知识</title>
         <!-- <link href="css/typo.css" rel="stylesheet" /> -->
-        <link href="css/basscss.css" rel="stylesheet" />
-        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
+        <link href="css/tachyons.min.css" rel="stylesheet" />
         <link href="css/fonts.css" rel="stylesheet" />
+        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
         <link href="css/classic-slides.css" rel="stylesheet" />
         <style type="text/css" media="screen">
 #impress {
@@ -184,8 +184,6 @@ GBK即**汉字内码扩展规范**。
 ##### GB18030
 
 GB 18030，最新版本为GB 18030-2005，其全称为中华人民共和国国家标准GB 18030-2005《信息技术 中文编码字符集》，与GB 2312-1980完全兼容，与GBK基本兼容，支持GB 13000及Unicode的全部统一汉字，共收录汉字70244个。
-
-GB18030有以下特点：
 
 * 与 UTF-8 相同，采用**多字节编码**，每个字可以由**1个**、**2个**或**4个字节**组成。
   * 单字节部分使用``0x00``至``0x7F``码位。
