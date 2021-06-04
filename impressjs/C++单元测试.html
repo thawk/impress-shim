@@ -152,13 +152,13 @@ prog.HandleOrder(order);
 
 <div id="manual-expectation" class="step slide" data-rel-x=550 data-rel-y=-200 data-scale=0.3 data-rotate=180>
     <h4>人工确定预期</h4>
-    <pre class="only-present"><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
+    <pre class="is-present"><code class="lang-cpp">BOOST_CHECK_EQUAL(prog.Start(), error_code());
 BOOST_CHECK(prog.IsStarted());</code></pre>
 </div>
 
 <div id="alternate-logic" class="step slide" data-rel-x=-600 data-rel-y=0 data-scale=0.3 data-rotate=180>
     <h4>与另一个算法对比</h4>
-    <div class="only-present">
+    <div class="is-present">
         <p>用与被测算法不同，但结果相同的算法</p>
         <ul>
             <li>性能较差的算法</li>
@@ -169,7 +169,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 
 <div id="try-fail" class="step slide" data-rel-x=-600 data-rel-y=0 data-scale=0.3 data-rotate=180>
     <h4>故意失败</h4>
-    <p class="only-present">编写用例后，故意使用错误的预期，验证用例会失败，证明用例的正确性</p>
+    <p class="is-present">编写用例后，故意使用错误的预期，验证用例会失败，证明用例的正确性</p>
 </div>
 
 <!-- 根据上一个H3（can-fail）进行定位 -->
@@ -219,7 +219,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
 <div id="boost-test" class="step slide" data-rel-x=150 data-rel-y=400 data-rotate=270 data-scale=0.5>
     <p class="lh-copy">&nbsp;</p>
     <p class="lh-copy">&nbsp;</p>
-    <ul class="only-present relative">
+    <ul class="is-present relative">
         <li>
             <p><strong>断言</strong></p>
             <p><code>BOOST_CHECK_EQUAL</code> / <code>BOOST_REQUIRE_EQUAL</code> ...</p>
@@ -227,7 +227,7 @@ BOOST_CHECK(prog.IsStarted());</code></pre>
         <li class="substep">
             <p><strong>Fixture</strong></p>
             <p><code>BOOST_AUTO_TEST_SUITE</code> / <code>BOOST_FIXTURE_TEST_CASE</code></p>
-            <pre class="top right only-substep-active"><code class="lang-cpp">struct Fixture
+            <pre class="top right is-substep-active"><code class="lang-cpp">struct Fixture
 {
     TestingClass obj;
     Fixture()
@@ -256,7 +256,7 @@ BOOST_AUTO_TEST_SUITE_END();</code></pre>
 <div id="turtle" class="step slide" data-rel-x=150 data-rel-y=-480 data-rel-to="frameworks" data-rotate=270 data-scale=0.5>
     <p class="lh-copy">&nbsp;</p>
     <p class="lh-copy">&nbsp;</p>
-    <ul class="only-present">
+    <ul class="is-present">
         <li>
             <p><strong>MOCK</strong></p>
             <p>注意写对类型名称、顺序等信息</p>
