@@ -4,15 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <title>字符编码基础知识</title>
-        <!-- <link href="css/typo.css" rel="stylesheet" /> -->
         <link href="css/tachyons.min.css" rel="stylesheet" />
         <link href="css/fonts.css" rel="stylesheet" />
         <link href="impress.js/css/impress-common.css" rel="stylesheet" />
         <link href="css/classic-slides.css" rel="stylesheet" />
         <style type="text/css" media="screen">
-#impress {
-    font-size: 10px !important;
-}
 img {
     float: right;
 }
@@ -26,7 +22,7 @@ img {
     <p>请使用最新版本的<b>Chrome</b>、<b>Safari</b>或<b>Firefox</b>浏览器以取得最佳效果。</p>
 </div>
 
-<div id="impress" class="typo nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
+<div id="impress" class="more-text nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
 <div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
@@ -144,7 +140,7 @@ img {
 ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语。
 
 * **ASCII字符集**：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号）。
-* **ASCII编码**：将ASCII字符集转换为计算机可以接受的数字系统的数的规则。使用7位（bits）表示一个字符，共128字符；但是7位编码的字符集只能支持128个字符，为了表示更多的欧洲常用字符对ASCII进行了扩展，ASCII扩展字符集使用8位（bits）表示一个字符，共256字符。
+* **ASCII编码**：使用7位（bits）表示一个字符，共128字符；但是7位编码的字符集只能支持128个字符，为了表示更多的欧洲常用字符对ASCII进行了扩展，ASCII扩展字符集使用8位（bits）表示一个字符，共256字符。
 
 -----
 
@@ -158,10 +154,8 @@ GB 2312 或 GB 2312-80 是中国国家标准简体中文字符集，全称*《�
 
 GB2312共收录**6763**个汉字，覆盖中国大陆99.75%的使用频率
 
-GB2312规定：
-
 * 一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字；
-* 前面的一个字节（称之为高字节）从``0xA1``用到``0xF7``，后面一个字节（低字节）从``0xA1``到``0xFE``，这样就可以组合出大约7000多个简体汉字。
+* 前面的一个字节（高字节）从``0xA1``用到``0xF7``，后面一个字节（低字节）从``0xA1``到``0xFE``，可以组合出大约7000多个简体汉字。
 * 数学符号、罗马希腊的 字母、日文的假名们都编进去了，连在ASCII里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的"**全角**"字符，而原来在127号以下的那些就叫"**半角**"字符。
 
 -----
@@ -174,7 +168,7 @@ GBK即**汉字内码扩展规范**。
 
 由于GB 2312-80只收录6763个汉字，有不少汉字并未有收录在内，于是厂商微软利用GB 2312-80未使用的编码空间，收录GB 13000.1-93全部字符制定了GBK编码。
 
-最早实现于Windows 95简体中文版。虽然GBK收录GB 13000.1-93的全部字符，但编码方式并不相同。
+最早实现于Windows 95简体中文版。虽然GBK收录GB 13000.1-93的全部字符，但编码方式并不同。
 
 * GBK自身**并非国家标准**，只是曾由国家技术监督局标准化司、电子工业部科技与质量监督司公布为“技术规范指导性文件”。原始GB13000一直未被业界采用，后续国家标准GB18030技术上兼容GBK而非GB13000。
 * GBK的第二字节使用了``0x40``至``0x7E``的范围，由于这个范围内包含一些特殊字符（如“|”、“\”），因此可能会被一些程序误处理。由于保持与GBK的兼容性，GB18030也有同样的问题。

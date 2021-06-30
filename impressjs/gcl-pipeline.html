@@ -27,14 +27,14 @@
   <p>请使用最新版本的<b>Chrome</b>、<b>Safari</b>或<b>Firefox</b>浏览器以取得最佳效果。</p>
 </div>
 
-<div id="impress" class="debug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
+<div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-<div id="title" class="step slide title" data-x="1100" data-y="4000" data-z=-5000 data-scale=20>
+<div id="title" class="step slide title" data-x="1100" data-y="3000" data-z=-5000 data-scale=10>
   <h1>C++ Pipeline</h1>
 </div>
 
-<div id="简介" class="step slide markdown" data-rel-x="-3000" data-rel-y="-7000" data-rotate=30 data-z=1000>
+<div id="简介" class="step slide markdown" data-x="-1000" data-y="-2800" data-rotate=30 data-z=1000>
 
 ## 简介
 
@@ -256,26 +256,10 @@
     execn.wait();
 </div>
 
-<div id="代码解析" class="step slide markdown title" data-rel-x="1080" data-rel-y="-1920" data-rotate="-210">
-# 代码解析
-</div>
-
-<div class="step slide markdown" data-rel-x="-540" data-rel-y="-936" data-rotate="-210">
-    class terminated { };
-
-    template &lt;typename IN, typename OUT&gt;
-    class segment;
-
-    typedef segment&lt;terminated, terminated&gt; plan;
-
-    class execution;
-</div>
-
-<div id="class_diagram" class="step slide" data-rotate="-210">
+<div id="class_diagram" class="step slide" data-rel-x="1080" data-rel-y="-1920" data-rotate="-180">
+    <h2 class="absolute left-0">主要类</h2>
     <div class="mermaid">
 classDiagram
-    class terminated
-
     class __instance {
       __instance(simple_thread_pool* pool, __segment_base~terminated, terminated~* p)
 
@@ -304,32 +288,51 @@ classDiagram
       queue_front~OUT~ merge_back()
     }
 
-    __segment_base~IN, OUT~ <|-- __segment_chain~IN, MID, OUT~
-    __segment_base~IN, OUT~ <|-- __segment_function~IN, OUT~
     __segment_base~IN, OUT~ <|-- __segment_producer~OUT~
     __segment_base~IN, OUT~ <|-- __segment_queue_producer~OUT~
+    __segment_base~IN, OUT~ <|-- __segment_function~IN, OUT~
     __segment_base~IN, OUT~ <|-- __segment_consumer~IN~
     __segment_base~IN, OUT~ <|-- __segment_queue_consumer~IN~
+    __segment_base~IN, OUT~ <|-- __segment_chain~IN, MID, OUT~
     __segment_base~IN, OUT~ <|-- __segment_parallel~IN, OUT~
 
-    class segment~IN, OUT~ {
+    class segment~IN, OUT~:::main_class {
       execution run(simple_thread_pool* pool);
     }
     segment~IN, OUT~ *-- __segment_base~IN, OUT~
     __instance o-- segment~IN, OUT~
+
+    cssClass "execution,segment" main_class
     </div>
 </div>
 
-<div id="class_diagram2" class="step slide" data-rel-x="160" data-rel-y="277" data-rotate="-210" data-scale="0.3333">
+<div id="class_diagram2" class="step slide" data-rel-x="0" data-rel-y="270" data-rotate="-180" data-scale="0.4">
 </div>
 
-<div id="class_diagram3" class="step slide" data-rel-to="class_diagram" data-rel-x="0" data-rel-y="0" data-rotate="-210" data-scale="0.4">
+<div id="class_diagram3" class="step slide" data-rel-x="0" data-rel-y="-220" data-rotate="-180" data-scale="0.4">
 </div>
 
-<!-- <div id="class_diagram3" class="step slide" data-rel-x="-866" data-rel-y="500" data-rotate="-210"> -->
-<!-- </div> -->
+<div id="class_diagram4" class="step slide" data-rel-x="370" data-rel-y="-120" data-rotate="-180" data-scale="0.4">
+</div>
 
-<div id="overview" class="step slide skip" data-x="0" data-y="0" data-scale=8 data-rotate=0>
+<div id="class_diagram5" class="step slide" data-rel-x="-740" data-rel-y="0" data-rotate="-180" data-scale="0.4">
+</div>
+
+<div id="main_functions" class="step slide markdown font-smaller2" data-rel-to="class_digram" data-rel-x="0" data-rel-y="-1080" data-rotate="-180">
+### 主要方法
+* **``from()``** → ``segment&lt;terminated, OUT&gt;``
+  - ``queue``/``queue_front``/``void (queue_back&lt;OUT&gt;)&gt;``
+* **``make()``** → ``segment&lt;IN, OUT&gt;``
+  - ``OUT(IN)``/``OUT(queue_front&lt;IN&gt;)``
+  - ``void(IN, queue_back&lt;OUT&gt;)``
+  - ``void (queue_front&lt;IN&gt;, queue_back&lt;OUT&gt;)``
+* **``to()``** → ``segment&lt;IN, terminated&gt;``
+  - ``void (IN)``/``queue_back&lt;IN&gt;``/``queue``
+* **``parallel``**``(segment&lt;IN, OUT&gt;, int n)`` → ``segment&lt;IN, OUT&gt;``
+* **``operator|``** → ``segment&lt;IN, OUT&gt;``
+</div>
+
+<div id="overview" class="step slide noskip" data-x="0" data-y="0" data-scale=8 data-rotate=0>
   <div id="signature" class="absolute right-0 bottom-0 center">
     <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
   </div>
