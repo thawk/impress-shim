@@ -31,16 +31,17 @@
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
 <div id="title" class="step slide title" data-x="1100" data-y="3000" data-z=-5000 data-scale=10>
-  <h1>C++ Pipeline</h1>
+  <h1>GCL Pipeline</h1>
 </div>
 
-<div id="简介" class="step slide markdown" data-x="-1000" data-y="-2800" data-rotate=30 data-z=1000>
+<div id="intro" class="step slide markdown" data-x="-1000" data-y="-2800" data-rotate=30 data-z=1000>
 
 ## 简介
 
 * [N3534 - C++ Pipelines](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3534.html) 的参考实现
-* http://code.google.com/p/google-concurrency-library/source/browse/include/pipeline.h
-* 源代码: https://github.com/cyfdecyf/google-concurrency-library
+* ``Google Concurrency Library``的一部分
+  * http://code.google.com/p/google-concurrency-library/source/browse/include/pipeline.h
+* https://github.com/cyfdecyf/google-concurrency-library
 </div>
 
 <div id="samples" class="step slide markdown" data-rel-x="-540" data-rel-y="936" data-rotate=30>
@@ -209,6 +210,9 @@
 
 ### Plan是两端都终结的Segment
 
+
+    typedef segment&lt;terminated, terminated&gt; plan;
+
 * 输入端：一个``queue``或写入到``queue_front``的函数
 * 输出端：一个``queue``、一个从``queue_back``读取内容的函数或者处理输出的函数
 
@@ -241,7 +245,7 @@
     pipeline::plan p3 = pipeline::from(write_ints)   | s2 | process_name_queue;
 </div>
 
-<div class="step slide" data-rel-x="500" data-rel-y="0" data-rotate="-90">
+<div class="step slide" data-rel-x="600" data-rel-y="0" data-rotate="-90">
 </div>
 
 <div id="executions" class="step slide markdown" data-rel-x="1080" data-rel-y="0" data-rotate="-90">
@@ -256,10 +260,17 @@
     execn.wait();
 </div>
 
-<div id="class_diagram" class="step slide" data-rel-x="1080" data-rel-y="-1920" data-rotate="-180">
+<div id="class_diagram" class="step" data-rel-x="1080" data-rel-y="-1920" data-rotate="-180">
     <h2 class="absolute left-0">主要类</h2>
     <div class="mermaid">
 classDiagram
+    class execution {
+      execution(__instance* inst)
+      bool is_done()
+      void wait()
+    }
+    execution *-- __instance
+
     class __instance {
       __instance(simple_thread_pool* pool, __segment_base~terminated, terminated~* p)
 
@@ -271,12 +282,7 @@ classDiagram
       size_t all_threads_done()
     }
 
-    class execution {
-      execution(__instance* inst)
-      bool is_done()
-      void wait()
-    }
-    execution *-- __instance
+    __instance o-- simple_thread_pool
 
     class __segment_base~IN, OUT~ {
       clone() 
@@ -299,23 +305,27 @@ classDiagram
     class segment~IN, OUT~:::main_class {
       execution run(simple_thread_pool* pool);
     }
-    segment~IN, OUT~ *-- __segment_base~IN, OUT~
+    segment~IN, OUT~ "base_" *-- __segment_base~IN, OUT~
     __instance o-- segment~IN, OUT~
 
     cssClass "execution,segment" main_class
     </div>
 </div>
 
-<div id="class_diagram2" class="step slide" data-rel-x="0" data-rel-y="270" data-rotate="-180" data-scale="0.4">
+<div id="class_segment" class="step slide" data-rel-x="0" data-rel-y="-50" data-rotate="-180" data-scale="0.4">
+    <div class="notes markdown">``segment``类是核心，通过``impl``模式把具体内容保存在``__segment_base``中</div>
 </div>
 
-<div id="class_diagram3" class="step slide" data-rel-x="0" data-rel-y="-220" data-rotate="-180" data-scale="0.4">
+<div id="class_segments1" class="step slide" data-rel-x="370" data-rel-y="-120" data-rotate="-180" data-scale="0.4">
+    <div class="notes markdown">有两个生产类，一个中间类，两个消费类</div>
 </div>
 
-<div id="class_diagram4" class="step slide" data-rel-x="370" data-rel-y="-120" data-rotate="-180" data-scale="0.4">
+<div id="class_segments2" class="step slide" data-rel-x="-740" data-rel-y="0" data-rotate="-180" data-scale="0.4">
+    <div class="notes markdown">还有用于连接两个环节的类，以及并发处理的类</div>
 </div>
 
-<div id="class_diagram5" class="step slide" data-rel-x="-740" data-rel-y="0" data-rotate="-180" data-scale="0.4">
+<div id="class_instance" class="step slide" data-rel-x="420" data-rel-y="300" data-rotate="-180" data-scale="0.5">
+    <div class="notes markdown">``segment::run()``返回``execution``对象，通过``__instance``类引用线程池并持有``plan``实例</div>
 </div>
 
 <div id="main_functions" class="step slide markdown font-smaller2" data-rel-to="class_digram" data-rel-x="0" data-rel-y="-1080" data-rotate="-180">
@@ -330,6 +340,27 @@ classDiagram
   - ``void (IN)``/``queue_back&lt;IN&gt;``/``queue``
 * **``parallel``**``(segment&lt;IN, OUT&gt;, int n)`` → ``segment&lt;IN, OUT&gt;``
 * **``operator|``** → ``segment&lt;IN, OUT&gt;``
+</div>
+
+<div id="details" class="step slide markdown" data-rel-x="0" data-rel-y="-1080" data-rotate="-180">
+* 只为``segment&lt;terminated, terminated&gt;``实现了``run()``，防止用户对普通``segment``调用``run()``
+* 每个``segment``都有单独的线程，总数不能大于线程池的最大线程数（通过``class simple_thread_pool``构造函数指定）
+* ``class __instance``构造时就启动处理
+  ``plan_-&gt;run(this, queue_back&lt;terminated&gt;(dummy_queue_));``
+
+-----
+
+* 对``parallel()``包装的``segment``，会创建``n``个副本，同时运行；另外创建一个线程**依次**从各副本收集结果
+  - 如果每个``segment``有``m``个线程，一个``paralle()``共需要``n*m+1``个线程，**需要保证线程池够大**
+  - 对每个副本创建一个大小为``10``对输出队列，用于缓存输出。**貌似如果结果数大于``n*10``就会死锁**
+</div>
+
+<div id="thoughs" class="step slide markdown" data-rel-x="-1500" data-rel-y="400" data-rotate="-270">
+## 思考
+
+* ``1:1``和``1:n``的``segment``可以用推的方式，但``n:1``和``n:m``的``segment``需要用拉的方式，因此使用每个``segment``一个线程的方式
+  - 对于单输入的``segment``，理论上可以不用独立线程，直接在前一环节线程执行即可
+  - 可以考虑使用协程代替线程
 </div>
 
 <div id="overview" class="step slide noskip" data-x="0" data-y="0" data-scale=8 data-rotate=0>
