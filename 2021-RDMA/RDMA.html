@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>RDMA</title>
+        <link href="css/tachyons.min.css" rel="stylesheet" />
+        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
+        <link href="css/fonts.css" rel="stylesheet" />
+        <link href="css/classic-slides.css" rel="stylesheet" />
+    </head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>您正在使用的浏览器<b>不支持</b>impress.js需要的功能，因此只能看到简化版本。</p>
+    <p>请使用最新版本的<b>Chrome</b>、<b>Safari</b>或<b>Firefox</b>浏览器以取得最佳效果。</p>
+</div>
+
+<div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
+
+<!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
+<div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
+    <h1>RDMA</h1>
+</div>
+
+<div id="本步骤的名称" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
+## 概念
+
+* DMA
+  - 
+* RDMA
+  - Remote Direct Memory Access (RDMA) is an extenion of the Direct Memory Acces (DMA) technology, which is the ability to access host memory directly without CPU intervention. RDMA allows for accessing memory data from one host to another.
+  - 只是减少了CPU参与
+  * RDMA目标
+    – High Bandwidth Utilization
+    – Low Latency
+    – Low CPU utilization
+  * RDMA主要功能
+    * Zero-copy data transfers
+      – Data moves directly from user memory on one side to user memory on the other side
+      – No CPU intervention –No intermediate buffering
+    * Kernel by-pass
+      – User has direct access to the Channel Adapter
+      – No kernel-level protocol handling
+      – All protocol handling done on the Channel Adapter
+* IB/RoCE/iWARP
+  - RoCE(基于融合以太网的RDMA（英语：RDMA over Converged Ethernet，缩写RoCE）)
+    - 要求无损以太网lossless Ethernet(DCB Data center bridging/PFC Priority Flow Control)
+    - 比iWARP协议更轻量（L2 vs. L3）
+    - v2增加了IP/UDP头，支持路由
+  - iWARP(Internet Wide Area RDMA Protocol)
+    - 使用TCP/IP作为传输层
+    - 不要求无损以太网
+* RC/UC/UD
+
+## 两种语义
+
+- channel semantic
+  - 以消息为单位 vs 字节流
+  - Send/Receive
+  - 必须先建立连接
+  - 双方都不需要知道对端内存地址
+  - Send/Receive一一匹配
+  - 必须先Receive，再Send
+  - RWR肯定有WC，SWR的WC是可选的
+- memory semantic
+  - RDMA Read/RDMA Write
+  - 由发起方执行所有操作
+  - 被动方不用执行任何操作
+    - 在开始传输前，需要告诉发起方其虚拟内存位置及rkey
+  - 被动方没有任何反馈
+    - 不占用CPU
+    - 没有事件、没有完成通知
+  - 发起方需要知道被动方的虚拟内存位置
+  - 需要额外通过Send/Receive传输内存位置、rkey，并在传输完成后通知被动方
+
+## 内存
+
+* **MR** (Memory Registration)
+  - The registration process pins the memory pages (to prevent the pages from being swapped out and to keep physical <-> virtual mapping).
+  - During the registration, the OS checks the permissions of the registered block.
+  - The registration process writes the virtual to physical address table to the network adapter.
+  - When registering memory, permissions are set for the region. Permissions are local write, remote read, remote write, atomic, and bind.
+
+## 工作
+
+* 怎么用
+  - 学会收发消息
+    - IB/RoCE
+    - Channel/Memory
+
+* 怎么用好
+  - 明白RDMA优点和限制
+    - Zero copy
+    - Kernal bypass
+
+</div>
+
+<div id="overview" class="step slide skip" data-x="200" data-y="200" data-scale=5 data-rotate=360>
+    <div id="signature" class="absolute right-0 bottom-0 center">
+        <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
+    </div>
+</div>
+
+</div> <!-- #impress -->
+
+<div id="impress-toolbar"></div>
+
+<div class="impress-progressbar"><div></div></div>
+<div class="impress-progress"></div>
+
+<div id="impress-help"></div>
+
+<!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
+<!-- <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script> -->
+<script src="impress.js/js/impress.js" charset="utf-8"></script>
+<script charset="utf-8">impress().init();</script>
+</body>
+</html>
