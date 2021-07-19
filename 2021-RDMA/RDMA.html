@@ -22,80 +22,184 @@
     <h1>RDMA</h1>
 </div>
 
-<div id="本步骤的名称" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
-## 概念
-
-* DMA
-  - 
-* RDMA
-  - Remote Direct Memory Access (RDMA) is an extenion of the Direct Memory Acces (DMA) technology, which is the ability to access host memory directly without CPU intervention. RDMA allows for accessing memory data from one host to another.
-  - 只是减少了CPU参与
-  * RDMA目标
-    – High Bandwidth Utilization
-    – Low Latency
-    – Low CPU utilization
-  * RDMA主要功能
-    * Zero-copy data transfers
-      – Data moves directly from user memory on one side to user memory on the other side
-      – No CPU intervention –No intermediate buffering
-    * Kernel by-pass
-      – User has direct access to the Channel Adapter
-      – No kernel-level protocol handling
-      – All protocol handling done on the Channel Adapter
-* IB/RoCE/iWARP
-  - RoCE(基于融合以太网的RDMA（英语：RDMA over Converged Ethernet，缩写RoCE）)
-    - 要求无损以太网lossless Ethernet(DCB Data center bridging/PFC Priority Flow Control)
-    - 比iWARP协议更轻量（L2 vs. L3）
-    - v2增加了IP/UDP头，支持路由
-  - iWARP(Internet Wide Area RDMA Protocol)
-    - 使用TCP/IP作为传输层
-    - 不要求无损以太网
-* RC/UC/UD
-
-## 两种语义
-
-- channel semantic
-  - 以消息为单位 vs 字节流
-  - Send/Receive
-  - 必须先建立连接
-  - 双方都不需要知道对端内存地址
-  - Send/Receive一一匹配
-  - 必须先Receive，再Send
-  - RWR肯定有WC，SWR的WC是可选的
-- memory semantic
-  - RDMA Read/RDMA Write
-  - 由发起方执行所有操作
-  - 被动方不用执行任何操作
-    - 在开始传输前，需要告诉发起方其虚拟内存位置及rkey
-  - 被动方没有任何反馈
-    - 不占用CPU
-    - 没有事件、没有完成通知
-  - 发起方需要知道被动方的虚拟内存位置
-  - 需要额外通过Send/Receive传输内存位置、rkey，并在传输完成后通知被动方
-
-## 内存
-
-* **MR** (Memory Registration)
-  - The registration process pins the memory pages (to prevent the pages from being swapped out and to keep physical <-> virtual mapping).
-  - During the registration, the OS checks the permissions of the registered block.
-  - The registration process writes the virtual to physical address table to the network adapter.
-  - When registering memory, permissions are set for the region. Permissions are local write, remote read, remote write, atomic, and bind.
-
-## 工作
-
-* 怎么用
-  - 学会收发消息
-    - IB/RoCE
-    - Channel/Memory
-
-* 怎么用好
-  - 明白RDMA优点和限制
-    - Zero copy
-    - Kernal bypass
-
+<div id="基本概念" class="step slide title" data-rel-x="0" data-rel-y="1080" data-z=1000>
+    <h2>基本概念</h2>
 </div>
 
-<div id="overview" class="step slide skip" data-x="200" data-y="200" data-scale=5 data-rotate=360>
+<div id="DMA" class="step slide" data-rel-x="1920" data-rel-y="0">
+    <h3>DMA</h3>
+    <div class="dib w-50 h-100 v-mid">
+        <ul class="dib">
+            <li>解放CPU</li>
+            <li>避免污染L2 Cache</li>
+        </ul>
+    </div>
+    <div class="dib w-40 h-100 v-mid"><img src="images/dma.drawio.svg" class="w-100" alt="DMA"></div>
+</div>
+
+<div id="RDMA" class="step slide">
+    <h3>RDMA</h3>
+    <div class="dib w-40 h-100 v-mid"><img src="images/rdma.drawio.svg" class="w-100" alt="RDMA"></div>
+    <div class="absolute w-50 h-100 v-mid top-0 right-0">
+        <ul class="dib h-100">
+            <li class="h-50 v-mid">
+                Zero-Copy
+            </li>
+            <li>
+                Kernal by-pass
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="RDMA优点" class="step slide" data-rel-x="900" data-rel-y="0">
+    <div class="absolute w-70 h-100 v-mid top-0 right-0 is-present">
+        <ul class="h-50">
+            <li>数据直接从应用内存传输到对端应用内存</li>
+            <li>无需CPU参与</li>
+            <li>没有中间缓存</li>
+        </ul>
+        <ul class="substep">
+            <li>应用直接访问CA</li>
+            <li>无需在内核态进行协议处理</li>
+            <li>CA进行所有协议处理</li>
+        </ul>
+    </div>
+</div>
+
+<div id="RDMA特点" class="step slide" data-rel-x="1920">
+    <h2>RDMA特点</h2>
+    <ul class="dib w-50 h-100 v-mid">
+        <li>异步操作</li>
+            <ul>
+                <li>传输与计算同时进行</li>
+            </ul>
+        <li>显式内存管理
+            <ul>
+                <li>内存大小固定</li>
+                <li>锁定物理内存</li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="dib w-40 h-100 v-mid">
+        <li>传输方式
+            <ul>
+                <li>只能使用已登记的内存</li>
+                <li>预知消息大小</li>
+                <li>预知内存位置</li>
+                <li>单边操作时没有通知</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="两种传输模式" class="step slide title" data-rel-to="基本概念" data-rel-x="0" data-rel-y="1080">
+    <h2>两种传输模式</h2>
+    <p>Send/Receive vs. RDMA Read/RDMA Write</p>
+</div>
+
+<div id="Channel语义" class="step slide markdown" data-rel-x="1920" data-rel-y="0">
+### Channel语义
+
+- Send/Receive
+- 以消息为单位
+- **Send/Receive一一匹配**
+- 必须先Receive，再Send
+- 双方都不需要知道对端内存地址
+- RWR肯定有WC，SWR的WC是可选的
+</div>
+
+<div id="内存语义" class="step slide markdown">
+### 内存语义
+
+- RDMA Read/RDMA Write
+- 由发起方执行所有操作
+- 被动方不用执行任何操作
+- **发起方需要知道被动方的虚拟内存位置和rkey**
+- **被动方没有任何反馈**
+  - 不占用CPU
+  - 没有事件、没有完成通知
+</div>
+
+<div id="传输顺序" class="step slide markdown">
+### 传输顺序
+
+* 提交到同一个queue（SQ或RQ）的WR保证顺序
+* SQ和RQ之间没有顺序保证
+* QP之间没有顺序保证
+</div>
+
+<div id="顺序保证" class="step slide markdown font-smaller1">
+* 事件有序
+  - WRs submitted to a single SQ must be **initiated**, **sent** and **completed** in the order they are submitted
+* 实现并行
+  - processing of the data transfers from multiple WRs submitted to the same SQ can be done in **parallel**
+  - in particular, data may be placed into target memory **in any order**
+  - For an RDMA_WRITE, the contents of the target buffer are indeterminate until a subsequent Send message is completed by **consuming** a WC at the target
+</div>
+
+<div id="RDMA的代价" class="step slide title" data-rel-to="两种传输模式" data-rel-x="0" data-rel-y="1080">
+    <h2>RDMA的代价</h2>
+</div>
+
+<div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="1920" data-rel-y="0">
+    <h3>连接建立时间长</h3>
+    <p>Time to first byte</p>
+    <ul>
+        <li>TCP/IP：0.1ms</li>
+        <li>RDMA：200ms</li>
+    </ul>
+</div>
+
+<div id="内存登记开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
+    <h3>内存登记开销大</h3>
+    <ul>
+        <li>需要内核参与</li>
+        <li>耗时与登记内存大小正相关
+            <ul>
+                <li>与页数成正比</li>
+                <li>加大内存页有帮助</li>
+            </ul>
+        </li>
+        <li>page-fault影响很大</li>
+        <li>加重CPU负载、增加时延</li>
+    </ul>
+</div>
+
+<div id="内存拷贝影响大" class="step slide gray-in gray-out" data-rel-x="960" data-rel-y="0">
+    <h3>内存拷贝影响大</h3>
+    <ul>
+        <li>耗时与内存大小正相关</li>
+        <li>与L2 Cache大小有关</li>
+        <li>污染L2 Cache</li>
+    </ul>
+</div>
+
+<div id="适合场景" class="step slide" data-rel-x="1920" data-rel-y="0">
+    <h2>适合RDMA的场景</h2>
+
+    <ul>
+        <li>可复用连接</li>
+        <li>传输大量数据</li>
+        <li>尽量少同步点</li>
+        <li>可复用buffer</li>
+        <li>计算与传输可以并发</li>
+    </ul>
+</div>
+
+<div id="适合场景解释" class="step slide fade-in fade-out" data-rel-x="0" data-rel-y="0">
+    <h2>适合RDMA的场景</h2>
+
+    <ul>
+        <li>可复用连接 —— 摊分连接开销</li>
+        <li class="substep">传输大量数据 —— 降低轮询开销</li>
+        <li class="substep">尽量少同步点 —— 避免受RTT影响</li>
+        <li class="substep">可复用buffer —— 避免内存拷贝和登记开销</li>
+        <li class="substep"><strike>计算与传输可以并发</strike></li>
+    </ul>
+</div>
+
+<div id="overview" class="step slide skip" data-x="4000" data-y="2000" data-scale=5 data-rotate=360>
     <div id="signature" class="absolute right-0 bottom-0 center">
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
@@ -111,7 +215,7 @@
 <div id="impress-help"></div>
 
 <!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
-<!-- <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script> -->
+<script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script>
 <script src="impress.js/js/impress.js" charset="utf-8"></script>
 <script charset="utf-8">impress().init();</script>
 </body>
