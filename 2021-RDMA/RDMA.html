@@ -44,10 +44,10 @@
     <div class="dib w-40 h-100 v-mid"><img src="images/rdma.drawio.svg" class="w-100" alt="RDMA"></div>
     <div class="absolute w-50 h-100 v-mid top-0 right-0">
         <ul class="dib h-100">
-            <li class="h-50 v-mid">
+            <li class="h-50">
                 Zero-Copy
             </li>
-            <li>
+            <li class="h-50">
                 Kernal by-pass
             </li>
         </ul>
@@ -55,13 +55,13 @@
 </div>
 
 <div id="RDMA优点" class="step slide" data-rel-x="900" data-rel-y="0">
-    <div class="absolute w-70 h-100 v-mid top-0 right-0 is-present">
-        <ul class="h-50">
+    <div class="absolute w-70 h-100 top-0 right-0 is-present">
+        <ul class="h-50 mb0">
             <li>数据直接从应用内存传输到对端应用内存</li>
             <li>无需CPU参与</li>
             <li>没有中间缓存</li>
         </ul>
-        <ul class="substep">
+        <ul class="substep mt0">
             <li>应用直接访问CA</li>
             <li>无需在内核态进行协议处理</li>
             <li>CA进行所有协议处理</li>
@@ -96,23 +96,29 @@
 </div>
 
 <div id="内存登记" class="step slide">
+    <h3>内存登记</h3>
     <blockquote>
         <ul>
-            <li>The registration process <span class="accent2">pins the memory pages</span> (to prevent the pages from being swapped out and to keep physical <-> virtual mapping).</li>
+            <li>The registration process <span class="accent2">pins the memory pages</span>
+                <ul>
+                    <li>to prevent the pages from being <span class="accent1">swapped out</span></li>
+                    <li>and to keep <span class="accent1">physical ⇔ virtual</span> mapping</li>
+                </ul>
+            </li>
             <li>During the registration, the OS <span class="accent2">checks the permissions</span> of the registered block.</li>
             <li>The registration process <span class="accent2">writes the virtual to physical address table to</span> the network adapter.</li>
         </ul>
 
-        <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
+        <footer class="f2">《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
     </blockquote>
 </div>
 
-<div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1080">
+<div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1080" data-rotate-z="180">
     <h2>两种传输模式</h2>
     <p>Send/Receive vs. RDMA Read/RDMA Write</p>
 </div>
 
-<div id="Channel语义" class="step slide" data-rel-x="-1920" data-rel-y="0">
+<div id="Channel语义" class="step slide" data-rel-x="-1920" data-rel-y="0" data-rotate-z="180">
     <h3>Channel语义</h3>
 
     <ul>
@@ -125,7 +131,7 @@
     </ul>
 </div>
 
-<div id="内存语义" class="step slide">
+<div id="内存语义" class="step slide" data-rotate-z="180">
     <h3>内存语义</h3>
 
     <ul>
@@ -142,7 +148,7 @@
     </ul>
 </div>
 
-<div id="传输顺序" class="step slide markdown">
+<div id="传输顺序" class="step slide markdown" data-rotate-z="180">
 ### 传输顺序
 
 * 提交到同一个queue（SQ或RQ）的WR保证顺序
@@ -150,7 +156,7 @@
 * QP之间没有顺序保证
 </div>
 
-<div id="顺序保证" class="step slide markdown font-smaller1">
+<div id="顺序保证" class="step slide markdown font-smaller1" data-rotate-z="180">
 * 事件有序
   - WRs submitted to a single SQ must be **initiated**, **sent** and **completed** in the order they are submitted
 * 实现并行
@@ -163,38 +169,44 @@
     <h2>RDMA的代价</h2>
 </div>
 
-<div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="1920" data-rel-y="0">
-    <h3>连接建立时间长</h3>
-    <p>Time to first byte</p>
-    <ul>
-        <li>TCP/IP：0.1ms</li>
-        <li>RDMA：200ms</li>
-    </ul>
-    <p class="f3"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.189.1285&rep=rep1&type=pdf">* Minimizing the Hidden Cost of RDMA</a></p>
+<div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="1200" data-rel-y="0">
+    <div class="w-40 center">
+        <h3>连接建立时间长</h3>
+        <p>Time to first byte</p>
+        <ul>
+            <li>TCP/IP：0.1ms</li>
+            <li>RDMA：200ms</li>
+        </ul>
+        <p class="f3"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.189.1285&rep=rep1&type=pdf">* Minimizing the Hidden Cost of RDMA</a></p>
+    </div>
 </div>
 
 <div id="内存登记开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
-    <h3>内存登记开销大</h3>
-    <ul>
-        <li>需要内核参与</li>
-        <li>耗时与登记内存大小正相关
-            <ul>
-                <li>与页数成正比</li>
-                <li>加大内存页有帮助</li>
-            </ul>
-        </li>
-        <li>page-fault影响很大</li>
-        <li>加重CPU负载、增加时延</li>
-    </ul>
+    <div class="w-40 center">
+        <h3>内存登记开销大</h3>
+        <ul>
+            <li>需要内核参与</li>
+            <li>耗时与登记内存大小正相关
+                <ul>
+                    <li>与页数成正比</li>
+                    <li>加大内存页有帮助</li>
+                </ul>
+            </li>
+            <li>page-fault影响很大</li>
+            <li>加重CPU负载、增加时延</li>
+        </ul>
+    </div>
 </div>
 
 <div id="内存拷贝影响大" class="step slide gray-in gray-out" data-rel-x="960" data-rel-y="0">
-    <h3>内存拷贝影响大</h3>
-    <ul>
-        <li>耗时与内存大小正相关</li>
-        <li>与L2 Cache大小有关</li>
-        <li>污染L2 Cache</li>
-    </ul>
+    <div class="w-40 center">
+        <h3>内存拷贝影响大</h3>
+        <ul>
+            <li>耗时与内存大小正相关</li>
+            <li>与L2 Cache大小有关</li>
+            <li>污染L2 Cache</li>
+        </ul>
+    </div>
 </div>
 
 <div id="适合场景" class="step slide" data-rel-x="1920" data-rel-y="0">
@@ -221,7 +233,7 @@
     </ul>
 </div>
 
-<div id="overview" class="step slide skip" data-x="4000" data-y="2000" data-scale=5 data-rotate=0>
+<div id="overview" class="step slide" data-x="4000" data-y="2000" data-scale=5 data-rotate=0>
     <div id="signature" class="absolute right-0 bottom-0 center">
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
