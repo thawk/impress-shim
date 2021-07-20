@@ -103,7 +103,7 @@
 
 - Send/Receive
 - 以消息为单位
-- **Send/Receive一一匹配**
+- Send/Receive**一一匹配**
 - 必须先Receive，再Send
 - 双方都不需要知道对端内存地址
 - RWR肯定有WC，SWR的WC是可选的
@@ -115,8 +115,8 @@
 - RDMA Read/RDMA Write
 - 由发起方执行所有操作
 - 被动方不用执行任何操作
-- **发起方需要知道被动方的虚拟内存位置和rkey**
-- **被动方没有任何反馈**
+- 发起方需要知道被动方的**虚拟内存位置**和**rkey**
+- 被动方**没有任何反馈**
   - 不占用CPU
   - 没有事件、没有完成通知
 </div>
@@ -149,6 +149,7 @@
         <li>TCP/IP：0.1ms</li>
         <li>RDMA：200ms</li>
     </ul>
+    <p class="f3"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.189.1285&rep=rep1&type=pdf">* Minimizing the Hidden Cost of RDMA</a></p>
 </div>
 
 <div id="内存登记开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
