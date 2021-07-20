@@ -18,8 +18,10 @@
 <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-<div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
-    <h1>RDMA</h1>
+<div id="标题" class="step slide title" data-x="0" data-y="0" data-z=1100>
+    <h1>RDMA交流</h1>
+    <p>交易结算研发部 谭浩通</p>
+    <p><small>2021-07-20</small></p>
 </div>
 
 <div id="基本概念" class="step slide title" data-rel-x="0" data-rel-y="1080" data-z=1000>
@@ -93,32 +95,51 @@
     </ul>
 </div>
 
-<div id="两种传输模式" class="step slide title" data-rel-to="基本概念" data-rel-x="0" data-rel-y="1080">
+<div id="内存登记" class="step slide">
+    <blockquote>
+        <ul>
+            <li>The registration process <span class="accent2">pins the memory pages</span> (to prevent the pages from being swapped out and to keep physical <-> virtual mapping).</li>
+            <li>During the registration, the OS <span class="accent2">checks the permissions</span> of the registered block.</li>
+            <li>The registration process <span class="accent2">writes the virtual to physical address table to</span> the network adapter.</li>
+        </ul>
+
+        <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
+    </blockquote>
+</div>
+
+<div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1080">
     <h2>两种传输模式</h2>
     <p>Send/Receive vs. RDMA Read/RDMA Write</p>
 </div>
 
-<div id="Channel语义" class="step slide markdown" data-rel-x="1920" data-rel-y="0">
-### Channel语义
+<div id="Channel语义" class="step slide" data-rel-x="-1920" data-rel-y="0">
+    <h3>Channel语义</h3>
 
-- Send/Receive
-- 以消息为单位
-- Send/Receive**一一匹配**
-- 必须先Receive，再Send
-- 双方都不需要知道对端内存地址
-- RWR肯定有WC，SWR的WC是可选的
+    <ul>
+        <li>Send/Receive</li>
+        <li>以消息为单位</li>
+        <li>Send/Receive<span class="accent1">一一匹配</span></li>
+        <li class="accent2">必须先Receive，再Send</li>
+        <li>双方都不需要知道对端内存地址</li>
+        <li>RWR肯定有WC，SWR的WC是可选的</li>
+    </ul>
 </div>
 
-<div id="内存语义" class="step slide markdown">
-### 内存语义
+<div id="内存语义" class="step slide">
+    <h3>内存语义</h3>
 
-- RDMA Read/RDMA Write
-- 由发起方执行所有操作
-- 被动方不用执行任何操作
-- 发起方需要知道被动方的**虚拟内存位置**和**rkey**
-- 被动方**没有任何反馈**
-  - 不占用CPU
-  - 没有事件、没有完成通知
+    <ul>
+        <li>RDMA Read/RDMA Write</li>
+        <li>由发起方执行所有操作</li>
+        <li>被动方不用执行任何操作</li>
+        <li>发起方需要知道被动方的<span class="accent2">虚拟内存位置</span>和<span class="accent2">rkey</span></li>
+        <li>被动方<span class="accent2">没有任何反馈</span>
+            <ul>
+                <li>不占用CPU</li>
+                <li>没有事件、没有完成通知</li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
 <div id="传输顺序" class="step slide markdown">
@@ -138,7 +159,7 @@
   - For an RDMA_WRITE, the contents of the target buffer are indeterminate until a subsequent Send message is completed by **consuming** a WC at the target
 </div>
 
-<div id="RDMA的代价" class="step slide title" data-rel-to="两种传输模式" data-rel-x="0" data-rel-y="1080">
+<div id="RDMA的代价" class="step slide title" data-rel-x="0" data-rel-y="1080">
     <h2>RDMA的代价</h2>
 </div>
 
@@ -200,7 +221,7 @@
     </ul>
 </div>
 
-<div id="overview" class="step slide skip" data-x="4000" data-y="2000" data-scale=5 data-rotate=360>
+<div id="overview" class="step slide skip" data-x="4000" data-y="2000" data-scale=5 data-rotate=0>
     <div id="signature" class="absolute right-0 bottom-0 center">
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
