@@ -8,6 +8,7 @@
     <link href="impress.js/css/impress-common.css" rel="stylesheet" />
     <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/classic-slides.css" rel="stylesheet" />
+    <link href="css/themes/default.css" rel="stylesheet" />
     <link href="impress.js/extras/highlight/styles/default.css" rel="stylesheet" />
     <style type="text/css" media="screen">
 #title {
@@ -54,7 +55,7 @@
       output_queue).run(&amp;threadpool);
 
 [//]: # (分割两个代码块)
-      
+
     void grep(const string&amp; re, queue_back&lt;string&gt; in, queue_front&lt;string&gt; out)
     { // 输入和输出都是队列（n:m）
       string item;
@@ -73,7 +74,7 @@
     }
 
 [//]: # (分割两个代码块)
-      
+
     void sed(const string&amp; re, queue_back&lt;string&gt; in, queue_front&lt;string&gt; out)
     { // 输入和输出都是队列（n:m）
       string item;
@@ -84,7 +85,7 @@
     }
 
 [//]: # (分割两个代码块)
-      
+
     string sed(const string&amp; re, string item)
     { // 输入和输出都是字符串（1:1）
       re::apply(re, item);
@@ -109,7 +110,7 @@
     }
 
 [//]: # (分割两个代码块)
-      
+
     queue&lt;string&gt; filenames = ...;
 
     pipeline::execution task(
@@ -127,7 +128,7 @@
       output_queue).run(&amp;thread_pool);
 
 [//]: # (分割两个代码块)
-      
+
     pipeline::execution task(
       pipeline::from(filenames) |
       pipeline::parallel(read_file | grep_fn, 8) |
@@ -285,8 +286,8 @@ classDiagram
     __instance o-- simple_thread_pool
 
     class __segment_base~IN, OUT~ {
-      clone() 
-      void run(__instance* inst, queue_back~OUT~ out_queue) 
+      clone()
+      void run(__instance* inst, queue_back~OUT~ out_queue)
       queue_back~IN~ get_back()
       bool can_merge_on_front()
       bool can_merge_on_back()

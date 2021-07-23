@@ -9,6 +9,7 @@
     <link href="impress.js/css/impress-common.css" rel="stylesheet" />
     <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/classic-slides.css" rel="stylesheet" />
+    <link href="css/themes/default.css" rel="stylesheet" />
     <link href="impress.js/extras/highlight/styles/default.css" rel="stylesheet" />
   </head>
 <body class="impress-not-supported">
@@ -45,7 +46,7 @@
     std::vector&lt;std::string&gt; output;
 
     // 流程划分为若干Segment，Segment间以|连接
-    auto execution =                    
+    auto execution =
       (boost::pipeline::from(input)     // 输入
         | trim                          // 变换
         | grep_error
@@ -215,8 +216,8 @@
 * **task**: A running segment. Tasks are scheduled on the thread pool.
 * **upstream**: Generally, the segment connected to the left of a segment. Specifically, it's the input queue of a task.
 * **downstream**: Generally, the segment connected to the right of a segment. Specifically, it's the output queue of a task.
-    </div> 
-</div> 
+    </div>
+</div>
 
 <div class="step slide markdown">
 * 由接收方创建``queue``，在``segment::run()``中传给前一个``segment``的``run()``，由后往前启动
