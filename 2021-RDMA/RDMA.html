@@ -8,7 +8,7 @@
         <link href="impress.js/css/impress-common.css" rel="stylesheet" />
         <link href="css/fonts.css" rel="stylesheet" />
         <link href="css/classic-slides.css" rel="stylesheet" />
-        <link href="css/themes/default.css" rel="stylesheet" />
+        <link href="css/themes/blue.css" rel="stylesheet" />
     </head>
 <body class="impress-not-supported">
 <div class="fallback-message">
@@ -214,23 +214,11 @@
     <h2>适合RDMA的场景</h2>
 
     <ul>
-        <li>可复用连接</li>
-        <li>传输大量数据</li>
-        <li>尽量少同步点</li>
-        <li>可复用buffer</li>
-        <li>计算与传输可以并发</li>
-    </ul>
-</div>
-
-<div id="适合场景解释" class="step slide fade-in fade-out" data-rel-x="0" data-rel-y="0">
-    <h2>适合RDMA的场景</h2>
-
-    <ul>
-        <li>可复用连接 —— 摊分连接开销</li>
-        <li class="substep">传输大量数据 —— 降低轮询开销</li>
-        <li class="substep">尽量少同步点 —— 避免受RTT影响</li>
-        <li class="substep">可复用buffer —— 避免内存拷贝和登记开销</li>
-        <li class="substep"><strike>计算与传输可以并发</strike></li>
+        <li>可复用连接<span class="substep"> —— 摊分连接开销</span></li>
+        <li>传输大量数据<span class="substep"> —— 降低轮询开销</span></li>
+        <li>尽量少同步点<span class="substep"> —— 避免受RTT影响</span></li>
+        <li>可复用buffer<span class="substep"> —— 避免内存拷贝和登记开销</span></li>
+        <li class="strike-on-substep">计算与传输可以并发</li>
     </ul>
 </div>
 
