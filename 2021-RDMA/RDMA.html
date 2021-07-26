@@ -19,13 +19,13 @@
 <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-<div id="标题" class="step slide title" data-x="0" data-y="0" data-z=1100>
+<div id="标题" class="step slide title" data-x="4000" data-y="540" data-z=1100 data-scale="2">
     <h1>RDMA交流</h1>
     <p>交易结算研发部 谭浩通</p>
     <p><small>2021-07-29</small></p>
 </div>
 
-<div id="基本概念" class="step slide title" data-rel-x="0" data-rel-y="1080" data-z=1000>
+<div id="基本概念" class="step slide title" data-x="0" data-y="-540" data-z=1000>
     <h2>基本概念</h2>
 </div>
 
@@ -42,8 +42,11 @@
 
 <div id="RDMA" class="step slide">
     <h3>RDMA</h3>
-    <div class="dib w-40 h-100 v-mid"><img src="images/rdma.drawio.svg" class="w-100" alt="RDMA"></div>
-    <div class="absolute w-50 h-100 v-mid top-0 right-0">
+    <div class="relative dib w-60 h-50 v-mid">
+        <img src="images/rdma.drawio.svg" class="w-70">
+        <img src="images/ib_roce_iwarp.jpg" class="w-100 substep absolute top-0 left-0">
+    </div>
+    <div class="absolute w-30 h-100 v-mid top-0 right-0">
         <ul class="dib h-100 substep">
             <li class="h-50">
                 Zero-Copy
@@ -55,7 +58,7 @@
     </div>
 </div>
 
-<div id="RDMA优点" class="step slide" data-rel-x="900" data-rel-y="0">
+<div id="RDMA优点" class="step slide" data-rel-x="1300" data-rel-y="0">
     <div class="absolute w-70 h-100 top-0 right-0 is-present">
         <ul class="h-50 mb0">
             <li>数据直接从应用内存传输到对端应用内存</li>
@@ -112,7 +115,7 @@
     <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
 </div>
 
-<div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1080" data-rotate-z="180">
+<div id="两种传输模式" class="step slide title" data-rel-x="0" data-y="1920" data-rotate-z="180">
     <h2>RDMA两种传输模式</h2>
     <p>Send/Receive vs. RDMA Read/RDMA Write</p>
 </div>
@@ -248,18 +251,14 @@
         </li>
         <li>用对<span class="substep"> —— 应用到合适的场景中</span>
         </li>
+        <div class="substep" style="position:absolute;top:1em;left:60%">
+            <img src="images/curly_brackets.svg" height="50%" class="v-mid" style="fill:#808080"/>
+            <span class="accent2">产出一篇论文</span>
+        </div>
     </ul>
 </div>
 
-<div id="项目产出" class="step slide" data-rel-x="0" date-rel-y="0" data-rotate-z="180">
-    <div class="dib w-50"></div>
-    <div class="dib w-40">
-        <div class="h-25">&nbsp;</div>
-        <div class="accent2">产出一篇论文</div>
-    </div>
-</div>
-
-<div id="overview" class="step slide" data-x="4000" data-y="2000" data-scale=5 data-rotate=0>
+<div id="overview" class="step slide" data-x="4000" data-y="2000" data-scale=6 data-rotate=0>
     <div id="signature" class="absolute right-0 bottom-0 center">
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
