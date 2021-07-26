@@ -22,7 +22,7 @@
 <div id="标题" class="step slide title" data-x="0" data-y="0" data-z=1100>
     <h1>RDMA交流</h1>
     <p>交易结算研发部 谭浩通</p>
-    <p><small>2021-07-20</small></p>
+    <p><small>2021-07-29</small></p>
 </div>
 
 <div id="基本概念" class="step slide title" data-rel-x="0" data-rel-y="1080" data-z=1000>
@@ -31,20 +31,20 @@
 
 <div id="DMA" class="step slide" data-rel-x="1920" data-rel-y="0">
     <h3>DMA</h3>
-    <div class="dib w-50 h-100 v-mid">
-        <ul class="dib">
-            <li>解放CPU</li>
+    <div class="dib w-40 h-100 v-mid"><img src="images/dma.drawio.svg" class="w-100" alt="DMA"></div>
+    <div class="absolute w-50 h-100 top-0 right-0">
+        <ul class="dib v-mid substep pt6">
+            <li class="mb4">解放CPU</li>
             <li>避免污染L2 Cache</li>
         </ul>
     </div>
-    <div class="dib w-40 h-100 v-mid"><img src="images/dma.drawio.svg" class="w-100" alt="DMA"></div>
 </div>
 
 <div id="RDMA" class="step slide">
     <h3>RDMA</h3>
     <div class="dib w-40 h-100 v-mid"><img src="images/rdma.drawio.svg" class="w-100" alt="RDMA"></div>
     <div class="absolute w-50 h-100 v-mid top-0 right-0">
-        <ul class="dib h-100">
+        <ul class="dib h-100 substep">
             <li class="h-50">
                 Zero-Copy
             </li>
@@ -73,74 +73,72 @@
 <div id="RDMA特点" class="step slide" data-rel-x="1920">
     <h2>RDMA特点</h2>
     <ul class="dib w-50 h-100 v-mid">
-        <li>异步操作</li>
+        <li class="mb4">异步操作
             <ul>
                 <li>传输与计算同时进行</li>
             </ul>
-        <li>显式内存管理
-            <ul>
-                <li>内存大小固定</li>
-                <li>锁定物理内存</li>
-            </ul>
         </li>
-    </ul>
-    <ul class="dib w-40 h-100 v-mid">
-        <li>传输方式
+        <li class="substep">传输方式
             <ul>
-                <li>只能使用已登记的内存</li>
-                <li>预知消息大小</li>
                 <li>预知内存位置</li>
+                <li>预知消息大小</li>
                 <li>单边操作时没有通知</li>
             </ul>
         </li>
     </ul>
+    <ul class="dib w-40 h-100 v-mid">
+        <li class="substep">显式内存管理
+            <ul>
+                <li>只能使用已注册的内存</li>
+                <li>锁定物理内存</li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
-<div id="内存登记" class="step slide">
-    <h3>内存登记</h3>
-    <blockquote>
-        <ul>
-            <li>The registration process <span class="accent2">pins the memory pages</span>
-                <ul>
-                    <li>to prevent the pages from being <span class="accent1">swapped out</span></li>
-                    <li>and to keep <span class="accent1">physical ⇔ virtual</span> mapping</li>
-                </ul>
-            </li>
-            <li>During the registration, the OS <span class="accent2">checks the permissions</span> of the registered block.</li>
-            <li>The registration process <span class="accent2">writes the virtual to physical address table to</span> the network adapter.</li>
-        </ul>
+<div id="内存注册" class="step slide">
+    <h3>内存注册</h3>
+    <ul>
+        <li>内存注册过程会<span class="accent2">锁定内存页</span>
+            <ul>
+                <li>避免页面被<span class="accent1">移出物理内存</span></li>
+                <li>保持<span class="accent1">物理地址 ⇔ 虚拟地址</span>映射不变</li>
+            </ul>
+        </li>
+        <li class="substep">在注册过程中，操作系统将会检查应用对内存页面的<span class="accent2">访问权限</span></li>
+        <li class="substep">注册过程会把<span class="accent2">虚拟地址与物理地址映射表</span>写入网卡</li>
+    </ul>
 
-        <footer class="f2">《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
-    </blockquote>
+    <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
 </div>
 
 <div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1080" data-rotate-z="180">
-    <h2>两种传输模式</h2>
+    <h2>RDMA两种传输模式</h2>
     <p>Send/Receive vs. RDMA Read/RDMA Write</p>
 </div>
 
 <div id="Channel语义" class="step slide" data-rel-x="-1920" data-rel-y="0" data-rotate-z="180">
     <h3>Channel语义</h3>
-
+    <p>Send/Receive</p>
     <ul>
-        <li>Send/Receive</li>
         <li>以消息为单位</li>
-        <li>Send/Receive<span class="accent1">一一匹配</span></li>
-        <li class="accent2">必须先Receive，再Send</li>
+        <li>Send/Receive必须<b>一一匹配</b></li>
+        <li>必须<b>先Receive，再Send</b></li>
         <li>双方都不需要知道对端内存地址</li>
-        <li>RWR肯定有WC，SWR的WC是可选的</li>
     </ul>
 </div>
 
 <div id="内存语义" class="step slide" data-rotate-z="180">
     <h3>内存语义</h3>
 
-    <ul>
-        <li>RDMA Read/RDMA Write</li>
+    <p>RDMA Read/RDMA Write</p>
+    <ul class="dib w-40 mr6 v-top">
         <li>由发起方执行所有操作</li>
+        <li>发起方需要知道被动方的<b>虚拟内存位置</b>和<b>rkey</b></li>
+    </ul>
+    <ul class="dib substep">
         <li>被动方不用执行任何操作</li>
-        <li>发起方需要知道被动方的<span class="accent2">虚拟内存位置</span>和<span class="accent2">rkey</span></li>
-        <li>被动方<span class="accent2">没有任何反馈</span>
+        <li>被动方<b>没有任何反馈</b>
             <ul>
                 <li>不占用CPU</li>
                 <li>没有事件、没有完成通知</li>
@@ -152,18 +150,26 @@
 <div id="传输顺序" class="step slide markdown" data-rotate-z="180">
 ### 传输顺序
 
-* 提交到同一个queue（SQ或RQ）的WR保证顺序
-* SQ和RQ之间没有顺序保证
-* QP之间没有顺序保证
+* 提交到同一个queue（``SQ``或``RQ``）的``WR``保证顺序
+* ``SQ``和``RQ``之间没有顺序保证
+* ``QP``之间没有顺序保证
 </div>
 
-<div id="顺序保证" class="step slide markdown font-smaller1" data-rotate-z="180">
-* 事件有序
-  - WRs submitted to a single SQ must be **initiated**, **sent** and **completed** in the order they are submitted
-* 实现并行
-  - processing of the data transfers from multiple WRs submitted to the same SQ can be done in **parallel**
-  - in particular, data may be placed into target memory **in any order**
-  - For an RDMA_WRITE, the contents of the target buffer are indeterminate until a subsequent Send message is completed by **consuming** a WC at the target
+<div id="顺序保证" class="step slide font-smaller1" data-rotate-z="180">
+    <h4 class="dib w-20">表现有序</h4>
+    <div class="dib markdown w-75 v-top">
+- 提交到同一个``SQ``的``WR``按提交顺序**初始化**、**发送**和**完成**
+    </div>
+
+    <h4 class="dib w-20">实现并行</h4>
+    <div class="dib markdown w-75 v-top">
+- 对于提交到**同一个**``SQ``的多个``WR``的数据传输有可能**并行**
+- 特别地，数据有可能以**任意顺序**被提交到目标内存
+- 对于``RDMA_WRITE``，在后续发送一条消息，并且对方进行**接收并处理**了相应的``WC``前，目标内存的内容都是**不确定**的
+  - 需要和``Send``/``Receive``配合使用
+    </div>
+
+    <p class="f2 tr">——《Writing Application Programs for RDMA using OFA Software Part 3》P.65 - P.67</p>
 </div>
 
 <div id="RDMA的代价" class="step slide title" data-rel-x="0" data-rel-y="1080">
@@ -171,7 +177,7 @@
 </div>
 
 <div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="1200" data-rel-y="0">
-    <div class="w-40 center">
+    <div class="w-50 center">
         <h3>连接建立时间长</h3>
         <p>Time to first byte</p>
         <ul>
@@ -182,12 +188,12 @@
     </div>
 </div>
 
-<div id="内存登记开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
-    <div class="w-40 center">
-        <h3>内存登记开销大</h3>
+<div id="内存注册开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
+    <div class="w-50 center">
+        <h3>内存注册开销大</h3>
         <ul>
             <li>需要内核参与</li>
-            <li>耗时与登记内存大小正相关
+            <li>耗时与注册内存大小正相关
                 <ul>
                     <li>与页数成正比</li>
                     <li>加大内存页有帮助</li>
@@ -200,7 +206,7 @@
 </div>
 
 <div id="内存拷贝影响大" class="step slide gray-in gray-out" data-rel-x="960" data-rel-y="0">
-    <div class="w-40 center">
+    <div class="w-50 center">
         <h3>内存拷贝影响大</h3>
         <ul>
             <li>耗时与内存大小正相关</li>
@@ -211,15 +217,46 @@
 </div>
 
 <div id="适合场景" class="step slide" data-rel-x="1920" data-rel-y="0">
-    <h2>适合RDMA的场景</h2>
+    <h3>适合RDMA的场景</h3>
 
-    <ul>
-        <li>可复用连接<span class="substep"> —— 摊分连接开销</span></li>
-        <li>传输大量数据<span class="substep"> —— 降低轮询开销</span></li>
-        <li>尽量少同步点<span class="substep"> —— 避免受RTT影响</span></li>
-        <li>可复用buffer<span class="substep"> —— 避免内存拷贝和登记开销</span></li>
-        <li class="strike-on-substep">计算与传输可以并发</li>
+    <ul class="w-100">
+        <li><span class="dib w-30">可复用连接</span><span class="substep accent1"> —— 摊分连接开销</span></li>
+        <li><span class="dib w-30">传输大量数据</span><span class="substep accent1"> —— 降低轮询开销</span></li>
+        <li><span class="dib w-30">尽量少同步点</span><span class="substep accent1"> —— 避免受RTT影响</span></li>
+        <li><span class="dib w-30">可复用buffer</span><span class="substep accent1"> —— 避免内存拷贝和注册开销</span></li>
+        <li class="substep strike-on-substep">计算与传输可以并发</li>
     </ul>
+</div>
+
+<div id="项目目标" class="step slide title" data-rel-x="0" data-rel-y="1080" data-rotate-z="180">
+    <h2>项目目标</h2>
+</div>
+
+<div id="研究阶段" class="step slide" data-rel-x="-1920" data-rel-y="0" data-rotate-z="180">
+    <ul>
+        <li>用会<span class="substep"> —— 怎么使用API</span>
+            <ul class="substep">
+                <li>完成测试程序</li>
+                <li>完成基本测试</li>
+            </ul>
+        </li>
+        <li>用好<span class="substep"> —— 怎么发挥RDMA的优势</span>
+            <ul class="substep">
+                <li>对测试程序进行调优</li>
+                <li>归纳总结</li>
+            </ul>
+        </li>
+        <li>用对<span class="substep"> —— 应用到合适的场景中</span>
+        </li>
+    </ul>
+</div>
+
+<div id="项目产出" class="step slide" data-rel-x="0" date-rel-y="0" data-rotate-z="180">
+    <div class="dib w-50"></div>
+    <div class="dib w-40">
+        <div class="h-25">&nbsp;</div>
+        <div class="accent2">产出一篇论文</div>
+    </div>
 </div>
 
 <div id="overview" class="step slide" data-x="4000" data-y="2000" data-scale=5 data-rotate=0>
