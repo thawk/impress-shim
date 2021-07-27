@@ -31,9 +31,9 @@
 
 <div id="DMA" class="step slide" data-rel-x="1920" data-rel-y="0">
     <h3>DMA</h3>
-    <div class="dib w-40 h-100 v-mid"><img src="images/dma.drawio.svg" class="w-100" alt="DMA"></div>
-    <div class="absolute w-50 h-100 top-0 right-0">
-        <ul class="dib v-mid substep pt6">
+    <div class="fl w-50"><img src="images/dma.drawio.svg" class="w-100" alt="DMA"></div>
+    <div class="fl w-50 pl5">
+        <ul class="substep">
             <li class="mb4">解放CPU</li>
             <li>避免污染L2 Cache</li>
         </ul>
@@ -41,13 +41,15 @@
 </div>
 
 <div id="RDMA" class="step slide">
-    <h3>RDMA</h3>
-    <div class="relative dib w-60 h-50 v-mid">
-        <img src="images/rdma.drawio.svg" class="w-70">
-        <img src="images/ib_roce_iwarp.jpg" class="w-100 substep absolute top-0 left-0">
+    <div class="relative fl w-60">
+        <h3>RDMA</h3>
+        <div class="relative">
+            <img src="images/rdma.drawio.svg" class="w-70">
+            <img src="images/ib_roce_iwarp.jpg" class="w-100 substep absolute top-0 left-0">
+        </div>
     </div>
-    <div class="absolute w-30 h-100 v-mid top-0 right-0">
-        <ul class="dib h-100 substep">
+    <div class="fl w-40 h-100 v-mid pl6">
+        <ul class="h-100 substep">
             <li class="h-50">
                 Zero-Copy
             </li>
@@ -75,7 +77,7 @@
 
 <div id="RDMA特点" class="step slide" data-rel-x="1920" data-rotate="90">
     <h2>RDMA特点</h2>
-    <ul class="dib w-50 h-100 v-mid">
+    <ul class="fl w-50 h-100 v-mid">
         <li class="mb4">异步操作
             <ul>
                 <li>传输与计算同时进行</li>
@@ -89,7 +91,7 @@
             </ul>
         </li>
     </ul>
-    <ul class="dib w-40 h-100 v-mid">
+    <ul class="fl w-50 h-100 v-mid">
         <li class="substep">显式内存管理
             <ul>
                 <li>只能使用已注册的内存</li>
@@ -135,11 +137,11 @@
     <h3>内存语义</h3>
 
     <p>RDMA Read/RDMA Write</p>
-    <ul class="dib w-40 mr6 v-top">
+    <ul class="fl w-40 mr6 v-top">
         <li>由发起方执行所有操作</li>
         <li>发起方需要知道被动方的<strong>虚拟内存位置</strong>和<strong>rkey</strong></li>
     </ul>
-    <ul class="dib substep">
+    <ul class="fl substep">
         <li>被动方不用执行任何操作</li>
         <li>被动方<strong>没有任何反馈</strong>
             <ul>
@@ -159,20 +161,20 @@
 </div>
 
 <div id="顺序保证" class="step slide font-smaller1" data-rotate-z="180">
-    <h4 class="dib w-20">表现有序</h4>
-    <div class="dib markdown w-75 v-top">
+    <h4 class="fl w-20">表现有序</h4>
+    <div class="substep fl markdown w-75 v-top">
 - 提交到同一个``SQ``的``WR``按提交顺序**初始化**、**发送**和**完成**
     </div>
 
-    <h4 class="dib w-20">实现并行</h4>
-    <div class="dib markdown w-75 v-top">
+    <h4 class="cl fl w-20">实现并行</h4>
+    <div class="substep fl markdown w-75 v-top">
 - 对于提交到**同一个**``SQ``的多个``WR``的数据传输有可能**并行**
 - 特别地，数据有可能以**任意顺序**被提交到目标内存
 - 对于``RDMA_WRITE``，在后续发送一条消息，并且对方进行**接收并处理**了相应的``WC``前，目标内存的内容都是**不确定**的
   - 需要和``Send``/``Receive``配合使用
     </div>
 
-    <p class="f2 tr">——《Writing Application Programs for RDMA using OFA Software Part 3》P.65 - P.67</p>
+    <p class="cl f2 tr">——《Writing Application Programs for RDMA using OFA Software Part 3》P.65 - P.67</p>
 </div>
 
 <div id="RDMA的代价" class="step slide title" data-rel-x="-1500" data-rel-y="0" data-rotate="270">
