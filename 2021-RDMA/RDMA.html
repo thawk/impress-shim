@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div id="RDMA优点" class="step slide" data-rel-x="1300" data-rel-y="0">
+<div id="RDMA优点" class="step slide" data-rel-x="1200" data-rel-y="0">
     <div class="absolute w-70 h-100 top-0 right-0 is-present">
         <ul class="h-50 mb0">
             <li>网卡直接访问应用内存</li>
@@ -104,14 +104,14 @@
 <div id="内存注册" class="step slide" data-rel-x="0" data-rel-y="1920" data-rotate="90">
     <h3>内存注册</h3>
     <ul>
-        <li>内存注册过程会<span class="accent">锁定内存页</span>
+        <li>内存注册过程会<strong class="accent">锁定内存页</strong>
             <ul>
-                <li>避免页面被<span class="accent">移出</span>物理内存</li>
-                <li>保持物理地址 ⇔ 虚拟地址映射<span class="accent">不变</span></li>
+                <li>避免页面被<strong class="accent">移出</strong>物理内存</li>
+                <li>保持物理地址 ⇔ 虚拟地址映射<strong class="accent">不变</strong></li>
             </ul>
         </li>
-        <li class="substep">在注册过程中，操作系统将会检查应用对内存页面的<span class="accent">访问权限</span></li>
-        <li class="substep">注册过程会把虚拟地址与物理地址<span class="accent">映射表</span>写入网卡</li>
+        <li class="substep">在注册过程中，操作系统将会检查应用对内存页面的<strong class="accent">访问权限</strong></li>
+        <li class="substep">注册过程会把虚拟地址与物理地址<strong class="accent">映射表</strong>写入网卡</li>
     </ul>
 
     <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
