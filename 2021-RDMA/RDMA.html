@@ -20,7 +20,7 @@
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
 <div id="标题" class="step slide title" data-x="4000" data-y="540" data-z=1100 data-scale="2">
-    <h1>RDMA交流</h1>
+    <h1>RDMA基础</h1>
     <p>交易结算研发部 谭浩通</p>
     <p><small>2021-07-29</small></p>
 </div>
@@ -61,9 +61,9 @@
 <div id="RDMA优点" class="step slide" data-rel-x="1300" data-rel-y="0">
     <div class="absolute w-70 h-100 top-0 right-0 is-present">
         <ul class="h-50 mb0">
-            <li>数据直接从应用内存传输到对端应用内存</li>
-            <li>无需CPU参与</li>
+            <li>网卡直接访问应用内存</li>
             <li>没有中间缓存</li>
+            <li>无需CPU参与</li>
         </ul>
         <ul class="substep mt0">
             <li>应用直接访问CA</li>
@@ -102,14 +102,14 @@
 <div id="内存注册" class="step slide">
     <h3>内存注册</h3>
     <ul>
-        <li>内存注册过程会<span class="accent2">锁定内存页</span>
+        <li>内存注册过程会<span class="accent">锁定内存页</span>
             <ul>
-                <li>避免页面被<span class="accent1">移出物理内存</span></li>
-                <li>保持<span class="accent1">物理地址 ⇔ 虚拟地址</span>映射不变</li>
+                <li>避免页面被<span class="accent">移出</span>物理内存</li>
+                <li>保持物理地址 ⇔ 虚拟地址映射<span class="accent">不变</span></li>
             </ul>
         </li>
-        <li class="substep">在注册过程中，操作系统将会检查应用对内存页面的<span class="accent2">访问权限</span></li>
-        <li class="substep">注册过程会把<span class="accent2">虚拟地址与物理地址映射表</span>写入网卡</li>
+        <li class="substep">在注册过程中，操作系统将会检查应用对内存页面的<span class="accent">访问权限</span></li>
+        <li class="substep">注册过程会把虚拟地址与物理地址<span class="accent">映射表</span>写入网卡</li>
     </ul>
 
     <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
@@ -125,8 +125,8 @@
     <p>Send/Receive</p>
     <ul>
         <li>以消息为单位</li>
-        <li>Send/Receive必须<b>一一匹配</b></li>
-        <li>必须<b>先Receive，再Send</b></li>
+        <li>Send/Receive必须<strong>一一匹配</strong></li>
+        <li>必须<strong>先Receive，再Send</strong></li>
         <li>双方都不需要知道对端内存地址</li>
     </ul>
 </div>
@@ -137,11 +137,11 @@
     <p>RDMA Read/RDMA Write</p>
     <ul class="dib w-40 mr6 v-top">
         <li>由发起方执行所有操作</li>
-        <li>发起方需要知道被动方的<b>虚拟内存位置</b>和<b>rkey</b></li>
+        <li>发起方需要知道被动方的<strong>虚拟内存位置</strong>和<strong>rkey</strong></li>
     </ul>
     <ul class="dib substep">
         <li>被动方不用执行任何操作</li>
-        <li>被动方<b>没有任何反馈</b>
+        <li>被动方<strong>没有任何反馈</strong>
             <ul>
                 <li>不占用CPU</li>
                 <li>没有事件、没有完成通知</li>
@@ -153,8 +153,8 @@
 <div id="传输顺序" class="step slide markdown" data-rotate-z="180">
 ### 传输顺序
 
-* 提交到同一个queue（``SQ``或``RQ``）的``WR``保证顺序
-* ``SQ``和``RQ``之间没有顺序保证
+* 提交到**同一个queue**（``SQ``或``RQ``）的``WR``保证顺序
+* ``SQ``和``RQ``之间**没有顺序保证**
 * ``QP``之间没有顺序保证
 </div>
 
@@ -203,7 +203,6 @@
                 </ul>
             </li>
             <li>page-fault影响很大</li>
-            <li>加重CPU负载、增加时延</li>
         </ul>
     </div>
 </div>
@@ -223,10 +222,10 @@
     <h3>适合RDMA的场景</h3>
 
     <ul class="w-100">
-        <li><span class="dib w-30">可复用连接</span><span class="substep accent1"> —— 摊分连接开销</span></li>
-        <li><span class="dib w-30">传输大量数据</span><span class="substep accent1"> —— 降低轮询开销</span></li>
-        <li><span class="dib w-30">尽量少同步点</span><span class="substep accent1"> —— 避免受RTT影响</span></li>
-        <li><span class="dib w-30">可复用buffer</span><span class="substep accent1"> —— 避免内存拷贝和注册开销</span></li>
+        <li><span class="dib w-30">可复用连接</span><span class="substep accent"> —— 摊分连接开销</span></li>
+        <li><span class="dib w-30">传输大量数据</span><span class="substep accent"> —— 降低轮询开销</span></li>
+        <li><span class="dib w-30">尽量少同步点</span><span class="substep accent"> —— 避免受RTT影响</span></li>
+        <li><span class="dib w-30">可复用buffer</span><span class="substep accent"> —— 避免内存拷贝和注册开销</span></li>
         <li class="substep strike-on-substep">计算与传输可以并发</li>
     </ul>
 </div>
@@ -237,23 +236,23 @@
 
 <div id="研究阶段" class="step slide" data-rel-x="-1920" data-rel-y="0" data-rotate-z="180">
     <ul>
-        <li>用会<span class="substep"> —— 怎么使用API</span>
+        <li>用会<span class="substep accent2"> —— 怎么使用API</span>
             <ul class="substep">
                 <li>完成测试程序</li>
                 <li>完成基本测试</li>
             </ul>
         </li>
-        <li>用好<span class="substep"> —— 怎么发挥RDMA的优势</span>
+        <li>用好<span class="substep accent2"> —— 怎么发挥RDMA的优势</span>
             <ul class="substep">
                 <li>对测试程序进行调优</li>
                 <li>归纳总结</li>
             </ul>
         </li>
-        <li>用对<span class="substep"> —— 应用到合适的场景中</span>
+        <li>用对<span class="substep accent2"> —— 应用到合适的场景中</span>
         </li>
-        <div class="substep" style="position:absolute;top:1em;left:60%">
+        <div class="substep" style="position:absolute;top:2em;left:60%">
             <img src="images/curly_brackets.svg" height="50%" class="v-mid" style="fill:#808080"/>
-            <span class="accent2">产出一篇论文</span>
+            <span class="accent1 f-headline">论文</span>
         </div>
     </ul>
 </div>
