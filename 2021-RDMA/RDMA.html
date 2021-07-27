@@ -19,13 +19,13 @@
 <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
 <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-<div id="标题" class="step slide title" data-x="4000" data-y="540" data-z=1100 data-scale="2">
+<div id="标题" class="step slide title" data-x="0" data-y="540" data-z=1100 data-scale="2">
     <h1>RDMA基础</h1>
     <p>交易结算研发部 谭浩通</p>
     <p><small>2021-07-29</small></p>
 </div>
 
-<div id="基本概念" class="step slide title" data-x="0" data-y="-540" data-z=1000>
+<div id="基本概念" class="step slide title" data-x="-1920" data-y="-1080" data-z=1000>
     <h2>基本概念</h2>
 </div>
 
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<div id="RDMA特点" class="step slide" data-rel-x="1920">
+<div id="RDMA特点" class="step slide" data-rel-x="1920" data-rotate="90">
     <h2>RDMA特点</h2>
     <ul class="dib w-50 h-100 v-mid">
         <li class="mb4">异步操作
@@ -99,7 +99,7 @@
     </ul>
 </div>
 
-<div id="内存注册" class="step slide">
+<div id="内存注册" class="step slide" data-rel-x="0" data-rel-y="1920" data-rotate="90">
     <h3>内存注册</h3>
     <ul>
         <li>内存注册过程会<span class="accent">锁定内存页</span>
@@ -115,7 +115,7 @@
     <footer class="f2">——《RDMA Aware Networks Programming User Manual Rev 1.7》2.3.4 Memory Registration</footer>
 </div>
 
-<div id="两种传输模式" class="step slide title" data-rel-x="0" data-y="1920" data-rotate-z="180">
+<div id="两种传输模式" class="step slide title" data-rel-x="0" data-rel-y="1500" data-rotate-z="180">
     <h2>RDMA两种传输模式</h2>
     <p>Send/Receive vs. RDMA Read/RDMA Write</p>
 </div>
@@ -175,11 +175,11 @@
     <p class="f2 tr">——《Writing Application Programs for RDMA using OFA Software Part 3》P.65 - P.67</p>
 </div>
 
-<div id="RDMA的代价" class="step slide title" data-rel-x="0" data-rel-y="1080">
+<div id="RDMA的代价" class="step slide title" data-rel-x="-1500" data-rel-y="0" data-rotate="270">
     <h2>RDMA的代价</h2>
 </div>
 
-<div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="1200" data-rel-y="0">
+<div id="连接建立时间长" class="step slide gray-in gray-out" data-rel-x="0" data-rel-y="-1200" data-rotate="270">
     <div class="w-50 center">
         <h3>连接建立时间长</h3>
         <p>Time to first byte</p>
@@ -191,7 +191,7 @@
     </div>
 </div>
 
-<div id="内存注册开销大" class="step slide gray-in gray-out" data-rel-x="720" data-rel-y="0">
+<div id="内存注册开销大" class="step slide gray-in gray-out" data-rel-x="0" data-rel-y="-720" data-rotate="270">
     <div class="w-50 center">
         <h3>内存注册开销大</h3>
         <ul>
@@ -207,7 +207,7 @@
     </div>
 </div>
 
-<div id="内存拷贝影响大" class="step slide gray-in gray-out" data-rel-x="960" data-rel-y="0">
+<div id="内存拷贝影响大" class="step slide gray-in gray-out" data-rel-x="0" data-rel-y="-960" data-rotate="270">
     <div class="w-50 center">
         <h3>内存拷贝影响大</h3>
         <ul>
@@ -218,7 +218,7 @@
     </div>
 </div>
 
-<div id="适合场景" class="step slide" data-rel-x="1920" data-rel-y="0">
+<div id="适合场景" class="step slide" data-rel-x="0" data-rel-y="-1920" data-rotate="270">
     <h3>适合RDMA的场景</h3>
 
     <ul class="w-100">
@@ -230,11 +230,11 @@
     </ul>
 </div>
 
-<div id="项目目标" class="step slide title" data-rel-x="0" data-rel-y="1080" data-rotate-z="180">
+<div id="项目目标" class="step slide title" data-rel-x="1500" data-rel-y="0" data-rotate-z="360">
     <h2>项目目标</h2>
 </div>
 
-<div id="研究阶段" class="step slide" data-rel-x="-1920" data-rel-y="0" data-rotate-z="180">
+<div id="研究阶段" class="step slide" data-rel-x="1920" data-rel-y="0" data-rotate-z="360">
     <ul>
         <li>用会<span class="substep accent2"> —— 怎么使用API</span>
             <ul class="substep">
@@ -257,7 +257,7 @@
     </ul>
 </div>
 
-<div id="overview" class="step slide" data-x="4000" data-y="2000" data-scale=6 data-rotate=0>
+<div id="overview" class="step slide" data-x="0" data-y="0" data-scale=6 data-rotate=0>
     <div id="signature" class="absolute right-0 bottom-0 center">
         <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
     </div>
