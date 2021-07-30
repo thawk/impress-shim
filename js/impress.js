@@ -778,7 +778,7 @@
             // scrolling to element in hash.
             //
             // And it has to be set after animation finishes, because in Chrome it
-            // makes transtion laggy.
+            // makes transition laggy.
             // BUG: http://code.google.com/p/chromium/issues/detail?id=62820
             lib.gc.addEventListener( root, "impress:stepenter", function( event ) {
                 window.location.hash = lastHash = "#/" + event.target.id;
@@ -1195,7 +1195,7 @@
 
         // `byId` returns element with given `id` - you probably have guessed that ;)
         var byId = function( id ) {
-            return document.getElementById( decodeURIComponent( id ) );
+            return document.getElementById( id );
         };
 
         // `getElementFromHash` returns an element located by id from hash part of
@@ -1204,7 +1204,8 @@
 
             // Get id from url # by removing `#` or `#/` from the beginning,
             // so both "fallback" `#slide-id` and "enhanced" `#/slide-id` will work
-            return byId( window.location.hash.replace( /^#\/?/, "" ) );
+            var encoded = window.location.hash.replace( /^#\/?/, "" );
+            return byId( decodeURIComponent( encoded ) );
         };
 
         // `getUrlParamValue` return a given URL parameter value if it exists
@@ -1595,7 +1596,7 @@
               i--;
               while ( i >= 0 ) {
                 var newElement = element.cloneNode( false );
-                newElement.innerHTML = markdown.toHTML( slides[ i ], dialect);
+                newElement.innerHTML = markdown.toHTML( slides[ i ], dialect );
                 element.parentNode.insertBefore( newElement, element );
                 element = newElement;
                 i--;
@@ -2081,6 +2082,20 @@
             'useAMPM': false
         };
         break;
+    case 'zh-CN':
+    case 'zh-cn':
+        lang = {
+            'noNotes': '<div class="noNotes">当前帧没有备注</div>',
+            'restart': '重新开始',
+            'clickToOpen': '点击以打开演讲者控制界面',
+            'prev': '上一帧',
+            'next': '下一帧',
+            'loading': '加载中',
+            'ready': '就绪',
+            'moving': '移动中',
+            'useAMPM': false
+        };
+        break;
     case 'en': // jshint ignore:line
     default : // jshint ignore:line
         lang = {
@@ -2211,7 +2226,7 @@
                 var preSrc = baseURL + '#' + nextStep().id;
                 var slideView = consoleWindow.document.getElementById( 'slideView' );
 
-                // Setting them when they are already set causes glithes in Firefox, so check first:
+                // Setting when already set causes glitches in Firefox, so check first:
                 if ( slideView.src !== slideSrc ) {
                     slideView.src = slideSrc;
                 }
@@ -2248,7 +2263,7 @@
                 var preSrc = baseURL + '#' + nextStep().id;
                 var slideView = consoleWindow.document.getElementById( 'slideView' );
 
-                // Setting them when they are already set causes glithes in Firefox, so check first:
+                // Setting when already set causes glitches in Firefox, so check first:
                 if ( slideView.src !== slideSrc ) {
                     slideView.src = slideSrc;
                 }
@@ -4009,10 +4024,26 @@
 
     var showSubstepIfAny = function( step ) {
         var substeps = step.querySelectorAll( ".substep" );
-        var visible = step.querySelectorAll( ".substep-visible" );
         if ( substeps.length > 0 ) {
-            return showSubstep( substeps, visible );
+            var sorted = sortSubsteps( substeps );
+            var visible = step.querySelectorAll( ".substep-visible" );
+            return showSubstep( sorted, visible );
         }
+    };
+
+    var sortSubsteps = function( substepNodeList ) {
+        var substeps = Array.from( substepNodeList );
+        var sorted = substeps
+            .filter( el => el.dataset.substepOrder )
+            .sort( ( a, b ) => {
+                var orderA = a.dataset.substepOrder;
+                var orderB = b.dataset.substepOrder;
+                return parseInt( orderA ) - parseInt( orderB );
+            } )
+            .concat( substeps.filter( el => {
+                return el.dataset.substepOrder === undefined;
+            } ) );
+        return sorted;
     };
 
     var showSubstep = function( substeps, visible ) {
@@ -4030,8 +4061,9 @@
     var hideSubstepIfAny = function( step ) {
         var substeps = step.querySelectorAll( ".substep" );
         var visible = step.querySelectorAll( ".substep-visible" );
+        var sorted = sortSubsteps( visible );
         if ( substeps.length > 0 ) {
-            return hideSubstep( visible );
+            return hideSubstep( sorted );
         }
     };
 
