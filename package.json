@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "html-inline": "^1.2.0"
+    "html-inline": "^1.2.0",
+    "inline-svg": "^2.2.3"
   }
 }
