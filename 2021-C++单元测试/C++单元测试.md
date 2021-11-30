@@ -19,7 +19,7 @@
 
 ## C++单元测试工具
 
-* 单元测试框架： [Boost.Test](http://www.boost.org/libs/test) 
+* 单元测试框架： [Boost.Test](http://www.boost.org/libs/test)
 * 模拟对象框架： [Turtle](http://turtle.sourceforge.net/)
 
   A C++ mock object library for Boost。
@@ -48,15 +48,15 @@
 
   * 内部输入
     * 调用其它方法的返回值。
-    
+
       时钟、硬件信息、操作系统信息、环境变量等内容可能每次都不同。
-   
+
       一些比较复杂的方法，难以通过传入参数使方法返回想要的值。
 
     * 局部静态变量
-    
+
       每个用例的值都不同。
-    
+
       无法从外部访问。
 
 ## 技巧
@@ -114,3 +114,5 @@
 
 * 验证进出消息
   * EqualMessage
+
+* CHECK_MESSAGE + AsHex
