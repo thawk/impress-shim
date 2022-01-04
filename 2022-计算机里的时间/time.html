@@ -1,79 +1,98 @@
 <!doctype html>
 <html lang="zh-cmn-Hans">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>计算机里的时间</title>
-        <link href="css/tachyons.min.css" rel="stylesheet" />
-        <link href="impress.js/css/impress-common.css" rel="stylesheet" />
-        <link href="css/fonts.css" rel="stylesheet" />
-        <link href="css/classic-slides.css" rel="stylesheet" />
-        <link href="css/themes/default.css" rel="stylesheet" />
-    </head>
-<body class="impress-not-supported">
-<div class="fallback-message">
-    <p>您正在使用的浏览器<b>不支持</b>impress.js需要的功能，因此只能看到简化版本。</p>
-    <p>请使用最新版本的<b>Chrome</b>、<b>Safari</b>或<b>Firefox</b>浏览器以取得最佳效果。</p>
-</div>
-
-<div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
-
-<!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-<div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
-    <h1>计算机里的时间</h1>
-</div>
-
-<div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
-    <h1>目录</h1>
-    <ul class="flex list">
-        <li class="w-50 tc">时间</li>
-        <li class="w-50 tc">时区</li>
-    </ul>
-</div>
-
-<div id="自然时间" class="step slide">
-    <h2>自然时间</h2>
-    <p>根据自然（天文）现象定义时间</p>
-    <ul class="flex list tc">
-        <li class="substep w-50">
-            <img src="images/日晷.png">
-        </li>
-        <li class="substep w-50">
-            <img src="images/圭表.png">
-        </li>
-    </ul>
-</div>
-
-<div id="天" class="step slide" data-rel-y="0.5h">
-    <h2>天</h2>
-    <p>两次日上中天</p>
-    <img src="images/日晷.png">
-</div>
-
-<div id="年" class="step slide" data-rel-y="1h">
-    <h2>年</h2>
-    <p>两次冬至</p>
-    <img src="images/圭表.png">
-</div>
-<div id="overview" class="step slide skip" data-x="200" data-y="200" data-scale=5 data-rotate=360>
-    <div id="signature" class="absolute right-0 bottom-0 center">
-        <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>计算机里的时间</title>
+    <link href="css/tachyons.min.css" rel="stylesheet" />
+    <link href="impress.js/css/impress-common.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <link href="css/classic-slides.css" rel="stylesheet" />
+    <link href="css/themes/default.css" rel="stylesheet" />
+  </head>
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+      <p>您正在使用的浏览器<b>不支持</b>impress.js需要的功能，因此只能看到简化版本。</p>
+      <p>请使用最新版本的<b>Chrome</b>、<b>Safari</b>或<b>Firefox</b>浏览器以取得最佳效果。</p>
     </div>
-</div>
 
-</div> <!-- #impress -->
+    <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
-<div id="impress-toolbar"></div>
+      <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
+      <div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
+        <h1>计算机里的时间</h1>
+        <p>交易结算研发部 谭浩通</p>
+        <p><small>2022-01-11</small></p>
+      </div>
 
-<div class="impress-progressbar"><div></div></div>
-<div class="impress-progress"></div>
+      <div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
+        <h1>目录</h1>
+        <ul class="flex list">
+          <li class="w-50 tc">时间<br>
+            <img class="h-75" src="images/记忆的永恒.jpg" alt=""/></li>
+          </li>
+          <li class="w-50 tc">时区<br>
+            <img src="images/World_Time_Zones_map.png" alt=""/></li>
+        </ul>
+      </div>
 
-<div id="impress-help"></div>
+      <div id="自然时间" class="step slide">
+        <h2>自然时间</h2>
+        <p>根据自然（天文）现象定义时间</p>
+      </div>
 
-<!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
-<!-- <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script> -->
-<script src="impress.js/js/impress.js" charset="utf-8"></script>
-<script charset="utf-8">impress().init();</script>
-</body>
+      <div id="天" class="step slide cf" data-rel-x="-0.25w" data-rel-y="0.25h" data-scale=0.5>
+        <h2 class="tc">天</h2>
+        <img class="fr is-present" src="images/日晷.png">
+        <ul class="is-present">
+          <li>1 天 = 两次日上中天（视太阳日）</li>
+          <li>1 秒 = 1 / 24 * 60 * 60 = 1 / 86400 天</li>
+          <li>每天是等长的吗？—— 平太阳日</li>
+        </ul>
+        <div class="notes">视太阳日/平太阳日</div>
+      </div>
+
+      <div id="年" class="step slide cf" data-rel-x="0.5w" data-rel-y="0" data-scale=0.5>
+        <h2 class="tc">年</h2>
+        <img class="fr is-present" src="images/圭表.png">
+        <ul class="is-present">
+          <li>1 年 = 两次冬至（岁实，回归年）</li>
+          <li>1回归年 = 365.2421990741日<br>
+            <span class="o-0">1回归年</span> = 365天5小时48分46秒</li>
+          <li>回归年比恒星年短20分24秒</li>
+        </ul>
+        <div class="notes">
+          岁实是中国用的回归年，是从冬至再回到冬至所经历的时间。
+        </div>
+      </div>
+
+      <div id="世界时" class="step slide" data-rel-x="-0.25w" data-rel-y="0.75h">
+        <h1>世界时</h1>
+        <ul>
+          <li>在 1927 年，人们以基于“天文现象”+“钟表计时”，确立了第一套时间标准：世界时（Universal Time，简称 UT）</li>
+          <li>格林尼治标准时间”（Greenwich Mean Time，简称 GMT），就是指的世界时</li>
+        </ul>
+      </div>
+
+      <div id="overview" class="step slide skip" data-x="200" data-y="200" data-scale=5 data-rotate=360>
+        <div id="signature" class="absolute right-0 bottom-0 center">
+          <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
+        </div>
+      </div>
+
+    </div> <!-- #impress -->
+
+    <div id="impress-toolbar"></div>
+
+    <div class="impress-progressbar"><div></div></div>
+    <div class="impress-progress"></div>
+
+    <div id="impress-help"></div>
+
+    <!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
+    <!-- <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script> -->
+    <script src="impress.js/js/impress.js" charset="utf-8"></script>
+    <script charset="utf-8">impress().init();</script>
+  </body>
 </html>
 <!-- vim: set fenc=utf-8 ft=html.impressjs: -->
