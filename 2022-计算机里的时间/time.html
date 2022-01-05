@@ -26,25 +26,29 @@
       </div>
 
       <div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
-        <h1>目录</h1>
+        <h3>目录</h3>
         <ul class="flex list">
           <li class="w-50 tc">时间<br>
             <img class="h-75" src="images/记忆的永恒.jpg" alt=""/></li>
           </li>
           <li class="w-50 tc">时区<br>
-            <img src="images/World_Time_Zones_map.png" alt=""/></li>
+            <img class="h-75" src="images/World_Time_Zones_map.png" alt=""/></li>
         </ul>
       </div>
 
-      <div id="自然时间" class="step slide">
-        <h2>自然时间</h2>
+      <div id="时间的由来" class="step slide title box" data-rel-x="-0.5w">
+          <h2>时间的由来</h2>
+      </div>
+
+      <div id="自然时间" class="step slide" data-rel-x="0">
+        <h3>自然时间</h3>
         <p>根据自然（天文）现象定义时间</p>
       </div>
 
       <div id="天" class="step slide cf" data-rel-x="-0.25w" data-rel-y="0.25h" data-scale=0.5>
-        <h2 class="tc">天</h2>
-        <img class="fr is-present" src="images/日晷.png">
-        <ul class="is-present">
+        <h3 class="tc">天</h3>
+        <img class="fr" src="images/日晷.png">
+        <ul>
           <li>1 天 = 两次日上中天（视太阳日）</li>
           <li>1 秒 = 1 / 24 * 60 * 60 = 1 / 86400 天</li>
           <li>每天是等长的吗？—— 平太阳日</li>
@@ -53,9 +57,9 @@
       </div>
 
       <div id="年" class="step slide cf" data-rel-x="0.5w" data-rel-y="0" data-scale=0.5>
-        <h2 class="tc">年</h2>
-        <img class="fr is-present" src="images/圭表.png">
-        <ul class="is-present">
+        <h3 class="tc">年</h3>
+        <img class="fr" src="images/圭表.png">
+        <ul>
           <li>1 年 = 两次冬至（岁实，回归年）</li>
           <li>1回归年 = 365.2421990741日<br>
             <span class="o-0">1回归年</span> = 365天5小时48分46秒</li>
@@ -67,14 +71,126 @@
       </div>
 
       <div id="世界时" class="step slide" data-rel-x="-0.25w" data-rel-y="0.75h">
-        <h1>世界时</h1>
+        <h3>世界时</h3>
         <ul>
+          <li>对一年内所有天的长度取平均，得到相对平均的天和相对平均的秒</li>
           <li>在 1927 年，人们以基于“天文现象”+“钟表计时”，确立了第一套时间标准：世界时（Universal Time，简称 UT）</li>
-          <li>格林尼治标准时间”（Greenwich Mean Time，简称 GMT），就是指的世界时</li>
+          <li>格林尼治标准时间（Greenwich Mean Time，简称 GMT），就是指的世界时</li>
         </ul>
+        <div class="notes">
+          <ul>
+            <li>人们发现，地球的公转轨道并不是一个正圆，而是一个“椭圆”，也就是说公转速度是“不均匀”的 ，每天太阳照射同一位置的时间也有误差。
+            <li>也就是说，依据地球公转计算出的“天”不是等长的，那根据天推算出的秒，自然也不是“等长”的。
+          </ul>
+        </div>
       </div>
 
-      <div id="overview" class="step slide skip" data-x="200" data-y="200" data-scale=5 data-rotate=360>
+      <div id="原子钟" class="step slide" data-rel-x="0" data-rel-y="1h">
+        <h3>原子钟</h3>
+        <ul>
+          <li>地球自转变慢，以此定义的时间不准</li>
+          <li>在 1967 年，国际度量衡大会决定采用，以铯原子跃迁 9192631770 个周期，所持续的时间长度定义为 1 秒</li>
+          <li>基于原子钟确立的时间标准，叫做“国际原子时”（International Atomic Time，简称 TAI）</li>
+        </ul>
+        <div class="notes">
+          <ul>
+            <li>随着科技的发展，人类对太阳的观测越来越精准， 人们发现，地球每天的自转速度也“不是匀速”的，地球的自转受到潮汐、地壳运动、冰川融化、地震等自然现象的影响，越来越慢！
+            <li>这会导致之前规定的，每年平均下来一天的时间，现在来看，也是不一样长的。
+          </ul>
+        </div>
+      </div>
+
+      <div id="协调世界时" class="step slide flex flex-column">
+        <h3>协调世界时（UTC）</h3>
+        <div class="flex justify-center items-center h-100">
+          <img class="" src="images/utc.drawio.svg" width="80%" alt=""/>
+        </div>
+        <div class="notes">
+          <ul>
+            <li>原子钟稳定</li>
+            <li>世界时随着地球自转变慢</li>
+            <li>如果两者相差过大时，就“人为”地调整一下时钟，让两者相差不超过 0.9 秒 → “闰秒” </li>
+            <li>基于原子时 + 世界时“协调”得出 → 协调世界时（Coordinated Universal Time，简称 UTC）</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="时区" class="step slide title box" data-rel-to="目录" data-rel-y="1h" data-rel-x="0.5w">
+          <h2>时区</h2>
+          <div class="notes markdown">
+- 为什么要有时区？
+- 为什么没有``Asia/Beijing``时区？
+- 应该用什么时区？
+          </div>
+      </div>
+      
+      <div id="为什么要有时区？" class="step slide" data-rel-x="0">
+        <h3>为什么要有时区？</h3>
+        <p>交通发达 → 旅行速度加快 → 跨时区</p>
+
+        <blockquote class="substep">
+          <h4>罗德岛火车相撞</h4>
+          1853年8月12日，美国东部罗德岛州，两辆火车迎头相撞，14人因此死亡。事故的原因在今天看来难以置信——两车工程师的手表差了2分钟。
+        </blockquote>
+      </div>
+      
+      <div id="时区的设立" class="step slide markdown">
+### 时区的设立
+- 1863年，首次使用时区的概念。时区通过设立一个区域的标准时间部分地解决了时间差问题
+- 1870年代加拿大铁路工程师弗莱明首次提出全世界按统一标准划分时区
+- 1883年11月18日，美国铁路部门正式实施五个时区
+- 1884年华盛顿子午线国际会议正式通过采纳这种时区划分，称为世界标准时制度
+      </div>
+      
+      <div id="时区的定义" class="step slide">
+        <h3>时区</h3>
+        <div class="flex">
+          <div class="w-50 f2 markdown">
+时区是地球上的区域使用同一个时间定义。
+
+- 从格林威治本初子午线起，经度每15度划分一个时区，时间相差一小时
+- 目前时区最小单位是15分钟：尼泊尔``UTC+5:45``
+- 时区不只±12小时：基里巴斯（莱恩群岛） UTC+14
+- UTC可以在时间后面直接加上一个“Z”（不加空格）
+  - “14:45:15 UTC”可写为“14:45:15Z”或“144515Z”
+- UTC偏移量
+  - ``±[hh]:[mm]``、``±[hh][mm]``、或``±[hh]``
+          </div>
+          <div class="w-50"><img src="images/World_Time_Zones_map.png" alt=""></div>
+        </div>
+        <div class="notes">
+          <ul>
+          <li>出于行政管理或其他原因，时区并不严格按照南北直线来划分</li>
+          <li>国际日期变更线</li>
+          </ul></div>
+      </div>
+      
+      <div id="中华民国时期的时区" class="step slide">
+        <h3>中华民国时期的时区</h3>
+
+        <div class="flex">
+          <div class="markdown f2">
+1. ``Asia/Kashgar``，**昆仑时区**，东经82度半，GMT+5:30
+2. ``Asia/Urumqi``，**新藏时区**，东经90度，GMT+6
+3. ``Asia/Chongqing``，**陇蜀时区**，东经105度，GMT+7
+4. ``Asia/Shanghai``，**中原标准时区**，东经120度，GMT+8
+5. ``Asia/Harbin``，**长白时区**，东127度半，GMT+8:30
+          </div>
+          <img src="images/ROC-Timezones.svg" alt=""/>
+        </div>
+      </div>
+
+      <div id="新中国的时区" class="step slide markdown">
+### 新中国的时区
+- 1949年中华人民共和国成立，全国统一使用(UTC+8)，并命名为**北京时间**（或称作中国标准时间）
+- 新疆、西藏在1970年底之前使用东经90度标准时，1971年开始使用东经120度标准时
+- 北京时间并不是北京市的地方平太阳时间（东经116°23'），而是东经120°的地方平太阳时间，二者相差约14分钟28秒
+- IANA对政治变更保持中立性，时区通常不与国家绑定，也并不要求每个国家或国家首都必须具有时区名称
+  - 北京时间使用**Asia/Shanghai**
+      </div>
+      
+      
+      <div id="overview" class="step slide noskip" data-x="2000" data-y="2000" data-scale=10 data-rotate=0>
         <div id="signature" class="absolute right-0 bottom-0 center">
           <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
         </div>
@@ -90,9 +206,9 @@
     <div id="impress-help"></div>
 
     <!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
-    <!-- <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script> -->
+    <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script>
     <script src="impress.js/js/impress.js" charset="utf-8"></script>
     <script charset="utf-8">impress().init();</script>
   </body>
 </html>
-<!-- vim: set fenc=utf-8 ft=html.impressjs: -->
+<!-- vim: set fenc=utf-8 sw=2 ft=html.impressjs: -->
