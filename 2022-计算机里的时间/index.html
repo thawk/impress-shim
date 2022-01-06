@@ -8,7 +8,7 @@
     <link href="impress.js/css/impress-common.css" rel="stylesheet" />
     <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/classic-slides.css" rel="stylesheet" />
-    <link href="css/themes/a11y-dark.css" rel="stylesheet" />
+    <link href="css/themes/github.css" rel="stylesheet" />
   </head>
   <body class="impress-not-supported">
     <div class="fallback-message">
@@ -189,8 +189,39 @@
   - 北京时间使用**Asia/Shanghai**
       </div>
       
+      <div id="时间的应用" class="step slide title box" data-rel-to="目录" data-rel-x="1.5w" data-rel-y="0">
+          <h2>时间的应用</h2>
+      </div>
       
-      <div id="overview" class="step slide noskip" data-x="2000" data-y="2000" data-scale=10 data-rotate=0>
+      <div id="计算机里的时间" class="step slide">
+        <h3>计算机里的时间</h3>
+        <div class="flex">
+          <div class="w-50 markdown f1">
+- 关机时，靠主板上电池供电的RTC模块计时
+- 启动时，操作系统从RTC（Real Time Clock）读取时间
+- 运行过程中，操作系统通过晶振的中断计时
+- 关闭系统时，操作系统把时间同步到RTC中
+          </div>
+          <img class="w-50" src="images/rtc.png" alt="">
+        </div>
+      </div>
+      
+      <div id="关键值域" class="step slide markdown" data-rel-x="0" data-rel-y="1h">
+### 关键值域
+      
+- **秒**：可能存在60秒（闰秒）
+- **时区**：精确到分钟（现存最小单位为15分钟）
+      </div>
+      
+      <div id="取时间" class="step markdown slide">
+### 取时间
+      
+      </div>
+      
+      
+      
+      
+      <div id="overview" class="step slide noskip" data-x="3000" data-y="4000" data-scale=8 data-rotate=0>
         <div id="signature" class="absolute right-0 bottom-0 center">
           <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
         </div>
