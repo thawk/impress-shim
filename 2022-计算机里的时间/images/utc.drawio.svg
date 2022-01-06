@@ -7,13 +7,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 11px; margin-left: 71px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 16px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 世界时
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="100" y="16" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                <text x="100" y="16" font-size="16px" text-anchor="middle">
                     世界时
                 </text>
             </switch>
@@ -24,13 +24,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 54px; height: 1px; padding-top: 11px; margin-left: 231px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 16px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 原子钟
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="258" y="16" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                <text x="258" y="16" font-size="16px" text-anchor="middle">
                     原子钟
                 </text>
             </switch>
@@ -41,31 +41,31 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 11px; margin-left: 161px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 20px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 20px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 +
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="180" y="17" fill="#000000" font-family="Helvetica" font-size="20px" text-anchor="middle">
+                <text x="180" y="17" font-size="20px" text-anchor="middle">
                     +
                 </text>
             </switch>
         </g>
-        <path d="M 178 31.48 L 182 31.52 L 181.58 81.87 L 189.08 81.93 L 179.5 90.5 L 170.08 81.77 L 177.58 81.83 Z" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 178 31.48 L 182 31.52 L 181.58 81.87 L 189.08 81.93 L 179.5 90.5 L 170.08 81.77 L 177.58 81.83 Z" fill="none" stroke-linejoin="round" stroke-miterlimit="10" pointer-events="all"/>
         <rect x="120" y="101" width="120" height="20" fill="none" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 111px; margin-left: 121px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 16px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 协调世界时
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="180" y="116" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                <text x="180" y="116" font-size="16px" text-anchor="middle">
                     协调世界时
                 </text>
             </switch>
@@ -76,13 +76,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 128px; height: 1px; padding-top: 41px; margin-left: 0px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: right; ">
-                            <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 14px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 随地球自转变慢
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="128" y="45" fill="#000000" font-family="Helvetica" font-size="14px" text-anchor="end">
+                <text x="128" y="45" font-size="14px" text-anchor="end">
                     随地球自转变慢
                 </text>
             </switch>
@@ -93,13 +93,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 128px; height: 1px; padding-top: 41px; margin-left: 232px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
-                            <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 14px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 稳定、精确
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="232" y="45" fill="#000000" font-family="Helvetica" font-size="14px">
+                <text x="232" y="45" font-size="14px">
                     稳定、精确
                 </text>
             </switch>
@@ -110,13 +110,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 128px; height: 1px; padding-top: 71px; margin-left: 195px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
-                            <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 14px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 闰秒
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="195" y="75" fill="#000000" font-family="Helvetica" font-size="14px">
+                <text x="195" y="75" font-size="14px">
                     闰秒
                 </text>
             </switch>
@@ -127,13 +127,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 128px; height: 1px; padding-top: 71px; margin-left: 35px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: right; ">
-                            <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 14px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 协调
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="163" y="75" fill="#000000" font-family="Helvetica" font-size="14px" text-anchor="end">
+                <text x="163" y="75" font-size="14px" text-anchor="end">
                     协调
                 </text>
             </switch>
@@ -144,13 +144,13 @@
                 <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 318px; height: 1px; padding-top: 141px; margin-left: 21px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                            <div style="display: inline-block; font-size: 16px; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 Coordinated Universal Time，简称 UTC
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="180" y="146" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                <text x="180" y="146" font-size="16px" text-anchor="middle">
                     Coordinated Universal Time，简称 UTC
                 </text>
             </switch>
