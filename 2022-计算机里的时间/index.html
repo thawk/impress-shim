@@ -9,6 +9,7 @@
     <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/classic-slides.css" rel="stylesheet" />
     <link href="css/themes/github.css" rel="stylesheet" />
+    <link href="impress.js/extras/highlight/styles/github.css" rel="stylesheet" />
   </head>
   <body class="impress-not-supported">
     <div class="fallback-message">
@@ -26,17 +27,18 @@
       </div>
 
       <div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
-        <h3>目录</h3>
+        <h3 class="w-100 tc">目录</h3>
         <ul class="flex list">
-          <li class="w-50 tc">时间<br>
+          <li class="w-33 tc pa3">时间的由来<br>
             <img class="h-75" src="images/记忆的永恒.jpg" alt=""/></li>
-          </li>
-          <li class="w-50 tc">时区<br>
+          <li class="w-34 tc pa3">时区的由来<br>
             <img class="h-75" src="images/World_Time_Zones_map.png" alt=""/></li>
+          <li class="w-33 tc pa3">时间的应用<br>
+            <img class="h-75" src="images/computer-clock.jpg" alt=""/></li>
         </ul>
       </div>
 
-      <div id="时间的由来" class="step slide title box" data-rel-x="-0.5w">
+      <div id="时间的由来" class="step slide title box" data-rel-x="-0.5w" data-goto-key-list="ArrowRight" data-goto-next-list="时区的由来">
           <h2>时间的由来</h2>
       </div>
 
@@ -115,8 +117,8 @@
         </div>
       </div>
       
-      <div id="时区" class="step slide title box" data-rel-to="目录" data-rel-y="1h" data-rel-x="0.5w">
-          <h2>时区</h2>
+      <div id="时区的由来" class="step slide title box" data-rel-to="目录" data-rel-y="1h" data-rel-x="0.5w" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时间的由来 时间的应用">
+          <h2>时区的由来</h2>
           <div class="notes markdown">
 - 为什么要有时区？
 - 为什么没有``Asia/Beijing``时区？
@@ -144,7 +146,7 @@
       
       <div id="时区的定义" class="step slide">
         <h3>时区</h3>
-        <div class="flex">
+        <div class="flex items-center">
           <div class="w-50 f2 markdown">
 时区是地球上的区域使用同一个时间定义。
 
@@ -168,15 +170,20 @@
       <div id="中华民国时期的时区" class="step slide">
         <h3>中华民国时期的时区</h3>
 
-        <div class="flex">
-          <div class="markdown f2">
-1. ``Asia/Kashgar``，**昆仑时区**，东经82度半，GMT+5:30
-2. ``Asia/Urumqi``，**新藏时区**，东经90度，GMT+6
-3. ``Asia/Chongqing``，**陇蜀时区**，东经105度，GMT+7
-4. ``Asia/Shanghai``，**中原标准时区**，东经120度，GMT+8
-5. ``Asia/Harbin``，**长白时区**，东127度半，GMT+8:30
+        <div class="flex items-center justify-center">
+          <div class="markdown f2 w-40">
+1. ``Asia/Kashgar``，**昆仑时区**
+   - 东经82度半，GMT+5:30
+2. ``Asia/Urumqi``，**新藏时区**
+   - 东经90度，GMT+6
+3. ``Asia/Chongqing``，**陇蜀时区**
+   - 东经105度，GMT+7
+4. ``Asia/Shanghai``，**中原标准时区**
+   - 东经120度，GMT+8
+5. ``Asia/Harbin``，**长白时区**
+   - 东127度半，GMT+8:30
           </div>
-          <img src="images/ROC-Timezones.svg" alt=""/>
+          <img class="w-50" src="images/ROC-Timezones.svg" alt=""/>
         </div>
       </div>
 
@@ -189,36 +196,396 @@
   - 北京时间使用**Asia/Shanghai**
       </div>
       
-      <div id="时间的应用" class="step slide title box" data-rel-to="目录" data-rel-x="1.5w" data-rel-y="0">
+      <div id="时间的应用" class="step slide title box" data-rel-to="目录" data-rel-x="1.5w" data-rel-y="0" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时区的由来 取时间的方法">
           <h2>时间的应用</h2>
+          <table class="borderless w-90">
+            <tr>
+              <td class="w-33"><strong>计算机里的时间</strong></td>
+              <td class="w-33">取时间的方法</td>
+              <td class="w-34">等待时间的方法</td>
+            </tr>
+            <tr>
+              <td class="w-33 markdown">
+- 时钟原理
+- 时钟类型
+              </td>
+              <td class="w-33"></td>
+              <td class="w-34"></td>
+            </tr>
+          </table>
       </div>
       
-      <div id="计算机里的时间" class="step slide">
+      <div id="计算机里的时间" class="step slide" data-rel-x="0" data-rel-y="1h">
         <h3>计算机里的时间</h3>
-        <div class="flex">
+        <div class="flex items-center">
           <div class="w-50 markdown f1">
-- 关机时，靠主板上电池供电的RTC模块计时
-- 启动时，操作系统从RTC（Real Time Clock）读取时间
-- 运行过程中，操作系统通过晶振的中断计时
-- 关闭系统时，操作系统把时间同步到RTC中
+- 关机时，RTC模块持续计时
+- 启动时，操作系统从RTC读取时间
+- 运行时，操作系统通过晶振的中断计时
+- 关闭时，操作系统把时间同步到RTC中
+
+**RTC**: Real Time Clock
           </div>
           <img class="w-50" src="images/rtc.png" alt="">
         </div>
       </div>
       
-      <div id="关键值域" class="step slide markdown" data-rel-x="0" data-rel-y="1h">
-### 关键值域
+      <div id="时钟类型" class="step slide">
+        <h3 class="w-100 tc">时钟类型</h3>
+        <div class="flex">
+          <div class="w-50 markdown">
+#### 系统时钟 Wall Clock
+- 可以表示具体年月日时分秒
+- 受校时影响
+- 时间可能倒退
+- 适合用于展示
+          </div>
+          <div class="w-50 markdown">
+#### 单调时钟 Monotonic Clock
+- 从某个时点开始经过的时间
+- **不**受校时影响
+- 时间单调增长
+- 适合用于计算时间差
+          </div>
+        </div>
+      </div>
+
+      <div id="时钟应用场景" class="step slide">
+        <h3>几个应用场景</h3>
+          <ul>
+            <li class="substep">
+              <b class="dib w-50">审计日志中的操作时间：</b>
+              <span class="substep">系统时钟</span>
+            </li>
+            <li class="substep">
+              <b class="dib w-50">通信超时时间：</b>
+              <span class="substep">单调时钟</span>
+            </li>
+            <li class="substep">
+              <b class="dib w-50">删除旧文件：</b>
+              <span class="substep">系统时钟</span>
+            </li>
+            <li class="substep">
+              <b class="dib w-50">检测文件1分钟没有变化：</b>
+              <span class="substep">系统时钟/单调时钟</span>
+            </li>
+          </ul>       
+      </div>
       
+      <div id="取时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="1w" data-rel-y="0" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时间的应用 等待时间的方法">
+          <h2>时间的应用</h2>
+          <table class="borderless w-90">
+            <tr>
+              <td class="w-33">计算机里的时间</td>
+              <td class="w-33"><strong>取时间的方法</strong></td>
+              <td class="w-34">等待时间的方法</td>
+            </tr>
+            <tr>
+              <td class="w-33"></td>
+              <td class="w-33 markdown">
+- 直接读取TSC
+- 系统调用
+- C++标准库
+- cppf/common
+- 时钟的选择
+              </td>
+              <td class="w-34"></td>
+            </tr>
+          </table>
+      </div>
+      
+      <div id="TSC" class="step markdown slide" data-rel-x="0" data-rel-y="1h">
+### 取时间的方法 —— TSC
+      
+某些 Intel 和 AMD 处理器包含一个 TSC 寄存器，以较高的速率增加，通常等于处理器时钟。此计数器的值可以通过 **RDTSC** 或 **RDTSCP** 计算机指令进行读取，以数十或数百个计算机周期提供非常低的访问时间和计算成本 —— 小于 10 ns
+
+> The Time Stamp Counter **was once** an excellent high-resolution, low-overhead way for a program to get CPU timing information.  [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
+      </div>
+      
+      <div id="TSC的问题" class="step markdown slide">
+### TSC的问题
+
+- 并非所有CPU都支持TSC
+- 并非所有CPU的TSC都是固定频率的
+  - 受节能策略影响，CPU频率可能会发生变化
+  - RDMA测试时遇到这个问题
+- 同一主板上不同CPU的TSC数值不保证一致
+- 系统休眠之后恢复，TSC可能会被重置
+- CPU乱序执行可能会影响``RDTSC``的准确性
+      </div>
+      
+      <div id="高精度计时器" class="step markdown slide">
+### 高精度计时器
+
+- 微软[强烈建议](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)不要直接使用``TSC``
+  -  [QueryPerformanceCounter()](https://docs.microsoft.com/en-us/windows/win32/api/profileapi/nf-profileapi-queryperformancecounter)（``QPC``）是最适合取高精度时间，度量时间的接口，避免了直接读取处理器[TSC](#TSC)的困难。配合[QueryPerformanceFrequency()](https://docs.microsoft.com/en-us/windows/win32/api/profileapi/nf-profileapi-queryperformancefrequency)使用
+  - [GetSystemTimePreciseAsFileTime()](https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtimepreciseasfiletime)可用于获取高精度UTC时间
+- Linux上可以使用`clock_gettime(CLOCK_MONOTONIC_RAW)`
+- 使用兼容性更好的[``chrono::high_resolution_clock``](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock)
+      </div>
+      
+      <div id="QueryPerformanceCounter" class="step slide">
+        <div class="markdown">
+### QueryPerformanceCounter
+
+- 根据硬件的情况（有没有``TSC``及其特性）选取合适的时钟源
+- 更新频率很多时候是``TSC``的1/1024
+- 如果没有合适的``TSC``，开销变大
+        </div>
+        <pre><code class="lang-c font-smaller1">LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;
+LARGE_INTEGER Frequency;
+
+QueryPerformanceFrequency(&Frequency); 
+QueryPerformanceCounter(&StartingTime);
+
+// Activity to be timed
+
+QueryPerformanceCounter(&EndingTime);
+ElapsedMicroseconds.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
+
+ElapsedMicroseconds.QuadPart *= 1000000;
+ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;</code></pre>
+      </div>
+      
+      <div id="clock_gettime" class="step slide">
+        <h3>clock_gettime()</h3>
+        <pre><code class="lang-c">int clock_gettime(clockid_t clock_id, struct timespec *tp);
+int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
+        <div>
+          不同的clock_id：
+          <table class="borderless f2">
+            <tr><th>CLOCK_REALTIME</th><td>系统时钟，受校时影响</td></tr>
+            <tr><th>CLOCK_MONOTONIC</th><td>单调时钟，基于系统时钟，受NTP影响</td></tr>
+            <tr><th>CLOCK_MONOTONIC_RAW</th><td>单调时钟，不受校时影响，基于TSC等硬件时钟</td></tr>
+            <tr><th>CLOCK_REALTIME_COARSE</th><td>与CLOCK_REALTIME一样，但精度低（1ms？），代价低</td></tr>
+            <tr><th>CLOCK_MONOTONIC_COARSE</th><td>与CLOCK_MONOTONIC一样，但精度低（1ms？），代价低</td></tr>
+          </table>
+          <div class="flex items-center">
+            <div class="markdown">开销：</div>
+            <div class="markdown f1">
+- ``CLOCK_REALTIME``/``CLOCK_MONOTONIC``：几十ns
+- ``CLOCK_MONOTONIC_RAW``：几百ns
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="std::chrono" class="step markdown slide">
+### std::chrono
+
+- ``std::chrono::system_time``：系统时钟
+- ``std::chrono::steady_clock``：单调时钟
+- ``std::chrono::high_resolution_clock``：高精度时钟
+  - ``std::chrono``提案人Howard Hinnant[指出](https://stackoverflow.com/a/37440647)**不要使用**这个时钟
+      </div>
+      
+      <div id="cppf::common" class="step markdown slide">
+### cppf::common
+      
+      </div>
+      
+      <div id="时钟的选择" class="step markdown slide font-smaller1">
+### 时钟的选择
+
+- 首选直接使用``std::chrono``
+  - 取系统时间用``system_clock``
+  - 取单调时间用``steady_clock``
+- 平台相关的特殊需求
+  - Linux：``clock_gettime(CLOCK_REALTIME)``或``clock_gettime(CLOCK_MONOTONIC_RAW)``
+  - Windows: ``GetSystemTimePreciseAsFileTime()``或``QueryPerformanceCounter()``，精度要求不高可以用``GetTickCount64()``
+- 尽量避免直接用``TSC``
+      </div>
+      
+      <div id="时钟精度越高越好？" class="step slide flex">
+        <div class="markdown w-70 f1">
+### 时钟精度越高越好？
+
+- 时钟精度并不说明一切
+  - 测量的精度取决于时钟精度与取时间的消耗
+    - 3GHz的CPU，``TSC``的精度可以达到0.33ns，获取开销为十几us到几百us，总体精度只能是后者
+  - 时钟漂移影响更大
+    - 出于成本考虑，PC和服务器上使用的晶振的偏差通常在**±30～50ppm**，极个别可能高达500ppm。
+      **ppm**：``parts per million``，每百万单位允许的±偏差。
+- 高精度可能带来高开销
+        </div>
+        <div class="w-30 self-center f2 tc">
+          <h4>100ppm下的测量误差</h4>
+          <table class="striped">
+            <tr><th>测量时段</th><th>累计偏差</th></tr>
+            <tr><td>1 微秒</td><td>± 10 皮秒</td></tr>
+            <tr><td>1 毫秒</td><td>± 10 纳秒</td></tr>
+            <tr><td>1 秒</td><td>± 10 微秒</td></tr>
+            <tr><td>1 小时</td><td>± 3.6 毫秒</td></tr>
+            <tr><td>1 天</td><td>± 0.86 秒</td></tr>
+            <tr><td>1 周</td><td>± 6.08 秒</td></tr>
+          </table>
+        </div>
+      </div>
+      
+      <div id="双向报盘服务器时钟漂移事件" class="step markdown slide font-smaller1">
+### 双向报盘服务器时钟漂移事件
+      
+2012年6月19日双向报盘服务器DM16的时间发生漂移，到9:15时**漂移（慢了）约5秒多**。日志显示，服务器9:14:54:851628收到“允许报单”标志后，将随后587笔委托作为无效委托，做错单打回。
+
+惠普维修工程师判断为**主板故障**，对主板进行了更换。
+
+通信前端在早上启动时，与TANDEM进行校时，然后依据本地时间对接收到的委托进行检查。考虑到在途委托和时间漂移，通信前端留出了**5秒钟**的时间偏差，即9:14:55—15:00:05。如果收到的委托在此时间内即判断为合法，否则判断为非法。
+      </div>
+
+      <div id="时钟注意事项" class="step slide">
+        <h3 class="w-100 tc">注意事项</h3>
+        <h4>时钟不一定均匀</h4>
+        <div class="markdown">
+- 有可能时快时慢
+        </div>
+      </div>
+
+      <div id="时钟注意事项2" class="step slide">
+        <h3 class="w-100 tc">注意事项</h3>
+        <h4>时钟不一定准，特别是不同计算机</h4>
+        <div class="markdown">
+- 可以用同步点计算时间差
+- 可能出现负数
+- 用谁的时间？
+        </div>
+        <div class="notes markdown">
+- 最好避免用本地时间进行业务判断——双向通信机时钟漂移
+        </div>
+      </div>
+
+      <div id="时钟注意事项3" class="step slide">
+        <h3 class="w-100 tc">注意事项</h3>
+        <h4>时钟可能归零</h4>
+        <div class="markdown">
+- GetTickCount()：约49.7天
+- 千年虫
+- time_t的2038问题
+        </div>
+      </div>
+
+      <div id="时钟注意事项4" class="step slide">
+        <h3 class="w-100 tc">注意事项</h3>
+        <h4>正确使用时区</h4>
+        <div class="flex justify-between items-begin">
+          <div class="markdown w-60">
+- 应用内部使用UTC，接口处进行转换
+  - 可能需要使用终端的时区
+  - 本地时间可能会跳变
+    - 夏令时会导致时间重复或跳变
+    - 有些地区会调整时区
+          </div>
+          <div class="markdown w-40">
+- 用谁的时区？
+  - 系统同一的时区
+  - 服务器计算机时区
+  - 客户端计算机时区
+  - 用户可配置
+          </div>
+        </div>
+        <div class="notes markdown">
+- 不建议使用服务器时区，避免服务器时钟导致问题，简化配置基线管理
+- 使用系统配置的时区进行业务处理
+- 使用客户端时区可以提升易用性——邮件系统
+        </div>
+      </div>
+
+      <div id="时钟注意事项5" class="step slide">
+        <h3 class="w-100 tc">注意事项</h3>
+        <h4>关键值域</h4>
+        <div class="markdown">
 - **秒**：可能存在60秒（闰秒）
 - **时区**：精确到分钟（现存最小单位为15分钟）
+        </div>
+      </div>
+
+      <div id="等待时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="2w" data-rel-y="0" data-goto-key-list="arrowleft" data-goto-next-list="取时间的方法">
+          <h2>时间的应用</h2>
+          <table class="borderless w-90">
+            <tr>
+              <td class="w-33">计算机里的时间</td>
+              <td class="w-33">取时间的方法</td>
+              <td class="w-34"><strong>等待时间的方法</strong></td>
+            </tr>
+            <tr>
+              <td class="w-33"></td>
+              <td class="w-33"></td>
+              <td class="w-34 markdown">
+- 非阻塞等待
+- 忙循环
+- 注意事项
+              </td>
+            </tr>
+          </table>
+      </div>
+
+      <div id="非阻塞等待" class="step slide markdown" data-rel-x="0" data-rel-y="1h">
+### 非阻塞等待
+      
+- 使用``usleep()``、``this_thread::sleep_for()``等方法。
+- 等待期间不占用CPU
+- 等待时间可能不准确
+  - Windows一般是1/64秒（15.625毫秒）等倍数
+  - 有API提升精度，但会导致计时漂移ms
+- 适用于普遍情况
+      </div>
+
+      <div id="双向小站时间漂移问题" class="step slide cf">
+        <h2>20101220版本双向小站时间漂移问题</h2>
+
+        <pre class="fr"><code class="lang-c">#define BUSINESS_TIME 50
+
+While(1){
+  timeBeginPeriod(1);
+  Sleep(10);
+  timeEndPeriod(1);
+  Sleep(BUSINESS_TIME);
+}</code></pre>
+
+        <div class="markdown f1">
+券商反映在升级到新版双向小站（版本号20101220）之后，机器本地时间会逐渐走快，但不影响正常交易报盘。早上小站与主站校时后，到中午闭市，本地时间快了45秒。换回升级前的小站程序（版本号20070118）问题消失。
+
+问题原因定位到设置系统时间精度的两个函数**timeBeginPeriod** 和**timeEndPeriod**。
+
+测试程序在各台机器上运行的五分钟内系统时间出现了5-20秒不等的偏移（时钟加快）。业务时间越长，则时钟偏差值会越大
+        </div>
+      </div>
+
+      <div id="忙循环" class="step slide markdown">
+### 忙循环
+    
+忙循环查询当前时间判断是否到达结束时间。
+
+- 占用一个核
+- 精度为时钟查询精度
+- 可能受进程调度影响
+- 适用于对精度要求高、等待时间短的情况
+- 要选择合适的时钟
+      </div>
+
+      <div id="定时器注意事项" class="step markdown slide">
+### 注意事项
+
+- 等待时间可能长或短于预期时间
+- 区分*每D时间处理一次*与*每**隔**D时间处理一次*
+  - 前者的D时间包括处理时间
+    - 从处理前开始计时
+    - 需要考虑处理时间大于D的情况
+    - 一般不能直接等待D时间
       </div>
       
-      <div id="取时间" class="step markdown slide">
-### 取时间
-      
+      <div id="参考资料" class="step markdown slide font-smaller2">
+### 参考资料
+- [获取高分辨率时间戳](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)（[Acquiring high-resolution time stamps](https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)）
+- [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
+- [The Clock Mini-HOWTO: How Linux Keeps Track of Time](https://tldp.org/HOWTO/Clock-2.html)
+- [A Foundation to Sleep On](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2661.htm)
+- [计算机时间到底是怎么来的？程序员必看的时间知识！ | Kaito's Blog](http://kaito-kidd.com/2021/07/08/how-does-computer-time-come-from/)
+- [System time - ArchWiki](https://wiki.archlinux.org/title/System_time)
+- [人人都知道的时区，背后竟然有这么多奥秘-云社区-华为云](https://bbs.huaweicloud.com/blogs/detail/243151)
+- [彻底弄懂GMT、UTC、时区和夏令时](https://zhuanlan.zhihu.com/p/135951778)
+- [时区列表 - 维基百科，自由的百科全书](https://zh.m.wikipedia.org/wiki/%E6%97%B6%E5%8C%BA%E5%88%97%E8%A1%A8)
+- [中国时区 - 维基百科，自由的百科全书](https://zh.m.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B%E6%99%82%E5%8D%80)
       </div>
-      
-      
       
       
       <div id="overview" class="step slide noskip" data-x="3000" data-y="4000" data-scale=8 data-rotate=0>
@@ -236,7 +603,7 @@
 
     <div id="impress-help"></div>
 
-    <!-- <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script> -->
+    <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script>
     <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script>
     <script src="impress.js/js/impress.js" charset="utf-8"></script>
     <script charset="utf-8">impress().init();</script>
