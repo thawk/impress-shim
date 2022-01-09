@@ -446,44 +446,72 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
 通信前端在早上启动时，与TANDEM进行校时，然后依据本地时间对接收到的委托进行检查。考虑到在途委托和时间漂移，通信前端留出了**5秒钟**的时间偏差，即9:14:55—15:00:05。如果收到的委托在此时间内即判断为合法，否则判断为非法。
       </div>
 
-      <div id="时钟注意事项" class="step slide" data-rel-x="0" data-rel-y="1h">
-        <h3 class="w-100 tc">注意事项</h3>
-        <h4>时钟不一定均匀</h4>
-        <div class="markdown">
-- 有可能时快时慢
+      <div id="时钟编程建议" class="step slide" data-rel-x="0" data-rel-y="1h">
+        <h3 class="w-100 tc">编程建议</h3>
+        <div class="flex f1">
+          <div class="w-60 markdown">
+- 选取适当的值域
+  - 时间类型建议用有符号类型，方便计算
+  - **秒**：可能存在60秒（闰秒）
+  - **时区**：精确到分钟
+- 比较时间时，避免减法，防止正整数类型问题
+  - ``now-begin&gt;=dur`` ⇒ ``now&gt;=begin+dur``
+  - 时钟可能倒退，导致``now-begin &lt; 0``
+  - 如果时钟为无符号类型，将得到很大的数值
+          </div>
+          <div class="w-40">
+            <ul>
+              <li>避免不必要的多次取时间：
+                <ul>
+                  <li>增加消耗</li>
+                  <li>两次取值不同，出现非预期结果</li>
+                </ul>
+                <pre><code class="lang-c">if (now() - begin &lt; interval)
+  sleep_for(begin + interval - now());</code></pre>
+                <p class="substep"><code>begin+interval-now()</code>可能小于零</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div id="时钟注意事项2" class="step slide" data-rel-x="1w" data-rel-y="0">
-        <h3 class="w-100 tc">注意事项</h3>
-        <h4>时钟不一定准，特别是不同计算机</h4>
+      <div id="时钟编程建议2" class="step slide" data-rel-x="1w" data-rel-y="0">
+        <h3 class="w-100 tc">编程建议</h3>
+        <h4>时钟不一定准，特别是跨计算机比较</h4>
         <div class="markdown">
 - 可以用同步点计算时间差
-- 可能出现负数
-- 用谁的时间？
+  - 假定一条消息收发为同时或有合理的时延，计算时钟偏差
+- 同步计算机时间流动不均匀，可能出现负数
+- 业务逻辑避免用本机时间
+  - 不同机器不一致
+  - 客户端有被干扰的可能
+  - 交易系统用时钟源时间，以撮合判断为准
         </div>
         <div class="notes markdown">
 - 最好避免用本地时间进行业务判断——双向通信机时钟漂移
+- 对敲门的影响
         </div>
       </div>
 
-      <div id="时钟注意事项3" class="step slide">
-        <h3 class="w-100 tc">注意事项</h3>
+      <div id="时钟编程建议3" class="step slide">
+        <h3 class="w-100 tc">编程建议</h3>
         <h4>时钟可能归零</h4>
         <div class="markdown">
 - GetTickCount()：约49.7天
-- 千年虫
-- time_t的2038问题
+  - 选择合适的API，如``GetTickCount64()``
+  - 不直接比数值大小，假定时间差小于值域一半以判定先后
+- 千年虫及``time_t``的2038问题
+  - 选择合适的API
         </div>
       </div>
 
-      <div id="时钟注意事项4" class="step slide">
-        <h3 class="w-100 tc">注意事项</h3>
+      <div id="时钟编程建议4" class="step slide">
+        <h3 class="w-100 tc">编程建议</h3>
         <h4>正确使用时区</h4>
         <div class="flex justify-between items-begin">
           <div class="markdown w-60">
 - 应用内部使用UTC，接口处进行转换
-  - 可能需要使用终端的时区
+  - 可能需要使用用户终端的时区
   - 本地时间可能会跳变
     - 夏令时会导致时间重复或跳变
     - 有些地区会调整时区
@@ -503,15 +531,6 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="时钟注意事项5" class="step slide">
-        <h3 class="w-100 tc">注意事项</h3>
-        <h4>关键值域</h4>
-        <div class="markdown">
-- **秒**：可能存在60秒（闰秒）
-- **时区**：精确到分钟（现存最小单位为15分钟）
-        </div>
-      </div>
-
       <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-x="0" data-rel-y="3h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 参考资料">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
@@ -526,7 +545,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
               <td class="w-34 markdown">
 - 非阻塞等待
 - 忙循环
-- 注意事项
+- 编程建议
               </td>
             </tr>
           </table>
@@ -576,8 +595,8 @@ While(1){
 - 要选择合适的时钟
       </div>
 
-      <div id="定时器注意事项" class="step markdown slide">
-### 注意事项
+      <div id="定时器编程建议" class="step markdown slide">
+### 编程建议
 
 - 等待时间可能长或短于预期时间
 - 区分*每D时间处理一次*与*每**隔**D时间处理一次*
