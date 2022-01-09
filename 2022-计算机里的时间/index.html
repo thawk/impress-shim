@@ -20,7 +20,7 @@
     <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
       <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-      <div id="title" class="step slide title" data-x="0" data-y="0" data-z=1100>
+      <div id="title" class="step slide title" data-rel-position="relative" data-x="0" data-y="-1h" data-z=1100>
         <h1>计算机里的时间</h1>
         <p>交易结算研发部 谭浩通</p>
         <p><small>2022-01-11</small></p>
@@ -38,11 +38,12 @@
         </ul>
       </div>
 
-      <div id="时间的由来" class="step slide title box" data-rel-x="-0.5w" data-goto-key-list="ArrowRight" data-goto-next-list="时区的由来">
+      <div id="时间的由来" class="step slide title box flex flex-column justify-center" data-rel-x="1w" data-rel-y="-1h" data-goto-key-list="ArrowDown" data-goto-next-list="时区的由来">
           <h2>时间的由来</h2>
+          <img class="h-75 center" src="images/记忆的永恒.jpg" alt=""/></li>
       </div>
 
-      <div id="自然时间" class="step slide" data-rel-x="0">
+      <div id="自然时间" class="step slide" data-rel-x="1w" data-rel-y="0">
         <h3>自然时间</h3>
         <p>根据自然（天文）现象定义时间</p>
       </div>
@@ -72,7 +73,7 @@
         </div>
       </div>
 
-      <div id="世界时" class="step slide" data-rel-x="-0.25w" data-rel-y="0.75h">
+      <div id="世界时" class="step slide" data-rel-to="自然时间" data-rel-x="1w" data-rel-y="0">
         <h3>世界时</h3>
         <ul>
           <li>对一年内所有天的长度取平均，得到相对平均的天和相对平均的秒</li>
@@ -87,7 +88,7 @@
         </div>
       </div>
 
-      <div id="原子钟" class="step slide" data-rel-x="0" data-rel-y="1h">
+      <div id="原子钟" class="step slide">
         <h3>原子钟</h3>
         <ul>
           <li>地球自转变慢，以此定义的时间不准</li>
@@ -117,8 +118,9 @@
         </div>
       </div>
       
-      <div id="时区的由来" class="step slide title box" data-rel-to="目录" data-rel-y="1h" data-rel-x="0.5w" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时间的由来 时间的应用">
+      <div id="时区的由来" class="step slide title box flex flex-column justify-center" data-rel-to="时间的由来" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的由来 时间的应用">
           <h2>时区的由来</h2>
+          <img class="h-75 center" src="images/World_Time_Zones_map.png" alt=""/>
           <div class="notes markdown">
 - 为什么要有时区？
 - 为什么没有``Asia/Beijing``时区？
@@ -126,7 +128,7 @@
           </div>
       </div>
       
-      <div id="为什么要有时区？" class="step slide" data-rel-x="0">
+      <div id="为什么要有时区？" class="step slide" data-rel-x="1w" data-rel-y="0">
         <h3>为什么要有时区？</h3>
         <p>交通发达 → 旅行速度加快 → 跨时区</p>
 
@@ -196,7 +198,7 @@
   - 北京时间使用**Asia/Shanghai**
       </div>
       
-      <div id="时间的应用" class="step slide title box" data-rel-to="目录" data-rel-x="1.5w" data-rel-y="0" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时区的由来 取时间的方法">
+      <div id="时间的应用" class="step slide title box" data-rel-to="时区的由来" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时区的由来 取时间的方法">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -215,7 +217,7 @@
           </table>
       </div>
       
-      <div id="计算机里的时间" class="step slide" data-rel-x="0" data-rel-y="1h">
+      <div id="计算机里的时间" class="step slide" data-rel-x="1w" data-rel-y="0">
         <h3>计算机里的时间</h3>
         <div class="flex items-center">
           <div class="w-50 markdown f1">
@@ -272,7 +274,7 @@
           </ul>       
       </div>
       
-      <div id="取时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="1w" data-rel-y="0" data-goto-key-list="ArrowLeft ArrowRight" data-goto-next-list="时间的应用 等待时间的方法">
+      <div id="取时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的应用 等待时间的方法">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -286,7 +288,7 @@
 - 直接读取TSC
 - 系统调用
 - C++标准库
-- cppf/common
+- 交易系统
 - 时钟的选择
               </td>
               <td class="w-34"></td>
@@ -294,7 +296,7 @@
           </table>
       </div>
       
-      <div id="TSC" class="step markdown slide" data-rel-x="0" data-rel-y="1h">
+      <div id="TSC" class="step markdown slide" data-rel-x="1w" data-rel-y="0">
 ### 取时间的方法 —— TSC
       
 某些 Intel 和 AMD 处理器包含一个 TSC 寄存器，以较高的速率增加，通常等于处理器时钟。此计数器的值可以通过 **RDTSC** 或 **RDTSCP** 计算机指令进行读取，以数十或数百个计算机周期提供非常低的访问时间和计算成本 —— 小于 10 ns
@@ -370,7 +372,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
       
-      <div id="std::chrono" class="step markdown slide">
+      <div id="std::chrono" class="step markdown slide" data-rel-x="0" data-rel-y="1h">
 ### std::chrono
 
 - ``std::chrono::system_time``：系统时钟
@@ -379,9 +381,21 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
   - ``std::chrono``提案人Howard Hinnant[指出](https://stackoverflow.com/a/37440647)**不要使用**这个时钟
       </div>
       
-      <div id="cppf::common" class="step markdown slide">
-### cppf::common
+      <div id="交易系统" class="step markdown slide more-text" data-rel-x="-1w" data-rel-y="0">
+### 交易系统
       
+- 取时延时间戳：``cppf::sts::GetLatencyTimestamp()``
+  - 专用于发送时延采样，可能兼容``PTP``等手段
+  - 不要用于其他处理
+- 处理系统时间：``cppf::common::util::DateTime``
+  - 可以取时区、进行时区转换
+    - 支持UTC时区、本地时区（服务器时区）、接口时区（配置）
+  - 适合用作业务时间
+- 单调时钟：``cppf::common::util::SteadyClock``
+  - 封装了``chrono::steady_clock``
+  - 增加了测试模式，方便单元测试
+  - 不可重演
+  - 适合通信超时等逻辑
       </div>
       
       <div id="时钟的选择" class="step markdown slide font-smaller1">
@@ -432,7 +446,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
 通信前端在早上启动时，与TANDEM进行校时，然后依据本地时间对接收到的委托进行检查。考虑到在途委托和时间漂移，通信前端留出了**5秒钟**的时间偏差，即9:14:55—15:00:05。如果收到的委托在此时间内即判断为合法，否则判断为非法。
       </div>
 
-      <div id="时钟注意事项" class="step slide">
+      <div id="时钟注意事项" class="step slide" data-rel-x="0" data-rel-y="1h">
         <h3 class="w-100 tc">注意事项</h3>
         <h4>时钟不一定均匀</h4>
         <div class="markdown">
@@ -440,7 +454,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="时钟注意事项2" class="step slide">
+      <div id="时钟注意事项2" class="step slide" data-rel-x="1w" data-rel-y="0">
         <h3 class="w-100 tc">注意事项</h3>
         <h4>时钟不一定准，特别是不同计算机</h4>
         <div class="markdown">
@@ -498,7 +512,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="等待时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="2w" data-rel-y="0" data-goto-key-list="arrowleft" data-goto-next-list="取时间的方法">
+      <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-x="0" data-rel-y="3h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 参考资料">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -518,7 +532,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
           </table>
       </div>
 
-      <div id="非阻塞等待" class="step slide markdown" data-rel-x="0" data-rel-y="1h">
+      <div id="非阻塞等待" class="step slide markdown" data-rel-x="1w" data-rel-y="0">
 ### 非阻塞等待
       
 - 使用``usleep()``、``this_thread::sleep_for()``等方法。
@@ -530,7 +544,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
       </div>
 
       <div id="双向小站时间漂移问题" class="step slide cf">
-        <h2>20101220版本双向小站时间漂移问题</h2>
+        <h3>20101220版本双向小站时间漂移问题</h3>
 
         <pre class="fr"><code class="lang-c">#define BUSINESS_TIME 50
 
@@ -573,8 +587,8 @@ While(1){
     - 一般不能直接等待D时间
       </div>
       
-      <div id="参考资料" class="step markdown slide font-smaller2">
-### 参考资料
+      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法">
+## 参考资料
 - [获取高分辨率时间戳](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)（[Acquiring high-resolution time stamps](https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)）
 - [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
 - [The Clock Mini-HOWTO: How Linux Keeps Track of Time](https://tldp.org/HOWTO/Clock-2.html)
@@ -587,8 +601,7 @@ While(1){
 - [中国时区 - 维基百科，自由的百科全书](https://zh.m.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B%E6%99%82%E5%8D%80)
       </div>
       
-      
-      <div id="overview" class="step slide noskip" data-x="3000" data-y="4000" data-scale=8 data-rotate=0>
+      <div id="overview" class="step slide noskip" data-x="5940" data-y="3780" data-scale=8 data-rotate=0>
         <div id="signature" class="absolute right-0 bottom-0 center">
           <p>Power by <em><a href="http://impress.js.org">impress.js<sup>*</sup></a></em></p>
         </div>
