@@ -27,14 +27,17 @@
       </div>
 
       <div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
-        <h3 class="w-100 tc">目录</h3>
+        <h3 class="w-100 tc pb4">目录</h3>
         <ul class="flex list">
-          <li class="w-33 tc pa3">时间的由来<br>
-            <img class="h-75" src="images/记忆的永恒.jpg" alt=""/></li>
-          <li class="w-34 tc pa3">时区的由来<br>
-            <img class="h-75" src="images/World_Time_Zones_map.png" alt=""/></li>
-          <li class="w-33 tc pa3">时间的应用<br>
-            <img class="h-75" src="images/computer-clock.jpg" alt=""/></li>
+          <li class="w-33 tc pa3">
+            <img class="h-75" src="images/记忆的永恒.jpg" alt=""/><br>
+            时间的由来</li>
+          <li class="w-34 tc pa3">
+            <img class="h-75" src="images/World_Time_Zones_map.png" alt=""/><br>
+            时区的由来</li>
+          <li class="w-33 tc pa3">
+            <img class="h-75" src="images/computer-clock.jpg" alt=""/><br>
+            时间的应用</li>
         </ul>
       </div>
 
@@ -73,12 +76,15 @@
         </div>
       </div>
 
-      <div id="世界时" class="step slide" data-rel-to="自然时间" data-rel-x="1w" data-rel-y="0">
+      <div id="skip1" class="step slide " data-rel-to="自然时间" data-rel-x="0" data-rel-y="0">
+      </div>
+
+      <div id="世界时" class="step slide" data-rel-x="1w" data-rel-y="0">
         <h3>世界时</h3>
         <ul>
-          <li>对一年内所有天的长度取平均，得到相对平均的天和相对平均的秒</li>
-          <li>在 1927 年，人们以基于“天文现象”+“钟表计时”，确立了第一套时间标准：世界时（Universal Time，简称 UT）</li>
-          <li>格林尼治标准时间（Greenwich Mean Time，简称 GMT），就是指的世界时</li>
+          <li>对一年内所有天的长度取平均，得到相对平均的天和秒</li>
+          <li>在 1927 年，人们以基于“天文现象”+“钟表计时”，确立了第一套时间标准：<strong>世界时</strong>（Universal Time，简称 UT）</li>
+          <li>格林尼治标准时间（Greenwich Mean Time，简称 <strong>GMT</strong>），就是指的世界时</li>
         </ul>
         <div class="notes">
           <ul>
@@ -92,8 +98,8 @@
         <h3>原子钟</h3>
         <ul>
           <li>地球自转变慢，以此定义的时间不准</li>
-          <li>在 1967 年，国际度量衡大会决定采用，以铯原子跃迁 9192631770 个周期，所持续的时间长度定义为 1 秒</li>
-          <li>基于原子钟确立的时间标准，叫做“国际原子时”（International Atomic Time，简称 TAI）</li>
+          <li>在 1967 年，国际度量衡大会决定以<strong>铯原子</strong>跃迁 9,192,631,770 个周期，所持续的时间长度定义为 1 秒</li>
+          <li>基于原子钟确立的时间标准，叫做“<strong>国际原子时</strong>”（International Atomic Time，简称 TAI）</li>
         </ul>
         <div class="notes">
           <ul>
@@ -168,12 +174,18 @@
           <li>国际日期变更线</li>
           </ul></div>
       </div>
+
+      <div id="世界时区图" class="step slide" data-rel-x="0.25w" data-scale="0.5">
+      </div>
       
-      <div id="中华民国时期的时区" class="step slide">
+      
+      <div id="中华民国时期的时区" class="step slide" data-rel-to="时区的定义" data-rel-x="1w">
         <h3>中华民国时期的时区</h3>
 
         <div class="flex items-center justify-center">
           <div class="markdown f2 w-40">
+1912年中华民国成立，分为五个时区：
+
 1. ``Asia/Kashgar``，**昆仑时区**
    - 东经82度半，GMT+5:30
 2. ``Asia/Urumqi``，**新藏时区**
@@ -202,7 +214,7 @@
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
-              <td class="w-33"><strong>计算机里的时间</strong></td>
+              <td class="w-33"><strong>计算机怎样计时</strong></td>
               <td class="w-33">取时间的方法</td>
               <td class="w-34">等待时间的方法</td>
             </tr>
@@ -217,8 +229,8 @@
           </table>
       </div>
       
-      <div id="计算机里的时间" class="step slide" data-rel-x="1w" data-rel-y="0">
-        <h3>计算机里的时间</h3>
+      <div id="计算机怎样计时" class="step slide" data-rel-x="1w" data-rel-y="0">
+        <h3>计算机怎样计时</h3>
         <div class="flex items-center">
           <div class="w-50 markdown f1">
 - 关机时，RTC模块持续计时
@@ -256,19 +268,19 @@
         <h3>几个应用场景</h3>
           <ul>
             <li class="substep">
-              <b class="dib w-50">审计日志中的操作时间：</b>
+              <strong class="dib w-50">审计日志中的操作时间：</strong>
               <span class="substep">系统时钟</span>
             </li>
             <li class="substep">
-              <b class="dib w-50">通信超时时间：</b>
+              <strong class="dib w-50">通信超时时间：</strong>
               <span class="substep">单调时钟</span>
             </li>
             <li class="substep">
-              <b class="dib w-50">删除旧文件：</b>
+              <strong class="dib w-50">删除旧文件：</strong>
               <span class="substep">系统时钟</span>
             </li>
             <li class="substep">
-              <b class="dib w-50">检测文件1分钟没有变化：</b>
+              <strong class="dib w-50">检测文件1分钟没有变化：</strong>
               <span class="substep">系统时钟/单调时钟</span>
             </li>
           </ul>       
@@ -278,7 +290,7 @@
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
-              <td class="w-33">计算机里的时间</td>
+              <td class="w-33">计算机怎样计时</td>
               <td class="w-33"><strong>取时间的方法</strong></td>
               <td class="w-34">等待时间的方法</td>
             </tr>
@@ -328,7 +340,7 @@
       
       <div id="QueryPerformanceCounter" class="step slide">
         <div class="markdown">
-### QueryPerformanceCounter
+### QueryPerformanceCounter - Windows
 
 - 根据硬件的情况（有没有``TSC``及其特性）选取合适的时钟源
 - 更新频率很多时候是``TSC``的1/1024
@@ -350,7 +362,7 @@ ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;</code></pre>
       </div>
       
       <div id="clock_gettime" class="step slide">
-        <h3>clock_gettime()</h3>
+        <h3>clock_gettime() - Linux</h3>
         <pre><code class="lang-c">int clock_gettime(clockid_t clock_id, struct timespec *tp);
 int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         <div>
@@ -535,7 +547,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
-              <td class="w-33">计算机里的时间</td>
+              <td class="w-33">计算机怎样计时</td>
               <td class="w-33">取时间的方法</td>
               <td class="w-34"><strong>等待时间的方法</strong></td>
             </tr>
@@ -606,7 +618,7 @@ While(1){
     - 一般不能直接等待D时间
       </div>
       
-      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法">
+      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法" data-goto="overview">
 ## 参考资料
 - [获取高分辨率时间戳](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)（[Acquiring high-resolution time stamps](https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)）
 - [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
@@ -618,6 +630,113 @@ While(1){
 - [彻底弄懂GMT、UTC、时区和夏令时](https://zhuanlan.zhihu.com/p/135951778)
 - [时区列表 - 维基百科，自由的百科全书](https://zh.m.wikipedia.org/wiki/%E6%97%B6%E5%8C%BA%E5%88%97%E8%A1%A8)
 - [中国时区 - 维基百科，自由的百科全书](https://zh.m.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B%E6%99%82%E5%8D%80)
+      </div>
+      
+      <div id="等待0us测试结果" class="step slide f2" data-rel-to="目录" data-rel-x="0" data-rel-y="1h">
+        <h3>等待0us测试结果</h3>
+              
+        在10.132.37.206（RHEL 6）上测试，重复100次：
+
+        <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
+Repeat 100 times
+
+Expected 0 us, mean     9 ns, min    8 ns, max    10 ns, 90%    10 ns, CV  11.11%, with nop
+Expected 0 us, mean 51533 ns, min 4384 ns, max 55440 ns, 90% 54262 ns, CV  16.60%, with usleep()
+Expected 0 us, mean    10 ns, min    8 ns, max    23 ns, 90%    23 ns, CV  39.63%, with std::this_thread::sleep_for()
+Expected 0 us, mean   264 ns, min  236 ns, max  2208 ns, 90%   249 ns, CV  74.01%, with BusyWaitChrono&lt;system_clock&gt;()
+Expected 0 us, mean   257 ns, min  243 ns, max   737 ns, 90%   259 ns, CV  18.98%, with BusyWaitChrono&lt;steady_clock&gt;()
+Expected 0 us, mean   246 ns, min  238 ns, max   368 ns, 90%   247 ns, CV   5.33%, with BusyWaitChrono&lt;high_resolution_clock&gt;()
+Expected 0 us, mean    27 ns, min   26 ns, max    29 ns, 90%    29 ns, CV   3.83%, with BusyGetTSC()
+Expected 0 us, mean    74 ns, min   64 ns, max   823 ns, 90%    68 ns, CV 102.66%, with clock_gettime(CLOCK_REALTIME)
+Expected 0 us, mean    22 ns, min   16 ns, max   167 ns, 90%    22 ns, CV  68.35%, with clock_gettime(CLOCK_REALTIME_COARSE)
+Expected 0 us, mean    71 ns, min   66 ns, max   290 ns, 90%    76 ns, CV  31.81%, with clock_gettime(CLOCK_MONOTONIC)
+Expected 0 us, mean    25 ns, min   21 ns, max   210 ns, 90%    26 ns, CV  76.14%, with clock_gettime(CLOCK_MONOTONIC_COARSE)
+Expected 0 us, mean   255 ns, min  244 ns, max   523 ns, 90%   256 ns, CV  11.09%, with clock_gettime(CLOCK_MONOTONIC_RAW)
+        </code><pre>
+      </div>
+      
+      <div id="等待1us测试结果" class="step slide f2" data-rel-x="0" data-rel-y="0.5h">
+        <h3>等待1us测试结果</h3>
+      
+        <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
+Repeat 100 times
+
+Expected 1 us, mean      9 ns, min      8 ns, max      10 ns, 90%      10 ns, CV  11.18%, with nop
+Expected 1 us, mean  54960 ns, min  35770 ns, max   65792 ns, 90%   56350 ns, CV   6.01%, with usleep()
+Expected 1 us, mean  55410 ns, min  30386 ns, max   60493 ns, 90%   56776 ns, CV   5.27%, with std::this_thread::sleep_for()
+Expected 1 us, mean   1306 ns, min   1155 ns, max   14872 ns, 90%    1181 ns, CV 104.37%, with BusyWaitChrono&lt;system_clock&gt;()
+Expected 1 us, mean   1207 ns, min   1190 ns, max    1555 ns, 90%    1209 ns, CV   2.93%, with BusyWaitChrono&lt;steady_clock&gt;()
+Expected 1 us, mean   1219 ns, min   1156 ns, max    6430 ns, 90%    1169 ns, CV  42.98%, with BusyWaitChrono&lt;high_resolution_clock&gt;()
+Expected 1 us, mean   1029 ns, min   1023 ns, max    1034 ns, 90%    1034 ns, CV   0.46%, with BusyGetTSC()
+Expected 1 us, mean   1060 ns, min   1044 ns, max    1615 ns, 90%    1062 ns, CV   5.32%, with clock_gettime(CLOCK_REALTIME)
+Expected 1 us, mean 996445 ns, min 608426 ns, max 1391654 ns, 90% 1235119 ns, CV  19.36%, with clock_gettime(CLOCK_REALTIME_COARSE)
+Expected 1 us, mean   1067 ns, min   1044 ns, max    1171 ns, 90%    1068 ns, CV   1.07%, with clock_gettime(CLOCK_MONOTONIC)
+Expected 1 us, mean 998378 ns, min 616314 ns, max 1384229 ns, 90% 1033545 ns, CV  13.04%, with clock_gettime(CLOCK_MONOTONIC_COARSE)
+Expected 1 us, mean   1210 ns, min   1198 ns, max    1408 ns, 90%    1212 ns, CV   1.77%, with clock_gettime(CLOCK_MONOTONIC_RAW)
+        </code><pre>
+      </div>
+      
+      <div id="等待2us测试结果" class="step slide f2">
+        <h3>等待2us测试结果</h3>
+              
+        <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
+Repeat 100 times
+
+Expected 2 us, mean      9 ns, min      8 ns, max      14 ns, 90%      10 ns, CV 12.47%, with nop
+Expected 2 us, mean  54972 ns, min  19146 ns, max   77643 ns, 90%   56541 ns, CV 10.82%, with usleep()
+Expected 2 us, mean  55246 ns, min  27143 ns, max   80903 ns, 90%   57504 ns, CV  7.95%, with std::this_thread::sleep_for()
+Expected 2 us, mean   2158 ns, min   2133 ns, max    3290 ns, 90%    2151 ns, CV  5.33%, with BusyWaitChrono&lt;system_clock&gt;()
+Expected 2 us, mean   2225 ns, min   2186 ns, max    2567 ns, 90%    2232 ns, CV  1.60%, with BusyWaitChrono&lt;steady_clock&gt;()
+Expected 2 us, mean   2224 ns, min   2133 ns, max    9948 ns, 90%    2157 ns, CV 34.91%, with BusyWaitChrono&lt;high_resolution_clock&gt;()
+Expected 2 us, mean   2032 ns, min   2026 ns, max    2034 ns, 90%    2034 ns, CV  0.08%, with BusyGetTSC()
+Expected 2 us, mean   2060 ns, min   2047 ns, max    2658 ns, 90%    2061 ns, CV  2.93%, with clock_gettime(CLOCK_REALTIME)
+Expected 2 us, mean 994512 ns, min 471108 ns, max 1394528 ns, 90% 1347994 ns, CV 20.53%, with clock_gettime(CLOCK_REALTIME_COARSE)
+Expected 2 us, mean   2053 ns, min   2049 ns, max    2166 ns, 90%    2054 ns, CV  0.60%, with clock_gettime(CLOCK_MONOTONIC)
+Expected 2 us, mean 997366 ns, min 624954 ns, max 1361290 ns, 90% 1154957 ns, CV 13.35%, with clock_gettime(CLOCK_MONOTONIC_COARSE)
+Expected 2 us, mean   2195 ns, min   2178 ns, max    2364 ns, 90%    2199 ns, CV  0.85%, with clock_gettime(CLOCK_MONOTONIC_RAW)
+        </code><pre>
+      </div>
+      
+      <div id="等待10us测试结果" class="step slide f2">
+        <h3>等待10us测试结果</h3>
+              
+        <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
+Repeat 100 times
+
+Expected 10 us, mean      9 ns, min      7 ns, max      12 ns, 90%      10 ns, CV 11.79%, with nop
+Expected 10 us, mean  62596 ns, min  24570 ns, max   77347 ns, 90%   64518 ns, CV 11.96%, with usleep()
+Expected 10 us, mean  63933 ns, min  46970 ns, max   79494 ns, 90%   65629 ns, CV  4.83%, with std::this_thread::sleep_for()
+Expected 10 us, mean  10218 ns, min  10141 ns, max   11531 ns, 90%   10278 ns, CV  1.36%, with BusyWaitChrono&lt;system_clock&gt;()
+Expected 10 us, mean  10171 ns, min  10133 ns, max   10538 ns, 90%   10201 ns, CV  0.44%, with BusyWaitChrono&lt;steady_clock&gt;()
+Expected 10 us, mean  10180 ns, min  10136 ns, max   11041 ns, 90%   10211 ns, CV  0.88%, with BusyWaitChrono&lt;high_resolution_clock&gt;()
+Expected 10 us, mean  10063 ns, min  10024 ns, max   13788 ns, 90%   10027 ns, CV  3.72%, with BusyGetTSC()
+Expected 10 us, mean  10092 ns, min  10055 ns, max   11583 ns, 90%   10072 ns, CV  1.64%, with clock_gettime(CLOCK_REALTIME)
+Expected 10 us, mean 991051 ns, min 125851 ns, max 1380647 ns, 90% 1003108 ns, CV 11.24%, with clock_gettime(CLOCK_REALTIME_COARSE)
+Expected 10 us, mean  10101 ns, min  10047 ns, max   12849 ns, 90%   10076 ns, CV  2.74%, with clock_gettime(CLOCK_MONOTONIC)
+Expected 10 us, mean 999335 ns, min 615538 ns, max 1382725 ns, 90% 1217447 ns, CV 15.34%, with clock_gettime(CLOCK_MONOTONIC_COARSE)
+Expected 10 us, mean  10201 ns, min  10131 ns, max   11507 ns, 90%   10227 ns, CV  1.34%, with clock_gettime(CLOCK_MONOTONIC_RAW)
+        </code><pre>
+      </div>
+      
+      <div id="等待100us测试结果" class="step slide f2">
+        <h3>等待100us测试结果</h3>
+              
+        <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
+Repeat 100 times
+
+Expected 100 us, mean      9 ns, min      8 ns, max      12 ns, 90%      10 ns, CV 11.21%, with nop
+Expected 100 us, mean 154220 ns, min 112983 ns, max  160977 ns, 90%  156056 ns, CV  3.24%, with usleep()
+Expected 100 us, mean 155330 ns, min 147830 ns, max  169184 ns, 90%  155875 ns, CV  1.07%, with std::this_thread::sleep_for()
+Expected 100 us, mean 100379 ns, min 100163 ns, max  114399 ns, 90%  100308 ns, CV  1.40%, with BusyWaitChrono&lt;system_clock&gt;()
+Expected 100 us, mean 100180 ns, min 100137 ns, max  100493 ns, 90%  100242 ns, CV  0.05%, with BusyWaitChrono&lt;steady_clock&gt;()
+Expected 100 us, mean 100215 ns, min 100138 ns, max  100301 ns, 90%  100250 ns, CV  0.04%, with BusyWaitChrono&lt;high_resolution_clock&gt;()
+Expected 100 us, mean 100090 ns, min 100024 ns, max  106118 ns, 90%  100036 ns, CV  0.61%, with BusyGetTSC()
+Expected 100 us, mean 100070 ns, min 100044 ns, max  101163 ns, 90%  100064 ns, CV  0.11%, with clock_gettime(CLOCK_REALTIME)
+Expected 100 us, mean 994428 ns, min 465340 ns, max 1394699 ns, 90% 1378966 ns, CV 22.75%, with clock_gettime(CLOCK_REALTIME_COARSE)
+Expected 100 us, mean 100068 ns, min 100045 ns, max  100208 ns, 90%  100069 ns, CV  0.02%, with clock_gettime(CLOCK_MONOTONIC)
+Expected 100 us, mean 999414 ns, min 605541 ns, max 1395542 ns, 90% 1000168 ns, CV  7.59%, with clock_gettime(CLOCK_MONOTONIC_COARSE)
+Expected 100 us, mean 100206 ns, min 100136 ns, max  100363 ns, 90%  100237 ns, CV  0.03%, with clock_gettime(CLOCK_MONOTONIC_RAW)
+        </code><pre>
       </div>
       
       <div id="overview" class="step slide noskip" data-x="5940" data-y="3780" data-scale=8 data-rotate=0>
