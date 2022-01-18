@@ -561,7 +561,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-x="0" data-rel-y="3h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 参考资料">
+      <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-x="0" data-rel-y="3h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 要点回顾">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -636,7 +636,29 @@ While(1){
     - 一般不能直接等待D时间
       </div>
       
-      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法" data-goto="overview">
+      <div id="要点回顾" class="step slide" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法">
+        <h3>要点回顾</h3>
+        <div class="flex justify-center f1">
+          <div class="markdown w-60">
+- 区分**系统时钟**与**单调时钟**
+- ``C++``优先使用``chrono::system_clock``与``chrono::steady_clock``
+- 交易系统
+  - 时延时间戳： **``cppf::sts::GetLatencyTimestamp()``**
+  - 系统时间： **``cppf::common::util::DateTime``**
+  - 单调时钟： **``cppf::common::util::SteadyClock``**
+          </div>
+          <div class="markdown w-40">
+- 内部使用**``UTC``**，边界处转换
+- 北京时间``Asia/Shanghai``
+- 选择正确的**类型**与**值域**
+- 一个逻辑**避免多次取时间**
+- 正确处理时间倒退、跳变
+- 业务功能**不依赖**客户端时区与时间
+          </div>
+        </div>
+      </div>
+      
+      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-x="1w" data-rel-y="0" data-goto-next="overview">
 ## 参考资料
 - [获取高分辨率时间戳](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)（[Acquiring high-resolution time stamps](https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)）
 - [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
@@ -759,7 +781,7 @@ Expected 100 us, mean 100206 ns, min 100136 ns, max  100363 ns, 90%  100237 ns, 
         </code><pre>
       </div>
       
-      <div id="overview" class="step slide noskip" data-x="5940" data-y="3780" data-scale=8 data-rotate=0>
+      <div id="overview" class="step slide noskip" data-x="5940" data-y="3780" data-scale=8 data-rotate=0 data-goto-prev="参考资料">
         <div id="signature" class="absolute right-0 bottom-0 center">
           <p>Powered by <a href="http://impress.js.org">impress.js<sup>*</sup></a></p>
         </div>
