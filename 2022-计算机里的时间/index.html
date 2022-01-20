@@ -20,13 +20,13 @@
     <div id="impress" class="nodebug" data-width="1920" data-height="1080" data-autoplay="0" data-max-scale="4">
 
       <!-- title页放到其他页上面，避免在overview页面上被遮挡 -->
-      <div id="title" class="step slide title" data-rel-position="relative" data-x="0" data-y="-1h" data-z=1100>
+      <div id="title" class="step slide title" data-rel-position="relative" data-scale="3" data-x="0" data-y="-200" data-z=1100>
         <h1>计算机里的时间</h1>
         <p>交易结算研发部 谭浩通</p>
         <p><small>2022-01-11</small></p>
       </div>
 
-      <div id="目录" class="step slide" data-rel-x="0" data-rel-y="1080" data-rotate=0 data-z=1000>
+      <div id="目录" class="step slide" data-rel-x="0" data-rel-y="2h" data-rotate=0 data-z=1000>
         <h3 class="w-100 tc pb4">目录</h3>
         <ul class="flex list">
           <li class="w-33 tc pa3">
@@ -41,17 +41,18 @@
         </ul>
       </div>
 
-      <div id="时间的由来" class="step slide title box flex flex-column justify-center" data-rel-x="1w" data-rel-y="-1h" data-goto-key-list="ArrowDown" data-goto-next-list="时区的由来">
+      <div id="时间的由来" class="step slide title box flex flex-column justify-center" data-rotate-z="-90" data-x="-6250" data-y="0" data-goto-key-list="ArrowDown" data-goto-next-list="时区的由来">
           <h2>时间的由来</h2>
           <img height="400" class="center" src="images/记忆的永恒.jpg" alt=""/></li>
       </div>
 
-      <div id="自然时间" class="step slide" data-rel-x="1w" data-rel-y="0">
+      <!-- 以右下角为旋转轴。对向量(w/2, h/2)计算旋转后的位置，以w/2相加前者，以h/2相减后者 -->
+      <div id="自然时间" class="step slide" data-rel-rotate-z="19" data-rel-x="2043.50" data-rel-y="341.97">
         <h3>自然时间</h3>
         <p>根据自然（天文）现象定义时间</p>
       </div>
 
-      <div id="天" class="step slide cf" data-rel-x="-0.25w" data-rel-y="0.25h" data-scale=0.5>
+      <div id="天" class="step slide cf" data-rel-rotate-z="0" data-rel-x="-0.25w" data-rel-y="0.25h" data-scale=0.5>
         <h3 class="tc">天</h3>
         <img class="fr" src="images/日晷.png">
         <ul>
@@ -76,10 +77,10 @@
         </div>
       </div>
 
-      <div id="skip1" class="step slide " data-rel-to="自然时间" data-rel-x="0" data-rel-y="0">
+      <div id="skip1" class="step slide hide-step" data-rel-to="自然时间" data-rel-x="0" data-rel-y="0">
       </div>
 
-      <div id="世界时" class="step slide" data-rel-x="1w" data-rel-y="0">
+      <div id="世界时" class="step slide" data-rel-inherit="自然时间" >
         <h3>世界时</h3>
         <ul>
           <li>对一年内所有天的长度取平均，得到相对平均的天和秒</li>
@@ -125,7 +126,9 @@
         </div>
       </div>
       
-      <div id="时区的由来" class="step slide title box flex flex-column justify-center" data-rel-to="时间的由来" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的由来 时间的应用">
+      <div class="step slide skip hide-step"></div>
+
+      <div id="时区的由来" class="step slide title box flex flex-column justify-center" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的由来 时间的应用">
           <h2>时区的由来</h2>
           <img height="400" class="center" src="images/World_Time_Zones_Map.png" alt=""/>
           <div class="notes markdown">
@@ -135,7 +138,7 @@
           </div>
       </div>
       
-      <div id="为什么要有时区？" class="step slide" data-rel-x="1w" data-rel-y="0">
+      <div id="为什么要有时区？" class="step slide">
         <h3>为什么要有时区？</h3>
         <p>交通发达 → 旅行速度加快 → 跨时区</p>
 
@@ -177,7 +180,7 @@
           </ul></div>
       </div>
 
-      <div id="世界时区图" class="step slide" data-rel-x="0.25w" data-scale="0.5">
+      <div id="世界时区图" class="step slide" data-rel-rotate-z="0" data-rel-x="0.25w" data-rel-y="0" data-scale="0.5">
       </div>
 
       <div id="时区-中国" class="step slide slide skip" data-rel-to="世界时区图" data-rel-x="0.09w" data-rel-y="-0.05h" data-scale="0.15" data-goto="世界时区图">
@@ -186,7 +189,7 @@
       <div id="时区-群岛" class="step slide slide skip" data-rel-to="世界时区图" data-rel-x="-0.2w" data-rel-y="0.02h" data-scale="0.1" data-goto="世界时区图">
       </div>
       
-      <div id="中国时区" class="step slide" data-rel-to="时区的定义" data-rel-x="1w" data-rel-y="0">
+      <div id="中国时区" class="step slide" data-rel-inherit="时区的定义" >
         <h3>中国时区</h3>
 
         <div class="flex items-center justify-center">
@@ -217,7 +220,9 @@
   - 北京时间使用**Asia/Shanghai**
       </div>
       
-      <div id="时间的应用" class="step slide title box" data-rel-to="时区的由来" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时区的由来 取时间的方法">
+      <div class="step slide skip hide-step"></div>
+      
+      <div id="时间的应用" class="step slide title box" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时区的由来 取时间的方法">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -236,7 +241,7 @@
           </table>
       </div>
       
-      <div id="计算机怎样计时" class="step slide" data-rel-x="1w" data-rel-y="0">
+      <div id="计算机怎样计时" class="step slide">
         <h3>计算机怎样计时</h3>
         <div class="flex items-center">
           <div class="w-50 markdown f1">
@@ -298,7 +303,8 @@
         </div>
       </div>
       
-      <div id="取时间的方法" class="step slide title box" data-rel-to="时间的应用" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的应用 等待时间的方法">
+      <!-- <div id="取时间的方法" class="step slide title box" data-rotate-z="80" data-x="-800" data-y="3000" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的应用 等待时间的方法"> -->
+      <div id="取时间的方法" class="step slide title box" data-rel-to="时间的由来" data-rel-rotate-z="0" data-rel-x="0" data-rel-y="1.2h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="时间的应用 等待时间的方法">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -320,7 +326,7 @@
           </table>
       </div>
       
-      <div id="TSC" class="step markdown slide" data-rel-x="1w" data-rel-y="0">
+      <div id="TSC" class="step markdown slide" data-rel-rotate-z="24" data-rel-x="2056.64" data-rel-y="437.15">
 ### 取时间的方法 —— TSC
       
 某些 Intel 和 AMD 处理器包含一个 TSC 寄存器，以较高的速率增加，通常等于处理器时钟。此计数器的值可以通过 **RDTSC** 或 **RDTSCP** 计算机指令进行读取，以数十或数百个计算机周期提供非常低的访问时间和计算成本 —— 约为 10ns 级别
@@ -396,7 +402,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
       
-      <div id="std::chrono" class="step markdown slide" data-rel-x="0" data-rel-y="1h">
+      <div id="std::chrono" class="step markdown slide">
 ### std::chrono
 
 - ``std::chrono::system_time``：系统时钟
@@ -405,7 +411,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
   - ``std::chrono``提案人Howard Hinnant在[Stackoverflow](https://stackoverflow.com/a/37440647)上指出**不要使用**这个时钟
       </div>
       
-      <div id="交易系统" class="step markdown slide more-text" data-rel-x="-1w" data-rel-y="0">
+      <div id="交易系统" class="step markdown slide more-text">
 ### 交易系统
       
 - 取时延时间戳：**``cppf::sts::GetLatencyTimestamp()``**
@@ -476,7 +482,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="时钟编程建议" class="step slide" data-rel-x="0" data-rel-y="1h">
+      <div id="时钟编程建议" class="step slide">
         <h3 class="w-100 tc">编程建议</h3>
         <div class="flex f1">
           <div class="w-60 markdown">
@@ -505,7 +511,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="时钟编程建议2" class="step slide" data-rel-x="1w" data-rel-y="0">
+      <div id="时钟编程建议2" class="step slide">
         <h3 class="w-100 tc">编程建议</h3>
         <h4>时钟不一定准，特别是跨计算机比较</h4>
         <div class="markdown">
@@ -561,7 +567,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
         </div>
       </div>
 
-      <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-x="0" data-rel-y="3h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 要点回顾">
+      <div id="等待时间的方法" class="step slide title box" data-rel-to="取时间的方法" data-rel-rotate="0" data-rel-x="0" data-rel-y="1.2h" data-goto-key-list="ArrowUp ArrowDown" data-goto-next-list="取时间的方法 要点回顾">
           <h2>时间的应用</h2>
           <table class="borderless w-90">
             <tr>
@@ -581,7 +587,7 @@ int clock_getres(clockid_t clock_id, struct timespec *tp);</code></pre>
           </table>
       </div>
 
-      <div id="非独占等待" class="step slide markdown" data-rel-x="1w" data-rel-y="0">
+      <div id="非独占等待" class="step slide markdown" data-rel-rotate-z="34" data-rel-x="2057.84" data-rel-y="629.14">
 ### 非独占等待
       
 - 使用**``usleep()``**、**``this_thread::sleep_for()``**等方法。
@@ -636,8 +642,10 @@ While(1){
     - 一般不能直接等待D时间
       </div>
       
-      <div id="要点回顾" class="step slide" data-rel-to="等待时间的方法" data-rel-x="0" data-rel-y="1h" data-goto-key-list="ArrowUp" data-goto-next-list="等待时间的方法">
-        <h3>要点回顾</h3>
+      <div class="step slide skip hide-step"></div>
+      
+      <div id="要点回顾" class="step slide">
+        <h3 class="tc">要点回顾</h3>
         <div class="flex justify-center f1">
           <div class="markdown w-60">
 - 区分**系统时钟**与**单调时钟**
@@ -658,7 +666,7 @@ While(1){
         </div>
       </div>
       
-      <div id="参考资料" class="step markdown slide font-smaller2" data-rel-x="1w" data-rel-y="0" data-goto-next="overview">
+      <div id="参考资料" class="step markdown slide font-smaller2" data-goto-next="overview">
 ## 参考资料
 - [获取高分辨率时间戳](https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)（[Acquiring high-resolution time stamps](https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps)）
 - [Time Stamp Counter - Wikipedia](https://en.wikipedia.org/wiki/Time_Stamp_Counter)
@@ -673,7 +681,11 @@ While(1){
 - [协调世界时 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E5%8D%8F%E8%B0%83%E4%B8%96%E7%95%8C%E6%97%B6)
       </div>
       
-      <div id="等待0us测试结果" class="step slide f2" data-rel-to="目录" data-rel-x="0" data-rel-y="1h">
+      <div class="step slide title hide-step" data-rel-reset="all" data-scale="3" data-x="10000" data-y="1000">
+        <h1>时延测试结果</h1>
+      </div>
+      
+      <div id="等待0us测试结果" class="step slide f2 hide-step" data-rel-y="1h">
         <h3>等待0us测试结果</h3>
               
         <p>在10.132.37.206（RHEL 6）上测试，重复100次：</p>
@@ -697,7 +709,7 @@ Expected 0 us, mean   255 ns, min  244 ns, max   523 ns, 90%   256 ns, CV  11.09
         </code><pre>
       </div>
       
-      <div id="等待1us测试结果" class="step slide f2" data-rel-x="0" data-rel-y="0.7h">
+      <div id="等待1us测试结果" class="step slide f2 hide-step" data-rel-rotate-z="0" data-rel-x="0" data-rel-y="0.7h">
         <h3>等待1us测试结果</h3>
       
         <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
@@ -718,7 +730,7 @@ Expected 1 us, mean   1210 ns, min   1198 ns, max    1408 ns, 90%    1212 ns, CV
         </code><pre>
       </div>
       
-      <div id="等待2us测试结果" class="step slide f2" data-rel-y="0.5h">
+      <div id="等待2us测试结果" class="step slide f2 hide-step" data-rel-y="0.5h">
         <h3>等待2us测试结果</h3>
               
         <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
@@ -739,7 +751,7 @@ Expected 2 us, mean   2195 ns, min   2178 ns, max    2364 ns, 90%    2199 ns, CV
         </code><pre>
       </div>
       
-      <div id="等待10us测试结果" class="step slide f2">
+      <div id="等待10us测试结果" class="step slide f2 hide-step">
         <h3>等待10us测试结果</h3>
               
         <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
@@ -760,7 +772,7 @@ Expected 10 us, mean  10201 ns, min  10131 ns, max   11507 ns, 90%   10227 ns, C
         </code><pre>
       </div>
       
-      <div id="等待100us测试结果" class="step slide f2">
+      <div id="等待100us测试结果" class="step slide f2 hide-step">
         <h3>等待100us测试结果</h3>
               
         <pre><code>CPU is running at 2499.99 MHz, 0.400002 ns per cycle
@@ -781,7 +793,7 @@ Expected 100 us, mean 100206 ns, min 100136 ns, max  100363 ns, 90%  100237 ns, 
         </code><pre>
       </div>
       
-      <div id="overview" class="step slide noskip" data-x="5940" data-y="3780" data-scale=8 data-rotate=0 data-goto-prev="参考资料">
+      <div id="overview" class="step slide noskip" data-x="0" data-y="0" data-scale=14 data-rotate=0 data-goto-prev="参考资料">
         <div id="signature" class="absolute right-0 bottom-0 center">
           <p>Powered by <a href="http://impress.js.org">impress.js<sup>*</sup></a></p>
         </div>
@@ -799,7 +811,13 @@ Expected 100 us, mean 100206 ns, min 100136 ns, max  100363 ns, 90%  100237 ns, 
     <script src="impress.js/extras/highlight/highlight.pack.js" charset="utf-8"></script>
     <script src="impress.js/extras/markdown/markdown.js" charset="utf-8"></script>
     <script src="impress.js/js/impress.js" charset="utf-8"></script>
-    <script charset="utf-8">impress().init();</script>
+    <script charset="utf-8">
+      impress().init();
+      var hideSteps = document.querySelectorAll( '.hide-step' );
+      for ( var i = 0; i < hideSteps.length; i++ ) {
+        impress().lib.util.triggerEvent( hideSteps[i], "impress:navigation-ui:hideStep" );
+      }
+    </script>
     <script src="vendor/inlineSVG.min.js" charset="utf-8"></script>
     <script charset="utf-8">inlineSVG.init();</script>
   </body>
