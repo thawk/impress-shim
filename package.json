@@ -1,6 +1,15 @@
 {
+  "scripts": {
+    "inline": "tools/inline-source.js"
+  },
   "dependencies": {
     "html-inline": "^1.2.0",
     "inline-svg": "^2.2.3"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.0",
+    "inline-source": "^7.2.0",
+    "path": "^0.12.7"
   }
 }
