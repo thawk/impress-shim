@@ -24,6 +24,7 @@ async function inline(source, out) {
     const html = await inlineSource.inlineSource(
       source, {
         rootpath: path.dirname(source),
+        compress: false,
         attribute: false
       });
     fs.writeFile(out, html, (err) => {
