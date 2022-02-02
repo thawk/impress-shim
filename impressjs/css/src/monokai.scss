@@ -1,0 +1,10 @@
+// from monokai.css
+@use 'common' with (
+    $bg-color: #272822,
+    $text-color: #ddd,
+    $title-color: #a6e22e,
+    $list-alt-color: #a6e22e,
+    $accent-color: #f92672,
+    $border-color: #75715e,
+    $link-color: #bf79db,
+);

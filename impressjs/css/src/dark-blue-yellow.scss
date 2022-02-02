@@ -1,0 +1,16 @@
+// /* Color Theme Swatches in Hex */
+// .游戏设计-1-hex { color: #1431D9; }
+// .游戏设计-2-hex { color: #121D59; }
+// .游戏设计-3-hex { color: #F2E205; }
+// .游戏设计-4-hex { color: #F2CB05; }
+// .游戏设计-5-hex { color: #F29F05; }
+
+@use 'common' with (
+    $dark-theme: true,
+    // $bg-color: #121D59,
+    $bg-color: #090F2F,
+    $text-color: #FFFFFF,
+    $title-color: #F2E205, 
+    $accent-color: #F29F05, 
+);
+

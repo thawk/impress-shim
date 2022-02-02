@@ -1,0 +1,10 @@
+// from obsidian.css
+@use 'common' with (
+    $bg-color: #282b2e,
+    $text-color: #e0e2e4,
+    $title-color: white,
+    $list-alt-color: #8cbbad,
+    $accent-color: #93c763,
+    $border-color: #818e96,
+    $link-color: #d39745,
+);

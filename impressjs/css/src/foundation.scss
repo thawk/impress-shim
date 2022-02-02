@@ -1,0 +1,10 @@
+// from foundation.css
+@use 'common' with (
+    $bg-color: #eee,
+    $text-color: black,
+    $title-color: #900,
+    
+    $accent-color: #099,
+    $border-color: #998,
+    $link-color: #070,
+);

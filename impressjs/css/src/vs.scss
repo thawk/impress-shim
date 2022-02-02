@@ -1,0 +1,10 @@
+// from vs.css
+@use 'common' with (
+    $bg-color: white,
+    $text-color: black,
+    $title-color: #a31515,
+    $list-alt-color: #00f,
+    $accent-color: #00f,
+    $border-color: #008000,
+    $link-color: #00b0e8,
+);

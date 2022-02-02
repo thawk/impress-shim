@@ -1,0 +1,10 @@
+// from tomorrow-night.css
+@use 'common' with (
+    $bg-color: #1d1f21,
+    $text-color: #969896,
+    $title-color: #81a2be,
+    $list-alt-color: #de935f,
+    $accent-color: #b294bb,
+    $border-color: #969896,
+    $link-color: #de935f,
+);

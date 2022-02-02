@@ -1,0 +1,14 @@
+// .Hydeout-/-Identity-Design-Exploration-1-hex { color: #D9BE6C; }
+// .Hydeout-/-Identity-Design-Exploration-2-hex { color: #D98F4E; }
+// .Hydeout-/-Identity-Design-Exploration-3-hex { color: #BF6341; }
+// .Hydeout-/-Identity-Design-Exploration-4-hex { color: #595959; }
+// .Hydeout-/-Identity-Design-Exploration-5-hex { color: #0D0D0D; }
+
+@use 'common' with (
+    $dark-theme: true,
+    $text-color: #FFFFFF,
+    $bg-color: #0D0D0D,
+    $title-color: #D9BE6C, 
+    $accent-color: #BF6341,
+);
+

@@ -1,0 +1,193 @@
+ul {
+  list-style-type: disc;
+}
+ul ul {
+  list-style-type: circle;
+}
+ul ul ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: decimal;
+}
+ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+li {
+  color: #000;
+}
+li li {
+  color: #000;
+  margin-left: 0.5em;
+}
+li li li {
+  color: #000;
+}
+
+#impress .step .substep.substep-visible.strike-on-substep, #impress .step .substep.substep-visible .strike-on-substep {
+  text-decoration-color: #000;
+}
+#impress .step li li.substep.substep-visible.strike-on-substep, #impress .step li li.substep.substep-visible .strike-on-substep {
+  text-decoration-color: #000;
+}
+#impress .step li.substep.substep-visible.strike-on-substep, #impress .step li.substep.substep-visible .strike-on-substep {
+  text-decoration-color: #000080;
+}
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+blockquote {
+  color: rgba(0, 0, 0, 0.7);
+  border-left-color: #1abc9c;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  text-shadow: -2px 2px 4px rgba(204, 204, 204, 0.9);
+}
+h1 strong, h1 b, h2 strong, h2 b, h3 strong, h3 b, h4 strong, h4 b, h5 strong, h5 b, h6 strong, h6 b {
+  color: #000080;
+}
+
+strong {
+  color: #000080;
+}
+
+#impress table {
+  border-color: #808080;
+}
+#impress table tbody + tbody {
+  border-top-color: #808080;
+}
+#impress table table {
+  background-color: white;
+}
+#impress th, #impress td {
+  border-top-color: #808080;
+}
+#impress thead th, #impress thead td {
+  border-bottom-color: #808080;
+}
+#impress table.striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+#impress table.hover tbody tr:hover {
+  background-color: rgba(128, 128, 128, 0.075);
+}
+
+q {
+  text-shadow: 0 6px 6px rgba(128, 128, 128, 0.3);
+}
+
+.noaccent {
+  color: #000;
+}
+
+.accent, .accent1 {
+  color: #000080;
+}
+
+.accent2 {
+  color: #000;
+}
+
+.accent3 {
+  color: #ac94e8;
+}
+
+.accent4 {
+  color: #60d2b6;
+}
+
+/* color codes from siimple css.
+ * https://docs.siimple.xyz/getting-started/theming.html
+ */
+.primary {
+  color: #4e91e4;
+}
+
+.success {
+  color: #4acf7f;
+}
+
+.warning {
+  color: #fbc850;
+}
+
+.error {
+  color: #ee675d;
+}
+
+.dark {
+  color: #546778;
+}
+
+.light {
+  color: #dde5ee;
+}
+
+a {
+  color: #0000ff;
+  text-shadow: -2px 2px 4px rgba(204, 204, 204, 0.9);
+  border-bottom-color: rgba(128, 128, 128, 0.2);
+  border-left-color: rgba(128, 128, 128, 0.2);
+}
+a:hover, a:focus {
+  background: #fefefe;
+  text-shadow: -2px 2px 3px rgba(204, 204, 204, 0.5);
+}
+
+.box {
+  background-color: white;
+  border-color: rgba(128, 128, 128, 0.3);
+  box-shadow: 0 4px 8px rgba(204, 204, 204, 0.1);
+}
+
+.slide {
+  text-shadow: 0 3px 3px rgba(204, 204, 204, 0.2);
+}
+.slide.flex {
+  display: flex;
+}
+.slide pre {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+pre > code {
+  display: block;
+  text-shadow: 0 0 0 rgba(204, 204, 204, 0);
+  color: #000;
+  background-color: white;
+  padding: 0.5em;
+  border: 2px solid rgba(128, 128, 128, 0.3);
+}
+
+.box pre > code {
+  background-color: white;
+}
+
+#overview #signature {
+  color: #546778;
+}
+
+/* style for main classes in mermaid classDiagram */
+#impress .mermaid .main_class {
+  fill: #ffdfdf;
+}
+
+/* SVG styles */
+path {
+  stroke: #000;
+}
+
+/*# sourceMappingURL=idea.css.map */
