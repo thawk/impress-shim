@@ -1,0 +1,10 @@
+// from github.css
+@use 'common' with (
+    $bg-color: #ffffff,
+    $text-color: #24292e,
+    $title-color: #6f42c1,
+    $list-alt-color: #e36209,
+    $accent-color: #d73a49,
+    $border-color: #6a737d,
+    
+);

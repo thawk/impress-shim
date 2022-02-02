@@ -1,0 +1,10 @@
+// from atom-one-light.css
+@use 'common' with (
+    $bg-color: #fafafa,
+    $text-color: #383a42,
+    $title-color: #4078f2,
+    $list-alt-color: #c18401,
+    $accent-color: #a626a4,
+    $border-color: #a0a1a7,
+    $link-color: #4078f2,
+);

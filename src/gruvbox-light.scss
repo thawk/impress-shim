@@ -1,0 +1,10 @@
+// from gruvbox-light.css
+@use 'common' with (
+    $bg-color: #fbf1c7,
+    $text-color: #3c3836,
+    $title-color: #076678,
+    $list-alt-color: #076678,
+    $accent-color: #9d0006,
+    $border-color: #928374,
+    $link-color: #9d0006,
+);

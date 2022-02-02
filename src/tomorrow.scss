@@ -1,0 +1,10 @@
+// from tomorrow.css
+@use 'common' with (
+    $bg-color: white,
+    $text-color: #8e908c,
+    $title-color: #4271ae,
+    $list-alt-color: #f5871f,
+    $accent-color: #8959a8,
+    $border-color: #8e908c,
+    $link-color: #f5871f,
+);

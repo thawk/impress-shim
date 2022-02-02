@@ -1,0 +1,588 @@
+/*
+  A common approach is to use googleapis.com to generate css for the webfonts you want to use.
+  The downside of this approach is that you have to be online. So below I have simply saved
+  the output of the googleapis url into a file. Then you of course also have to make sure
+  the webfonts are locally installed to make offline usage work. For Ubuntu (or Debian) I
+  successfully used the script from here to do that:
+  http://www.webupd8.org/2011/01/automatically-install-all-google-web.html
+*/
+
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Cutive+Mono); */
+/* @import url(fonts.css); */
+
+
+/*
+  The body background is the bacgkround of "everything". Many
+  impress.js tools call it the "surface". It could also be a
+  picture or pattern, but we leave it as light gray.
+*/
+
+body {
+    min-height: 740px;
+
+    background: rgb(215, 215, 215);
+    color: rgb(70, 70, 70);
+
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+/* 块/段落引用 */
+blockquote {
+  position: relative;
+  font-weight: 400;
+  border-left: 1px solid;
+  padding-left: 1em;
+  margin: 1em 3em 1em 2em;
+}
+
+/*  */
+b, strong { font-weight: bold }
+
+/* i, em { font-style: italic } */
+/*  */
+/* em { */
+/*     text-shadow: 0 6px 6px rgba(0, 0, 0, .3); */
+/* } */
+/*  */
+/* strong { */
+/*     text-shadow: -3px 3px 6px rgba(100,100,100,0.5); */
+/* } */
+
+#impress {
+  font-size: 3.75em;
+}
+
+#impress table {
+  border-collapse: collapse;
+  /* width: 100%; */
+  /* max-width: 100%; */
+  margin-bottom: 1rem;
+  background-color: transparent;
+  /* border-spacing: 0; */
+  /* color: #212529; */
+  border: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+#impress th {
+  text-align: inherit;
+}
+#impress thead {
+  display: table-header-group;
+}
+#impress th,
+#impress td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid;
+}
+#impress thead th,
+#impress thead td {
+  border-bottom: 2px solid;
+}
+#impress thead th {
+  vertical-align: bottom;
+}
+
+#impress table.borderless,
+#impress table.borderless th,
+#impress table.borderless td,
+#impress table.borderless thead th,
+#impress table.borderless thead td {
+  border: none;
+}
+#impress table tbody + tbody {
+  border-top: 2px solid;
+}
+
+q {
+    /* font-family: 'PT Serif'; */
+    font-style: italic;
+    /* font-weight: 400;     */
+}
+
+.slide q {
+    display: block;
+    margin-top: 100px;
+}
+
+/* strike { */
+/*     opacity: 0.7; */
+/* } */
+/*  */
+/* small { */
+/*     font-size: 0.4em; */
+/* } */
+/*  */
+/* .left-align { */
+/*   text-align: left; */
+/* } */
+/*  */
+/* .center { */
+/*   text-align: center; */
+/* } */
+/*  */
+/* .right-align { */
+/*   text-align: right; */
+/* } */
+/*  */
+/* .strike { */
+/*     text-decoration: line-through; */
+/* } */
+/*  */
+/* .inline-block { */
+/*     position: inline-block; */
+/* } */
+
+#impress .font-normalsize {
+    font-size: 100%;
+}
+#impress .font-smaller1 {
+    font-size: 90%;
+}
+#impress .font-smaller2 {
+    font-size: 80%;
+}
+#impress .font-smaller3 {
+    font-size: 70%;
+}
+#impress .font-smaller4 {
+    font-size: 60%;
+}
+#impress .font-smaller5 {
+    font-size: 50%;
+}
+#impress .font-larger1 {
+    font-size: 110%;
+}
+#impress .font-larger2 {
+    font-size: 120%;
+}
+#impress .font-larger3 {
+    font-size: 130%;
+}
+#impress .font-larger4 {
+    font-size: 150%;
+}
+#impress .font-larger5 {
+    font-size: 200%;
+}
+
+
+.future .is-curr-step,
+.past .is-curr-step {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.present .is-curr-step {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#overview .is-curr-step {
+    opacity: 1;
+}
+
+.navy {color: #546778;}
+.green {color: #93d260;}
+.teal {color: #60d2b6;}
+.blue {color: #4e91e4;}
+.purple {color: #ac94e8;}
+.pink {color: #e77eb8;}
+.red {color: #ee675d;}
+.orange {color: #f78055;}
+.yellow {color: #fbc850;}
+.gray {color: #dde5ee;}
+.light-gray {color: #eeeeee;}
+
+/* Inline code, no Highlight.js */
+code {
+    font-family: "Cutive mono","Courier New", monospace;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0 0.1em;
+    border-radius: 0.2em;
+    border-bottom: 3px solid;
+    border-left:   3px solid;
+
+    transition:         0.5s;
+}
+a:hover,
+a:focus {
+}
+
+/*
+    Now let's style the presentation steps.
+*/
+
+.step {
+    position: relative;
+    width: 1800px;
+    padding: 3rem;
+    margin: 3rem;
+
+    box-sizing: border-box;
+
+    /* font-size: 3.75em; */
+    line-height: 1.4;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, .2);
+}
+
+/* more text, smaller font size */
+.more-text {
+    font-size: 80%;
+}
+
+.more-text .step {
+    font-size: 65%;
+}
+
+.more-text table {
+    font-size: 80%;
+}
+
+#impress.debug .step {
+    /* for layout debuggind */
+    background-color: #F0808020;
+}
+
+.step code {
+    line-height: 1;
+}
+
+/*
+    Make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.9;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+
+.box {
+    border: 2px solid;
+    border-radius: 30px;
+}
+
+/*
+    These 'slide' step styles were heavily inspired by HTML5 Slides:
+    http://html5slides.googlecode.com/svn/trunk/styles.css
+*/
+.slide {
+    display: block;
+
+    width: 1850px;
+    height: 1000px;
+    padding: 2rem 3rem;
+
+    /* font-size: 3.75em; */
+    /* letter-spacing: -2px; */
+
+    /* background-image: url(../images/background.png); */
+}
+
+/* Fix for slides with data-z != 0 */
+.slide.zfix,
+.slide.zfix * {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.slide h1,
+.slide h2,
+.slide h3 {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    /* text-align: center; */
+}
+
+.slide p {
+    /* text-align: center; */
+    /* margin: 0.7em; */
+}
+
+.slide li {
+    /* margin-top: 0.2em; */
+    /* margin-bottom: 0.2em; */
+    /* margin-left: 3em; */
+    /* margin-right: 3em; */
+}
+
+.slide pre {
+    font-size: 0.6em;
+    line-height: 0.7em;
+}
+
+.slide input {
+    font-size: 1em;
+}
+
+.slide .float-right {
+    float: right;
+    margin-left:  1rem;
+    margin-right:   0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
+}
+.slide .float-left {
+    float: left;
+    margin-right: 1rem;
+    margin-left:    0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
+}
+.slide .top {
+    position: absolute;
+    top: 1rem;
+    margin-bottom:  1rem;
+    margin-top:      0rem;
+}
+.slide .bottom {
+    position: absolute;
+    bottom: 1rem;
+    margin-bottom:   0rem;
+    margin-top:     1rem;
+}
+.slide .right {
+    position: absolute;
+    right: 0rem;
+    margin-left:  1rem;
+    margin-right:   0rem;
+    margin-top:    1rem;
+    margin-bottom: 1rem;
+}
+.slide .left {
+    position: absolute;
+    left: 0rem;
+    margin-right: 1rem;
+    margin-left:    0rem;
+    margin-top:    1rem;
+    margin-bottom: 2rem;
+}
+
+/*
+    Specific styles for: .title slides
+*/
+
+.step.title {
+    display: block;
+
+    width: 1850px;
+    height: 1000px;
+    padding: 2rem 3rem;
+}
+
+.title h1,
+.title h2,
+.title h3,
+.title p {
+    width: 100%;
+    text-align: center;
+}
+.title h1 { margin-top: 200px; }
+.title h2 { margin-top: 200px; }
+.title h1 + h2 { margin-top: 400px; }
+.title h3 { margin-top: 200px; }
+.title h2 + h3 { margin-top: 400px; }
+.title h1 + h2 + h3 { margin-top: 600px; }
+
+
+
+/* Styles for animating the contents of a slide, such as a img, p, li or span element. ********/
+
+/*
+ fly-in class starts from a position outside the slide, then flies into it's correct position.
+*/
+.future .fly-in {
+    transform: translateY(-2100px);
+    opacity: 0.0; /* Make it invisible, just so it doesn't clutter some other slide that might be in the position where we moved it */
+}
+.present .fly-in {
+    transform: translateY(0px);
+    opacity: 1.0;
+    transition: 2s;
+}
+.past .fly-out {
+    transform: translateY(2100px);
+    opacity: 0.0;
+    transition: 2s;
+}
+
+/*
+   Fade-in/out is a straightforward fade. Give it enough seconds that all browsers render it clearly.
+*/
+.future.fade-in,
+.future .fade-in {
+    opacity: 0.0;
+}
+.present.fade-in,
+.present .fade-in {
+    opacity: 1.0;
+    transition: 7s;
+}
+.past.fade-out,
+.past .fade-out {
+    opacity: 0.0;
+    transition: 3s;
+}
+
+/*
+   Gray-in/out like fade, but it's not 100% transparent.
+*/
+.future.gray-in,
+.future .gray-in {
+    opacity: 0.3;
+}
+.present.gray-in,
+.present .gray-in {
+    opacity: 1.0;
+    transition: 7s;
+}
+.past.gray-out,
+.past .gray-out {
+    opacity: 0.3;
+    transition: 3s;
+}
+
+/*
+    Zoom-in.
+*/
+.future  .zoom-in {
+    transform: scale(10);
+    opacity: 0.0;
+}
+.present .zoom-in {
+    transform: scale(1);
+    opacity: 1.0;
+    transition: 3s;
+}
+.past  .zoom-out {
+    transform: scale(10);
+    opacity: 0.0;
+}
+
+/*
+    Styles for specific slides.
+*/
+
+
+/* Default */
+.step {
+    opacity: 1;
+    transition:         opacity 3s;
+}
+
+/* Slides that are visible only during their turn. Typically on top of another slide. */
+.step.subslide {
+    opacity: 0;
+    transition:         opacity 1s;
+
+    padding-top: 300px;
+}
+
+.step.subslide.active {
+    opacity: 1;
+    transition:         opacity 1s;
+}
+
+.step.subslide p {
+    text-align: left;
+}
+
+#overview {
+    pointer-events: none
+}
+
+/* tachyons.css will set box-sizing of table to border-box, overwrite that */
+.impress-enabled #impress-help {
+    box-sizing: content-box;
+}
+
+#impress .step .substep.substep-visible .strike-on-substep,
+#impress .step .substep.substep-visible.strike-on-substep {
+  text-decoration: line-through;
+}
+
+#impress .step .substep.strike-on-substep {
+  opacity: 1;
+}
+
+#impress .step .substep .is-curr-substep {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#impress .step .substep.is-curr-substep,
+#impress .step .substep .is-curr-substep {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#impress .step .substep.substep-active.is-curr-substep,
+#impress .step .substep.substep-active .is-curr-substep {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#impress .step .substep.is-curr-substep.remove,
+#impress .step .substep .is-curr-substep.remove {
+  display: none;
+}
+
+#impress .step .substep.substep-active.is-curr-substep.remove,
+#impress .step .substep.substep-active .is-curr-substep.remove {
+  display: initial;
+}
+
+/* We need substeps to go away so they don't show up on the adjacent slide */
+/* #impress .step.past .substep.substep-visible { */
+/*     opacity: 0; */
+/*     transition: 2s; */
+/* } */
+
+.impress-on-overview #overview #signature {
+  opacity: 1;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#overview #signature {
+  opacity: 0;
+}
+
+#overview #signature {
+    font-size: 40%;
+}
+
+#overview #signature a {
+    font-family: "PT Serif";
+    font-size: 120%;
+    text-decoration: none;
+    border: none;
+    background: none;
+    pointer-events: auto;
+}
+
+/* mermaid related */
+#impress div.mermaid {
+    text-align: center;
+}
+#impress svg[id^="mermaid"][width][height][viewBox] {
+    width: 90%;
+    height: auto;
+}
+

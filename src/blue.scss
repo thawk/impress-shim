@@ -1,0 +1,14 @@
+// $color-1: #1D8FF2,
+// $color-2: #1261A6,
+// $color-3: #3DADF2,
+// $color-4: #F2F2F2, 
+// $color-5: #50C4F2,
+
+@use 'common' with (
+    $dark-theme: false,
+    $bg-color: #50c4f2,
+    $text-color: #1261a6,
+    $title-color: #f2f2f2, 
+    $accent-color: #0840A8, 
+);
+
