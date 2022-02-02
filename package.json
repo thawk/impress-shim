@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "inline": "tools/inline-source.js"
+    "build": "tools/inline-source.js"
   },
   "devDependencies": {
     "fs": "^0.0.1-security",
