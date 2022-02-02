@@ -1,6 +1,0 @@
-[submodule "impressjs/css"]
-	path = impressjs/css
-	url = https://github.com/thawk/impress-css.git
-[submodule "impressjs/impress.js"]
-	path = impressjs/impress.js
-	url = https://github.com/thawk/impress-shim.git
