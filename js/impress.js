@@ -169,9 +169,9 @@
 
     // Some default config values.
     var defaults = {
-        width: 1024,
-        height: 768,
-        maxScale: 1,
+        width: 1920,
+        height: 1080,
+        maxScale: 3,
         minScale: 0,
 
         perspective: 1000,
@@ -1981,7 +1981,6 @@
         root = event.target;
         canvas = root.firstElementChild;
         var gc = api.lib.gc;
-        var util = api.lib.util;
 
         gc.addEventListener( document, "keydown", function( event ) {
 
@@ -2024,48 +2023,95 @@
  * Copyright 2016 Henrik Ingo (@henrikingo)
  * Released under the MIT license.
  */
-/* global markdown, hljs, mermaid, impress, document, window */
+/* global markdown, marked, hljs, mermaid, impress */
 
 ( function( document, window ) {
     "use strict";
 
-    var preInit = function() {
-        if ( window.markdown ) {
+    const SLIDE_SEPARATOR = /^-----$/m;
 
-            // Unlike the other extras, Markdown.js doesn't by default do anything in
-            // particular. We do it ourselves here.
-            // In addition, we use "-----" as a delimiter for new slide.
+    const getMarkdownParser = function( ) {
+        if ( window.hasOwnProperty( "marked" ) ) {
 
-            // Query all .markdown elements and translate to HTML
-            var markdownDivs = document.querySelectorAll( ".markdown" );
-            for ( var idx = 0; idx < markdownDivs.length; idx++ ) {
-              var element = markdownDivs[ idx ];
-              var dialect = element.dataset.markdownDialect;
+            // Using marked
+            return function( elem, src ) {
+                return marked.parse( src );
+            };
+        } else if ( window.hasOwnProperty( "markdown" ) ) {
 
-              var slides = element.textContent.split( /^-----$/m );
-              var i = slides.length - 1;
-              element.innerHTML = markdown.toHTML( slides[ i ], dialect );
+            // Using builtin markdown engine
+            return function( elem, src ) {
+                var dialect = elem.dataset.markdownDialect;
+                return markdown.toHTML( src, dialect );
+            };
+        }
 
-              // If there's an id, unset it for last, and all other, elements,
-              // and then set it for the first.
-              var id = null;
-              if ( element.id ) {
-                id = element.id;
-                element.id = "";
-              }
-              i--;
-              while ( i >= 0 ) {
-                var newElement = element.cloneNode( false );
-                newElement.innerHTML = markdown.toHTML( slides[ i ], dialect );
-                element.parentNode.insertBefore( newElement, element );
-                element = newElement;
-                i--;
-              }
-              if ( id !== null ) {
-                element.id = id;
-              }
+        return null;
+    };
+
+    const getMarkdownSlides = function( elem ) {
+        var text = elem.textContent;
+
+        // Using first not blank line to detect leading whitespaces.
+        // can't properly handle the mixing of space and tabs
+        var m = text.match( /^([ \t]*)\S/m );
+        if ( m !== null ) {
+            text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
+        }
+
+        return text.split( SLIDE_SEPARATOR );
+    };
+
+    const convertMarkdowns = function( selector ) {
+
+        // Detect markdown engine
+        var parseMarkdown = getMarkdownParser();
+        if ( !parseMarkdown ) {
+            return;
+        }
+
+        for ( var elem of document.querySelectorAll( selector ) ) {
+            var id = null;
+            if ( elem.id ) {
+                id = elem.id;
+                elem.id = "";
             }
-        } // Markdown
+
+            var origTitle = null;
+            if ( elem.title ) {
+                origTitle = elem.title;
+                elem.title = "";
+            }
+
+            var slides = getMarkdownSlides( elem );
+            var slideElems = [ elem ];
+
+            for ( var j = 1; j < slides.length; ++j ) {
+                var newElem = elem.cloneNode( false );
+                newElem.id = "";
+                elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
+                slideElems.splice( 0, 0, newElem );
+            }
+
+            if ( id ) {
+                slideElems[ 0 ].id = id;
+            }
+
+            for ( var i = 0; i < slides.length; ++i ) {
+                slideElems[ i ].innerHTML =
+                    parseMarkdown( slideElems[ i ], slides[ i ] );
+
+                if ( origTitle && ( i === 0 ) ) {
+                    slideElems[ i ].title = origTitle;
+                }
+            }
+        }
+    };
+
+    var preInit = function() {
+
+        // Query all .markdown elements and translate to HTML
+        convertMarkdowns( ".markdown" );
 
         if ( window.hljs ) {
             hljs.initHighlightingOnLoad();
@@ -4663,6 +4709,12 @@
         var visible = step.querySelectorAll( ".substep-visible" );
         for ( var i = 0; i < visible.length; i++ ) {
             visible[ i ].classList.remove( "substep-visible" );
+        }
+
+        if ( step.classList.contains( "substep-auto-active" ) ) {
+
+            // Auto active the first substep
+            showSubstepIfAny( step );
         }
     }, false );
 
